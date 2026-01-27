@@ -24,6 +24,7 @@ int add_item(Inventory* inv ,int item_id,int quantity){
             inv->items[i].quantity += quantity;
             return 0;
     }
+}
      if (inv->count == inv->capacity) {
         int new_capacity = inv->capacity * 2;
         ItemStack* new_items =
@@ -41,7 +42,6 @@ int add_item(Inventory* inv ,int item_id,int quantity){
     inv->count++;
 
     return 0;
-}
 }
 void free_inventory(Inventory* inv) {
     int quantity;
