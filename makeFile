@@ -1,20 +1,22 @@
 TARGET = game.exe
-SRCS = src/main.c
-# Thêm đường dẫn chứa structs.h
-CFLAGS = -Iinclude -I"C:/mingw64/include"
 
-# SỬA CHỖ NÀY: Thay đường dẫn bên dưới bằng đường dẫn thật đến file libraylib.a trên máy bạn
-# Nếu bạn cài ở C:/mingw64, đường dẫn thường là C:/mingw64/lib/libraylib.a
-RAYLIB_PATH = D:\raylib-5.5_win64_mingw-w64\raylib-5.5_win64_mingw-w64\lib\libraylib.a
-LDFLAGS = $(RAYLIB_PATH) -lopengl32 -lgdi32 -lwinmm
+SRCS = src/main.c \
+       src/crop.c \
+       src/growth.c \
+       src/inventory.c \
+       src/water.c
+
+CC = gcc
+CFLAGS = -Iinclude
+LDFLAGS = -lraylib -lopengl32 -lgdi32 -lwinmm
 
 all: clean build run
 
 build:
-	gcc $(SRCS) -o $(TARGET) $(CFLAGS) $(LDFLAGS)
+	$(CC) $(SRCS) -o $(TARGET) $(CFLAGS) $(LDFLAGS)
 
 run:
 	./$(TARGET)
 
 clean:
-	@if exist $(TARGET) del /q $(TARGET)
+	rm -f $(TARGET)

@@ -1,81 +1,100 @@
-<<<<<<< HEAD
+#include "raylib.h"
 #include <stdio.h>
-#include <stdlib.h>    // Để dùng hàm system("cls") xóa màn hình
 #include <stdbool.h>
-#include "structs.h"
 
-void displayMenu(GameState game) {
-    // system("cls"); // Mở dòng này nếu muốn mỗi lần chọn menu là màn hình tự xóa sạch
-    printf("\n====================================");
-    printf("\n  NGAY: %d | TIEN: %d $", game.time.day, game.player.money);
-    printf("\n====================================\n");
-    printf("1. Xem ban do nong trai\n");
-    printf("2. Nghi ngoi (Qua ngay moi)\n");
-    printf("3. Cua hang\n");
-    printf("0. Thoat va Luu game\n");
-    printf("Chon hanh dong: ");
-}
+#define MAP_SIZE 5
+#define TILE_SIZE 80
+#define SCREEN_WIDTH 600
+#define SCREEN_HEIGHT 500
+
+// Giữ nguyên logic trạng thái từ các ngày trước
+typedef enum { GRASS, TILLED, PLANTED, GROWN } TileState;
+
+typedef struct {
+    TileState state;
+    float growTime;
+} Tile;
 
 int main() {
-    GameState game = {0}; 
-    game.player.money = 1000;
-    game.time.day = 1;
-    
-    int choice;
-    bool isRunning = true;
+    // 1. Khởi tạo cửa sổ đồ họa
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "FARM GAME - NGAY 5 GRAPHICS");
+    SetTargetFPS(60);
 
-    while (isRunning) {
-        displayMenu(game);
+    // Khởi tạo dữ liệu game
+    Tile map[MAP_SIZE][MAP_SIZE] = {0};
+    int pX = 2, pY = 2; // Vị trí Player
+    int money = 1000;
+    int day = 1;
+
+    while (!WindowShouldClose()) {
+        // --- XỬ LÝ LOGIC (UPDATE) ---
         
-        // Kiểm tra nếu người dùng nhập chữ thay vì số để tránh vòng lặp vô tận
-        if (scanf("%d", &choice) != 1) {
-            while (getchar() != '\n'); // Xóa bộ nhớ đệm
-            printf("\n[!] Vui long chi nhap so!\n");
-            continue;
+        // Di chuyển bằng phím W-A-S-D (Ngày 5 logic)
+        if (IsKeyPressed(KEY_W) && pY > 0) pY--;
+        if (IsKeyPressed(KEY_S) && pY < MAP_SIZE - 1) pY++;
+        if (IsKeyPressed(KEY_A) && pX > 0) pX--;
+        if (IsKeyPressed(KEY_D) && pX < MAP_SIZE - 1) pX++;
+
+        // Tương tác chuột (Click để cuốc đất/trồng cây)
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+            Vector2 mouse = GetMousePosition();
+            int x = mouse.x / TILE_SIZE;
+            int y = mouse.y / TILE_SIZE;
+
+            if (x >= 0 && x < MAP_SIZE && y >= 0 && y < MAP_SIZE) {
+                Tile *t = &map[y][x];
+                if (t->state == GRASS) t->state = TILLED;
+                else if (t->state == TILLED) {
+                    t->state = PLANTED;
+                    t->growTime = 0;
+                }
+            }
         }
 
-        switch (choice) {
-            case 1:
-                printf("\n[Visual]: Dang ve ban do... (Cho ngay 4)\n");
-                break;
-            case 2:
-                game.time.day++;
-                printf("\n[System]: Chuc mung ngay moi! Hien tai la ngay %d.\n", game.time.day);
-                break;
-            case 0:
-                isRunning = false;
-                printf("\nDang thoat game...\n");
-                break;
-            default:
-                printf("\n[!] Lua chon khong ton tai!\n");
+        // Cập nhật thời gian cây lớn (Thay thế hàm Sleep)
+        for (int i = 0; i < MAP_SIZE; i++) {
+            for (int j = 0; j < MAP_SIZE; j++) {
+                if (map[i][j].state == PLANTED) {
+                    map[i][j].growTime += GetFrameTime();
+                    if (map[i][j].growTime >= 5.0f) map[i][j].state = GROWN;
+                }
+            }
         }
+
+        // --- VẼ GIAO DIỆN (DRAW) ---
+        BeginDrawing();
+        ClearBackground(RAYWHITE);
+
+        // Vẽ bản đồ ô vuông (Texture màu)
+        for (int i = 0; i < MAP_SIZE; i++) {
+            for (int j = 0; j < MAP_SIZE; j++) {
+                Color tileColor = GREEN;
+                if (map[i][j].state == TILLED) tileColor = BROWN;
+                if (map[i][j].state == PLANTED) tileColor = DARKGREEN;
+                if (map[i][j].state == GROWN) tileColor = GOLD;
+
+                DrawRectangle(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE - 2, TILE_SIZE - 2, tileColor);
+                
+                // Vẽ thanh tiến trình nhỏ nếu đang lớn (Sleep trực quan)
+                if (map[i][j].state == PLANTED) {
+                    float prog = map[i][j].growTime / 5.0f;
+                    DrawRectangle(j * TILE_SIZE + 10, i * TILE_SIZE + 65, (TILE_SIZE - 20) * prog, 5, WHITE);
+                }
+            }
+        }
+// Vẽ Player 'P' (Hình tròn đại diện)
+        DrawCircle(pX * TILE_SIZE + TILE_SIZE/2, pY * TILE_SIZE + TILE_SIZE/2, 20, BLUE);
+        DrawText("P", pX * TILE_SIZE + 32, pY * TILE_SIZE + 25, 30, WHITE);
+
+        // Vẽ Menu thông tin bên phải
+        DrawText(TextFormat("NGAY: %d", day), 420, 20, 20, BLACK);
+        DrawText(TextFormat("TIEN: %d $", money), 420, 50, 20, GREEN);
+        DrawText("W-A-S-D: Di chuyen", 420, 150, 15, DARKGRAY);
+        DrawText("CHUOT: Tuong tac", 420, 180, 15, DARKGRAY);
+
+        EndDrawing();
     }
-=======
-#include<stdio.h>
-#include<unistd.h>
-#include<time.h>
 
-#include "crop.h"
-#include "growth.h"
-#include "water.h"
-
-int main(){
-    Crop crop;
-    init_crop(&crop,1);
-    plant(&crop);
-
-    int i;
-    for(i=0; i<15; i++){
-       sleep(5);
-       water(&crop,10);
-       update_growth(&crop,time(NULL));
-       
-       printf("Stage= %d\nHealth= %d\nWater= %d\n",crop.stage,crop.health,crop.water_level);
-    }
-
-    if(harvest(&crop) > 0)
-        printf("Harvest success!\n");
-
->>>>>>> b998b5b26f3c60c08144a5dc75b660e372868137
+    CloseWindow();
     return 0;
 }
