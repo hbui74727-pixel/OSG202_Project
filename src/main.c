@@ -98,3 +98,5 @@ int main() {
     CloseWindow();
     return 0;
 }
+
+//day la comment cua thao
