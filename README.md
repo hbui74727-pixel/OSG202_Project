@@ -65,7 +65,13 @@ sunnyworld/
 ## 🙏 CẢM ƠN
 - Thư viện Raylib
 - Cảm hứng từ Stardew Valley, Harvest Moon
-- Giảng viên hướng dẫn
+- Thành viên:
+    Lý Thu Thảo - HE204379
+    Nguyễn Cao Đức Anh -HE204155
+    Bùi Đăng Hướng - HE204114
+    Vũ Mạnh Quân - HE201038
+    Nguyễn Việt Dũng - HE201185
+- Giảng viên hướng dẫn: Hoàng Tuấn Anh
 -access create : https://danieldiggle.itch.io/sunnyside
 
 © 2026 Cóc Không Biết Code Team
