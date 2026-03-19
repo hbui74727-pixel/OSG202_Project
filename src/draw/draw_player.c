@@ -2,10 +2,14 @@
 #include "../textures.h"
 #include "../data_manager.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 #include "font_manager.h" 
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+#include "font_manager.h" 
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 // Tên tool ngắn để hiện trên đầu player
 static const char *TOOL_LABEL[TOOL_COUNT] = {
     "[Đào]", "[Tưới]", "[Liềm]", "[Kiếm]"
@@ -60,26 +64,36 @@ void DrawPlayer_Character(void)
 
     // ── Tool label ───────────────────────────────────────
 <<<<<<< HEAD
+<<<<<<< HEAD
     DrawText(TOOL_LABEL[p->tool],
 =======
     DrawTextShort(TOOL_LABEL[p->tool],
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+    DrawTextShort(TOOL_LABEL[p->tool],
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
              (int)(sp.x - 20), (int)(by - 14.0f * z),
              (int)(10.0f * z), TOOL_COLOR[p->tool]);
 
     // ── ADMIN badge ──────────────────────────────────────
     if (p->role == ROLE_ADMIN) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         DrawText("ADMIN", (int)(sp.x - 18), (int)(by - 26.0f * z),
                  (int)(9.0f * z), (Color){255,80,80,255});
     } else if (p->role == ROLE_TESTER) {
         DrawText("TESTER", (int)(sp.x - 20), (int)(by - 26.0f * z),
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         DrawTextShort("ADMIN", (int)(sp.x - 18), (int)(by - 26.0f * z),
                  (int)(9.0f * z), (Color){255,80,80,255});
     } else if (p->role == ROLE_TESTER) {
         DrawTextShort("TESTER", (int)(sp.x - 20), (int)(by - 26.0f * z),
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                  (int)(9.0f * z), ORANGE);
     }
 
@@ -149,10 +163,15 @@ void DrawPlayer_Hotbar(void)
                 case ITEM_WOOD: icon = T.iWood; break;
                 case ITEM_ROCK: icon = T.iRock; break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                 case ITEM_FEED: icon = T.iFeed; break;
                 case ITEM_FISH: icon = T.iFeed; break;
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+                case ITEM_FEED: icon = T.iFeed; break;
+                case ITEM_FISH: icon = T.iFeed; break;
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                 default: break;
             }
             if (icon.width > 0) {
@@ -161,11 +180,14 @@ void DrawPlayer_Hotbar(void)
                     (Rectangle){(float)(sx+4),(float)(sy+4),(float)(slotSize-8),(float)(slotSize-8)},
                     (Vector2){0,0}, 0, WHITE);
 <<<<<<< HEAD
+<<<<<<< HEAD
             } else {
                 // Fallback: chữ cái đầu
                 const char *nm = GetItemName(slot->type);
                 DrawText(TextFormat("%c", nm[0]),
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             } else if (slot->type == ITEM_WOOL) {
                 int _cx = sx+slotSize/2, _cy = sy+slotSize/2, _r = slotSize/8;
                 DrawCircle(_cx-_r, _cy,   _r+1, (Color){240,240,255,255});
@@ -181,7 +203,10 @@ void DrawPlayer_Hotbar(void)
                 // Fallback: chữ cái đầu
                 const char *nm = GetItemName(slot->type);
                 DrawTextShort(TextFormat("%c", nm[0]),
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                          sx + slotSize/2 - 6, sy + slotSize/2 - 8, 18, WHITE);
             }
         }
@@ -189,10 +214,14 @@ void DrawPlayer_Hotbar(void)
         // Số lượng
         if (slot->quantity > 1)
 <<<<<<< HEAD
+<<<<<<< HEAD
             DrawText(TextFormat("%d", slot->quantity),
 =======
             DrawTextShort(TextFormat("%d", slot->quantity),
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+            DrawTextShort(TextFormat("%d", slot->quantity),
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                      sx + slotSize - 16, sy + slotSize - 14, 12, WHITE);
     }
 
@@ -200,9 +229,13 @@ void DrawPlayer_Hotbar(void)
     for (int i = 0; i < HOTBAR_SIZE; i++) {
         int sx = startX + i * (slotSize + padding);
 <<<<<<< HEAD
+<<<<<<< HEAD
         DrawText(TextFormat("%d", i + 1), sx + 3, startY + 3, 9, (Color){200,200,200,160});
 =======
         DrawTextShort(TextFormat("%d", i + 1), sx + 3, startY + 3, 9, (Color){200,200,200,160});
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+        DrawTextShort(TextFormat("%d", i + 1), sx + 3, startY + 3, 9, (Color){200,200,200,160});
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     }
 }

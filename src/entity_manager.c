@@ -2,9 +2,12 @@
 #include "data_manager.h"
 #include "quest_system.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 /* ── Map init: toàn bộ là cỏ xanh ── */
 void EntityManager_InitMap(void)
 {
@@ -12,18 +15,24 @@ void EntityManager_InitMap(void)
         for (int c = 0; c < MAP_COLS; c++)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             G.map[r][c].type = TILE_GRASS;
             G.map[r][c].cropIdx = -1;
             G.map[r][c].barnIdx = -1;
             G.map[r][c].owned = false;
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             G.map[r][c].type      = TILE_GRASS;
             G.map[r][c].cropIdx   = -1;
             G.map[r][c].barnIdx   = -1;
             G.map[r][c].owned     = false;
             G.map[r][c].chopCount = 0;    /* cây mọc đầy sau mỗi lần login */
             G.map[r][c].chopTimer = 0.0f;
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         }
     /* Suối trái */
     for (int r = 0; r < MAP_ROWS; r++)
@@ -51,6 +60,7 @@ void EntityManager_InitAnimals(void) { /* trống – spawn khi mua */ }
 bool Land_BuyPlot(int tileX, int tileY)
 {
     /* Mua 5×5 tile tính từ (tileX, tileY) */
+<<<<<<< HEAD
 <<<<<<< HEAD
     int price = LAND_PRICE_BASE + G.barnCount * 50;
     if (G.player.money < price)
@@ -80,6 +90,8 @@ bool Land_BuyPlot(int tileX, int tileY)
             {
                 strncpy(G.message, "Phai don cay truoc moi dat dat duoc!", sizeof(G.message));
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* BUG FIX #10: Gia dat tang theo so o dat da mua, khong phai so chuong */
     int plotTiles = 0;
     for (int _r=0;_r<MAP_ROWS;_r++) for (int _c=0;_c<MAP_COLS;_c++)
@@ -125,7 +137,10 @@ bool Land_BuyPlot(int tileX, int tileY)
             if (Tile_IsTree(c2, r))
             {
                 strncpy(G.message, "Phải dọn cây trước khi đặt đất được!", sizeof(G.message));
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                 G.msgTimer = 2.5f;
                 return false;
             }
@@ -140,14 +155,19 @@ bool Land_BuyPlot(int tileX, int tileY)
             G.map[tileY + dr][tileX + dc].barnIdx = -1;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
     snprintf(G.message, sizeof(G.message), "Da mua dat 5x5! (-$%d)", price);
 =======
     snprintf(G.message, sizeof(G.message), "Đã mua đất 5x5! (-$%d)", price);
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+    snprintf(G.message, sizeof(G.message), "Đã mua đất 5x5! (-$%d)", price);
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     G.msgTimer = 2.5f;
     return true;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* ── Barn build ── */
 bool Barn_Build(AnimalType type, int tileX, int tileY)
@@ -190,6 +210,8 @@ bool Barn_Build(AnimalType type, int tileX, int tileY)
             G.map[tileY + dr][tileX + dc].barnIdx = bi;
     snprintf(G.message, sizeof(G.message), "Da xay chuong! (-$%d)", BARN_PRICE);
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 /* ── Barn_Build: đặt chuồng 5x5 tại (tileX,tileY)
    - Cho phép đặt trên đất chưa mua HOẶC đã mua (không có chuồng)
    - Tốn BARN_PRICE; nếu đất chưa mua thì tốn thêm giá đất
@@ -280,15 +302,22 @@ bool Barn_Build(AnimalType type, int tileX, int tileY)
     static const char *typeNames[] = {"Gà", "Lợn", "Cừu"};
     snprintf(G.message, sizeof(G.message),
              "Đã xây Chuồng %s! (-$%d)", typeNames[type], totalCost);
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     G.msgTimer = 2.5f;
     return true;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 /* ── Buy animal into barn ── */
 bool Barn_BuyAnimal(int barnIdx)
 {
@@ -301,20 +330,28 @@ bool Barn_BuyAnimal(int barnIdx)
     if (b->animalCount >= MAX_ANIMALS_PER_BARN)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         strncpy(G.message, "Chuong da day (toi da 5 con)!", sizeof(G.message));
 =======
         strncpy(G.message, "Chuồng đã đầy (tối đa 5 con)!", sizeof(G.message));
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+        strncpy(G.message, "Chuồng đã đầy (tối đa 5 con)!", sizeof(G.message));
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.msgTimer = 2.0f;
         return false;
     }
     if (G.player.money < ANIMAL_PRICE)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         snprintf(G.message, sizeof(G.message), "Can $%d de mua dong vat!", ANIMAL_PRICE);
 =======
         snprintf(G.message, sizeof(G.message), "Cần $%d để mua động vật!", ANIMAL_PRICE);
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+        snprintf(G.message, sizeof(G.message), "Cần $%d để mua động vật!", ANIMAL_PRICE);
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.msgTimer = 2.0f;
         return false;
     }
@@ -336,17 +373,23 @@ bool Barn_BuyAnimal(int barnIdx)
     a->barnIdx = barnIdx;
     a->active = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
     a->feedTimer = FEED_SECS;
     a->hungry = false;
     a->produceTimer = PRODUCE_SECS;
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* Khởi tạo timer theo loại động vật */
     static const float _INIT_FEED[ANIMAL_COUNT]    = { 60.0f,  90.0f, 120.0f };
     static const float _INIT_PRODUCE[ANIMAL_COUNT] = { 80.0f, 120.0f, 160.0f };
     a->feedTimer    = (a->type >= 0 && a->type < ANIMAL_COUNT) ? _INIT_FEED[a->type]    : FEED_SECS;
     a->produceTimer = (a->type >= 0 && a->type < ANIMAL_COUNT) ? _INIT_PRODUCE[a->type] : PRODUCE_SECS;
     a->hungry = false;
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     a->hasProduct = false;
     /* Vị trí ngẫu nhiên trong chuồng */
     /* Spawn ngẫu nhiên trong vùng nội thất chuồng 5x5 (tiles 1..3) */
@@ -358,6 +401,7 @@ a->pos.y = (b->tileY + 1 + GetRandomValue(0,2)) * TILE_SIZE + TILE_SIZE/2;
         G.animalCount = ai + 1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     snprintf(G.message, sizeof(G.message), "Da mua %s! (-$%d)",
              b->type == ANIMAL_CHICKEN ? "Ga" : b->type == ANIMAL_PIG ? "Lon"
                                                                       : "Cuu",
@@ -366,6 +410,11 @@ a->pos.y = (b->tileY + 1 + GetRandomValue(0,2)) * TILE_SIZE + TILE_SIZE/2;
              b->type == ANIMAL_CHICKEN ? "Gà" : b->type == ANIMAL_PIG ? "Lợn"
                                                                       : "Cừu",
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+    snprintf(G.message, sizeof(G.message), "Đã mua %s! (-$%d)",
+             b->type == ANIMAL_CHICKEN ? "Gà" : b->type == ANIMAL_PIG ? "Lợn"
+                                                                      : "Cừu",
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
              ANIMAL_PRICE);
     G.msgTimer = 2.5f;
     return true;
@@ -405,20 +454,28 @@ bool Barn_Delete(int tileX, int tileY)
     b->active = false;
     b->animalCount = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
     snprintf(G.message, sizeof(G.message), "Da xoa chuong! (+$%d)", refund);
 =======
     snprintf(G.message, sizeof(G.message), "Đã xóa chuồng! (+$%d)", refund);
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+    snprintf(G.message, sizeof(G.message), "Đã xóa chuồng! (+$%d)", refund);
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     G.msgTimer = 2.5f;
     return true;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* ── Xóa ô đất 5x5 (đất chưa trồng — hoàn tiền 30%) ── */
 /* ── Xóa vùng đất 3x3 xung quanh tile được click (hoàn tiền 30%) ── */
 =======
 /* ── Plot_Delete: xóa đúng khối owned chứa tile được click ── */
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+/* ── Plot_Delete: xóa đúng khối owned chứa tile được click ── */
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 bool Plot_Delete(int tileX, int tileY)
 {
     int r = tileY, c = tileX;
@@ -426,6 +483,7 @@ bool Plot_Delete(int tileX, int tileY)
     if (!G.map[r][c].owned) return false;
     if (G.map[r][c].barnIdx >= 0) {
         strncpy(G.message, "Phai xoa chuong truoc!", sizeof(G.message));
+<<<<<<< HEAD
 <<<<<<< HEAD
         G.msgTimer = 2.0f;
         return false;
@@ -470,6 +528,8 @@ bool Plot_Delete(int tileX, int tileY)
     snprintf(G.message, sizeof(G.message), "Da xoa %d o dat! (+$%d)", deleted, refund);
     G.msgTimer = 2.5f;
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.msgTimer = 2.0f; return false;
     }
     /* Tìm corner trái-trên: quét ngược từ tile click trên cả 2 chiều */
@@ -505,7 +565,10 @@ bool Plot_Delete(int tileX, int tileY)
     G.player.money+=refund;
     snprintf(G.message,sizeof(G.message),"Da xoa dat! (+$%d)",refund);
     G.msgTimer=2.5f;
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     return true;
 }
 
@@ -517,6 +580,7 @@ bool Barn_StartMove(int tileX, int tileY)
     Barn *b = &G.barns[bi];
     if (!b->active) return false;
 <<<<<<< HEAD
+<<<<<<< HEAD
     /* Bỏ đánh dấu tiles hiện tại (tạm thời) */
     for (int dr = 0; dr < BARN_H; dr++)
     for (int dc = 0; dc < BARN_W; dc++) {
@@ -524,6 +588,8 @@ bool Barn_StartMove(int tileX, int tileY)
         if (tr >= 0 && tr < MAP_ROWS && tc >= 0 && tc < MAP_COLS)
             G.map[tr][tc].barnIdx = -1;
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* Bỏ đánh dấu barnIdx và owned — tile cũ về cỏ */
     for (int dr = 0; dr < BARN_H; dr++)
     for (int dc = 0; dc < BARN_W; dc++) {
@@ -533,30 +599,42 @@ bool Barn_StartMove(int tileX, int tileY)
             G.map[tr][tc].owned   = false;
             G.map[tr][tc].type    = TILE_GRASS;
         }
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     }
     G.isMoving    = true;
     G.moveBarnIdx = bi;
     G.movePlot    = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
     strncpy(G.message, "Di chuyen chuong: click vi tri moi | RClick: Huy", sizeof(G.message));
 =======
     strncpy(G.message, "Di chuyển chuồng: click vị trí mới | RClick: hủy", sizeof(G.message));
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+    strncpy(G.message, "Di chuyển chuồng: click vị trí mới | RClick: hủy", sizeof(G.message));
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     G.msgTimer = 4.0f;
     return true;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* ── Bắt đầu di chuyển ô đất 5x5 ── */
 =======
 /* ── Plot_StartMove: dùng corner-scan, lưu kích thước thực ── */
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+/* ── Plot_StartMove: dùng corner-scan, lưu kích thước thực ── */
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 bool Plot_StartMove(int tileX, int tileY)
 {
     if (!G.map[tileY][tileX].owned) return false;
     if (G.map[tileY][tileX].barnIdx >= 0) {
         strncpy(G.message, "Phai di chuyen chuong truoc!", sizeof(G.message));
+<<<<<<< HEAD
 <<<<<<< HEAD
         G.msgTimer = 2.0f;
         return false;
@@ -579,6 +657,8 @@ bool Plot_StartMove(int tileX, int tileY)
     G.movePlotTileY   = oy;
     strncpy(G.message, "Di chuyen o dat: click vi tri moi | RClick: Huy", sizeof(G.message));
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.msgTimer = 2.0f; return false;
     }
     /* Corner trái-trên: quét ngược từ tile click */
@@ -612,7 +692,10 @@ bool Plot_StartMove(int tileX, int tileY)
     G.movePlotW     = pw;   /* kích thước thực */
     G.movePlotH     = ph;
     snprintf(G.message,sizeof(G.message),"Di chuyen dat %dx%d: click vi tri moi | RClick: huy",pw,ph);
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     G.msgTimer = 4.0f;
     return true;
 }
@@ -624,31 +707,42 @@ bool Object_PlaceAtTile(int tileX, int tileY)
 
     if (G.movePlot) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* Di chuyển ô đất 5x5 */
         /* Kiểm tra vùng đích trống */
         for (int dr = 0; dr < LAND_PLOT_H; dr++)
         for (int dc = 0; dc < LAND_PLOT_W; dc++) {
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         /* Dùng kích thước thực lưu khi StartMove */
         int pw = G.movePlotW > 0 ? G.movePlotW : LAND_PLOT_W;
         int ph = G.movePlotH > 0 ? G.movePlotH : LAND_PLOT_H;
         for (int dr = 0; dr < ph; dr++)
         for (int dc = 0; dc < pw; dc++) {
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             int tr = tileY + dr, tc = tileX + dc;
             if (tr < 1 || tr >= MAP_ROWS-1 || tc < 2 || tc >= MAP_COLS-1) {
                 strncpy(G.message, "Vi tri ngoai ban do!", sizeof(G.message));
                 G.msgTimer = 2.0f; return false;
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (G.map[tr][tc].type != TILE_GRASS || G.map[tr][tc].owned) {
 =======
             if (G.map[tr][tc].owned) {
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+            if (G.map[tr][tc].owned) {
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                 strncpy(G.message, "Vi tri bi chiem!", sizeof(G.message));
                 G.msgTimer = 2.0f; return false;
             }
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
         /* Đặt ô đất */
         for (int dr = 0; dr < LAND_PLOT_H; dr++)
@@ -657,6 +751,10 @@ bool Object_PlaceAtTile(int tileX, int tileY)
         for (int dr = 0; dr < ph; dr++)
         for (int dc = 0; dc < pw; dc++) {
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+        for (int dr = 0; dr < ph; dr++)
+        for (int dc = 0; dc < pw; dc++) {
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             int tr = tileY + dr, tc = tileX + dc;
             G.map[tr][tc].type    = TILE_SOIL_BOUGHT;
             G.map[tr][tc].owned   = true;
@@ -664,9 +762,12 @@ bool Object_PlaceAtTile(int tileX, int tileY)
             G.map[tr][tc].barnIdx = -1;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         G.isMoving = false;
         strncpy(G.message, "Da di chuyen o dat!", sizeof(G.message));
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         /* Dời cây trồng về vị trí mới: tìm các crop có offset (dc,dr) trong phạm vi */
         int ox2 = G.movePlotTileX, oy2 = G.movePlotTileY;
         for (int i = 0; i < MAX_CROPS; i++) {
@@ -704,7 +805,10 @@ bool Object_PlaceAtTile(int tileX, int tileY)
         }
         G.isMoving = false;
         strncpy(G.message, "Da di chuyen dat (keo theo cay)!", sizeof(G.message));
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.msgTimer = 2.0f;
         return true;
     } else {
@@ -712,6 +816,7 @@ bool Object_PlaceAtTile(int tileX, int tileY)
         int bi = G.moveBarnIdx;
         if (bi < 0 || bi >= G.barnCount) { G.isMoving = false; return false; }
         Barn *b = &G.barns[bi];
+<<<<<<< HEAD
 <<<<<<< HEAD
         /* Kiểm tra 5x5 tại vị trí mới */
         for (int dr = 0; dr < BARN_H; dr++)
@@ -728,6 +833,8 @@ bool Object_PlaceAtTile(int tileX, int tileY)
                     if (tr2 >= 0 && tr2 < MAP_ROWS && tc2 >= 0 && tc2 < MAP_COLS)
                         G.map[tr2][tc2].barnIdx = bi;
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         /* Chuồng di chuyển tự do — chỉ cần trong biên map và không đè chuồng khác */
         for (int dr = 0; dr < BARN_H; dr++)
         for (int dc = 0; dc < BARN_W; dc++) {
@@ -757,7 +864,10 @@ bool Object_PlaceAtTile(int tileX, int tileY)
                 for (int dr2=0;dr2<BARN_H;dr2++) for(int dc2=0;dc2<BARN_W;dc2++) {
                     int tr2=b->tileY+dr2, tc2=b->tileX+dc2;
                     if(tr2>=0&&tr2<MAP_ROWS&&tc2>=0&&tc2<MAP_COLS) G.map[tr2][tc2].barnIdx=bi;
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                 }
                 G.isMoving = false; return false;
             }
@@ -772,6 +882,7 @@ bool Object_PlaceAtTile(int tileX, int tileY)
             }
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* Gán tile mới */
         b->tileX = tileX; b->tileY = tileY;
         for (int dr = 0; dr < BARN_H; dr++)
@@ -783,6 +894,8 @@ bool Object_PlaceAtTile(int tileX, int tileY)
         G.moveBarnIdx = -1;
         strncpy(G.message, "Da di chuyen chuong!", sizeof(G.message));
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         /* Reset tile cũ về cỏ nếu không owned trước đó */
         for (int dr=0;dr<BARN_H;dr++) for(int dc=0;dc<BARN_W;dc++) {
             int tr=b->tileY+dr, tc=b->tileX+dc;
@@ -807,7 +920,10 @@ bool Object_PlaceAtTile(int tileX, int tileY)
         G.isMoving    = false;
         G.moveBarnIdx = -1;
         strncpy(G.message, "Đã di chuyển chuồng!", sizeof(G.message));
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.msgTimer = 2.0f;
         return true;
     }
@@ -819,6 +935,7 @@ void Object_CancelMove(void)
     if (!G.isMoving) return;
     if (G.movePlot) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* Đặt lại ô đất về vị trí cũ */
         int ox = G.movePlotTileX, oy = G.movePlotTileY;
         for (int dr = 0; dr < LAND_PLOT_H; dr++)
@@ -826,13 +943,18 @@ void Object_CancelMove(void)
             int tr = oy + dr, tc = ox + dc;
             if (tr >= 0 && tr < MAP_ROWS && tc >= 0 && tc < MAP_COLS) {
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         int ox = G.movePlotTileX, oy = G.movePlotTileY;
         int pw = G.movePlotW > 0 ? G.movePlotW : LAND_PLOT_W;
         int ph = G.movePlotH > 0 ? G.movePlotH : LAND_PLOT_H;
         for (int dr=0;dr<ph;dr++) for(int dc=0;dc<pw;dc++) {
             int tr=oy+dr, tc=ox+dc;
             if (tr>=0&&tr<MAP_ROWS&&tc>=0&&tc<MAP_COLS) {
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                 G.map[tr][tc].type  = TILE_SOIL_BOUGHT;
                 G.map[tr][tc].owned = true;
             }
@@ -850,6 +972,7 @@ void Object_CancelMove(void)
     G.moveBarnIdx = -1;
     G.movePlot    = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
     strncpy(G.message, "Da huy di chuyen.", sizeof(G.message));
     G.msgTimer = 1.5f;
 }
@@ -858,6 +981,8 @@ void EntityManager_UpdateCrops(float dt)
 {
     bool raining = (G.weather.current == WEATHER_RAINY);
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     strncpy(G.message, "Đã hủy di chuyển.", sizeof(G.message));
     G.msgTimer = 1.5f;
 }
@@ -885,13 +1010,17 @@ void EntityManager_UpdateCrops(float dt)
         }
     }
 
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     for (int i = 0; i < MAX_CROPS; i++)
     {
         Crop *c = &G.crops[i];
         if (!c->active)
             continue;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         /* Mưa tưới đất đã đào chưa trồng */
         if (raining && c->stage == CSTAGE_DUG)
@@ -902,6 +1031,8 @@ void EntityManager_UpdateCrops(float dt)
 
 =======
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         /* WATERED = đã trồng hạt + đã tưới → tự chuyển sang GROWING */
         if (c->stage == CSTAGE_WATERED)
         {
@@ -918,9 +1049,12 @@ void EntityManager_UpdateCrops(float dt)
         if (c->stage == CSTAGE_GROWING)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             c->growTimer += dt * (raining ? 1.5f : 1.0f);
             if (c->growTimer >= GROW_SECS_STAGE)
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             /* Thời gian lớn riêng theo từng loại cây (giây), tăng dần theo độ hiếm/giá:
                CARROT=30  BEETROOT=45  CABBAGE=40  CAULIFLOWER=70
                KALE=35    PARSNIP=55   POTATO=50   PUMPKIN=100
@@ -942,7 +1076,10 @@ void EntityManager_UpdateCrops(float dt)
                                ? CROP_GROW_SECS[c->type] : GROW_SECS_STAGE;
             c->growTimer += dt * (raining ? 1.5f : 1.0f);
             if (c->growTimer >= growNeeded)
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             {
                 c->stage = CSTAGE_READY;
                 c->growTimer = 0;
@@ -965,7 +1102,10 @@ void EntityManager_UpdateAnimals(float dt)
         if (!a->hungry)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             /* Thời gian đói theo loại động vật (giây):
                CHICKEN=60  PIG=90  SHEEP=120  (tăng dần theo giá sản phẩm) */
             static const float ANIMAL_FEED_SECS[ANIMAL_COUNT] = {
@@ -975,22 +1115,31 @@ void EntityManager_UpdateAnimals(float dt)
             };
             float feedNeeded = (a->type >= 0 && a->type < ANIMAL_COUNT)
                                ? ANIMAL_FEED_SECS[a->type] : FEED_SECS;
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             a->feedTimer -= dt;
             if (a->feedTimer <= 0.0f)
             {
                 a->hungry = true;
+<<<<<<< HEAD
 <<<<<<< HEAD
                 a->feedTimer = FEED_SECS;
                 Barn *b = &G.barns[a->barnIdx];
                 snprintf(G.message, sizeof(G.message),
                          "Dong vat trong chuong [%d] dang doi an!", a->barnIdx);
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                 a->feedTimer = feedNeeded;
                 Barn *b = &G.barns[a->barnIdx];
                 snprintf(G.message, sizeof(G.message),
                          "Động vật trong chuồng [%d] đang đợi ăn!", a->barnIdx);
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                 G.msgTimer = 3.0f;
                 (void)b;
             }
@@ -1000,7 +1149,10 @@ void EntityManager_UpdateAnimals(float dt)
         if (!a->hungry && !a->hasProduct)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             /* Thời gian cho sản phẩm theo loại (giây):
                CHICKEN=80  PIG=120  SHEEP=160  (tăng dần theo giá sản phẩm) */
             static const float ANIMAL_PRODUCE_SECS[ANIMAL_COUNT] = {
@@ -1010,16 +1162,23 @@ void EntityManager_UpdateAnimals(float dt)
             };
             float produceNeeded = (a->type >= 0 && a->type < ANIMAL_COUNT)
                                   ? ANIMAL_PRODUCE_SECS[a->type] : PRODUCE_SECS;
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             a->produceTimer -= dt;
             if (a->produceTimer <= 0.0f)
             {
                 a->hasProduct = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
                 a->produceTimer = PRODUCE_SECS;
 =======
                 a->produceTimer = produceNeeded;
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+                a->produceTimer = produceNeeded;
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             }
         }
 
@@ -1105,18 +1264,25 @@ void EntityManager_UpdateAnimals(float dt)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 /* ── Goblin zone: col 2-18, row 2-18 (rung cay goc tren trai) ── */
 #define GZONE_X1  (2  * TILE_SIZE)
 #define GZONE_X2  (18 * TILE_SIZE)
 #define GZONE_Y1  (2  * TILE_SIZE)
 #define GZONE_Y2  (18 * TILE_SIZE)
 
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 /* ── Update enemies ── */
 void EntityManager_UpdateEnemies(float dt)
 {
     Player *p = &G.player;
+<<<<<<< HEAD
 <<<<<<< HEAD
     for (int i = 0; i < MAX_ENEMIES; i++)
     {
@@ -1126,6 +1292,8 @@ void EntityManager_UpdateEnemies(float dt)
         if (e->hurtTimer > 0)
             e->hurtTimer -= dt;
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
     /* Kiem tra bat dau game: spawn 5 goblin ngay dau */
     /* Dung G.goblinCount==0 && G.gameTime<1.0f lam dieu kien spawn lan dau
@@ -1157,7 +1325,10 @@ void EntityManager_UpdateEnemies(float dt)
         Enemy *e = &G.enemies[i];
         if (!e->active) continue;
         if (e->hurtTimer > 0) e->hurtTimer -= dt;
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
         if (e->state == ESTATE_DEAD)
         {
@@ -1167,15 +1338,21 @@ void EntityManager_UpdateEnemies(float dt)
                 e->animTimer = 0;
                 e->animFrame++;
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if (e->animFrame >= 10)
                     e->active = false;
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                 if (e->animFrame >= 10) {
                     e->active = false;
                     /* Chi giam goblinCount cho goblin thuong, khong giam cho boss */
                     if (e->type == ENEMY_GOBLIN && !e->isBoss) G.goblinCount--;
                 }
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             }
             continue;
         }
@@ -1184,16 +1361,22 @@ void EntityManager_UpdateEnemies(float dt)
 
         float dist = sqrtf(powf(e->pos.x - p->pos.x, 2) + powf(e->pos.y - p->pos.y, 2));
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
         /* --- Tan cong neu du gan --- */
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+
+        /* --- Tan cong neu du gan --- */
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         if (dist < ATTACK_RANGE)
         {
             e->state = ESTATE_ATTACK;
             e->atkTimer -= dt;
             if (e->atkTimer <= 0)
             {
+<<<<<<< HEAD
 <<<<<<< HEAD
                 e->atkTimer = ATTACK_COOLDOWN;
                 p->hp -= ATTACK_DAMAGE;
@@ -1205,6 +1388,8 @@ void EntityManager_UpdateEnemies(float dt)
                     p->money = (int)(p->money * 0.9f);
                     strncpy(G.message, "Ban bi ha guc! -10% tien.", sizeof(G.message));
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                 /* Đêm: sát thương tăng 50%, boss luôn x3 */
                 int dmgAmt = e->isBoss ? ATTACK_DAMAGE*3 : ATTACK_DAMAGE;
                 if (G.isNight && !e->isBoss) dmgAmt = (int)(dmgAmt * 1.5f);
@@ -1224,13 +1409,17 @@ void EntityManager_UpdateEnemies(float dt)
                     } else {
                         snprintf(G.message, sizeof(G.message), "Bị hạ gục! Còn %d mạng!", p->lives);
                     }
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                     G.msgTimer = 4.0f;
                 }
             }
         }
         else
         {
+<<<<<<< HEAD
 <<<<<<< HEAD
             e->state = ESTATE_WALK;
             Vector2 dir = {p->pos.x - e->pos.x, p->pos.y - e->pos.y};
@@ -1243,6 +1432,8 @@ void EntityManager_UpdateEnemies(float dt)
             e->pos.x += dir.x * ENEMY_SPEED * dt;
             e->pos.y += dir.y * ENEMY_SPEED * dt;
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             float speed;
             if (e->type == ENEMY_GOBLIN)      speed = GOBLIN_SPEED;
             else if (e->type == ENEMY_BOSS)   speed = BOSS_SPEED;
@@ -1363,7 +1554,10 @@ void EntityManager_UpdateEnemies(float dt)
                     }
                 }
             }
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         }
         e->animTimer += dt;
         if (e->animTimer >= 1.0f / ANIM_FPS)
@@ -1437,6 +1631,7 @@ void EntityManager_DrawEnemies(void)
             break;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         DrawSprite(tex, e->animFrame, ENEMY_FRAME_W, ENEMY_FRAME_H,
                    e->pos.x, e->pos.y, 1.25f, tint, false);
 =======
@@ -1444,16 +1639,24 @@ void EntityManager_DrawEnemies(void)
         DrawSprite(tex, e->animFrame, ENEMY_FRAME_W, ENEMY_FRAME_H,
                    e->pos.x, e->pos.y, sc, tint, false);
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+        float sc = e->isBoss ? 2.5f : 1.25f;
+        DrawSprite(tex, e->animFrame, ENEMY_FRAME_W, ENEMY_FRAME_H,
+                   e->pos.x, e->pos.y, sc, tint, false);
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         if (e->state != ESTATE_DEAD)
         {
             float z = G.camZoom;
             Vector2 sp = WorldToScreen(e->pos);
+<<<<<<< HEAD
 <<<<<<< HEAD
             float bw = 38 * z, bx2 = sp.x - bw * 0.5f, by2 = sp.y - 42 * z;
             DrawRectangle((int)bx2, (int)by2, (int)bw, (int)(4 * z), DARKGRAY);
             float r = (float)e->hp / e->maxHp;
             DrawRectangle((int)bx2, (int)by2, (int)(bw * r), (int)(4 * z), RED);
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             float bw = (e->isBoss ? 80.0f : 38.0f) * z;
             float bx2 = sp.x - bw*0.5f;
             float by2 = sp.y - (e->isBoss ? 80.0f : 42.0f)*z;
@@ -1466,11 +1669,15 @@ void EntityManager_DrawEnemies(void)
                 DrawRectangleLines((int)bx2,(int)by2,(int)bw,bh,(Color){255,200,0,255});
                 DrawTextEx(gameFont,"BOSS",(Vector2){bx2,by2-14*z},12*z,1,YELLOW);
             }
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         }
     }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* ── Spawn enemy ── */
 void EntityManager_SpawnEnemy(void)
@@ -1508,6 +1715,8 @@ void EntityManager_SpawnEnemy(void)
     e->type = (G.day > 3) ? (EnemyType)GetRandomValue(0, 1) : ENEMY_GOBLIN;
     e->maxHp = (e->type == ENEMY_GOBLIN) ? 45 : 70;
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 /* ── Spawn goblin trong rung ── */
 static void SpawnGoblin(void)
 {
@@ -1547,14 +1756,20 @@ static void SpawnSkeleton(void)
     }
     e->type = ENEMY_SKELETON;
     e->maxHp = 70 + G.day * 5;
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     e->hp = e->maxHp;
     e->state = ESTATE_WALK;
     e->active = true;
     G.enemyCount++;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
 /* ── Spawn boss goblin to ── */
 void SpawnBoss(void)
@@ -1598,12 +1813,16 @@ void EntityManager_SpawnEnemy(void)
 
     /* Skeleton: 1 con moi 5 phut (300 giay), xu ly o game_logic */
 }
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 /* ─────────────────────────────────────────────────────────
    CÂY: nhận diện + chặt (double-click → thu gỗ)
 ───────────────────────────────────────────────────────── */
 
 /* Duplicate TileRand từ draw_tile.c để dùng trong entity_manager */
+<<<<<<< HEAD
 <<<<<<< HEAD
 static int EM_TileRand(int x, int y, int salt, int range)
 {
@@ -1611,6 +1830,8 @@ static int EM_TileRand(int x, int y, int salt, int range)
     unsigned int h = (unsigned int)(x * 1619 + y * 31337 + salt * 6271);
     h ^= h >> 16; h *= 0x45d9f3b; h ^= h >> 16;
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 /* BUG FIX: Dùng đúng cùng thuật toán hash với TileRand() trong draw_tile.c
    để Tile_IsTree() và GetDecorForTile() đồng thuận về tile nào có cây */
 static int EM_TileRand(int x, int y, int salt, int range)
@@ -1618,7 +1839,10 @@ static int EM_TileRand(int x, int y, int salt, int range)
     if (range <= 0) return 0;
     unsigned int h = (unsigned int)(x * 2654435761u ^ y * 2246822519u ^ salt * 374761393u);
     h ^= h >> 17; h *= 668265263u; h ^= h >> 15;
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     return (int)(h % (unsigned int)range);
 }
 
@@ -1640,13 +1864,18 @@ bool Tile_IsTree(int c, int r)
 
     int roll = EM_TileRand(c, r, 42, 100);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     bool inGoblinZone = (c >= 2 && c <= 18 && r >= 2 && r <= 18);
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+    bool inGoblinZone = (c >= 2 && c <= 18 && r >= 2 && r <= 18);
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     int edgeR = r < MAP_ROWS/2 ? r : MAP_ROWS-1-r;
     int edgeC = c < MAP_COLS/2 ? c : MAP_COLS-1-c;
     int edgeDist = edgeR < edgeC ? edgeR : edgeC;
     int maxEdge = (MAP_ROWS < MAP_COLS ? MAP_ROWS : MAP_COLS) / 2;
+<<<<<<< HEAD
 <<<<<<< HEAD
     int threshold = 22 + (edgeDist * 10) / (maxEdge > 0 ? maxEdge : 1);
     if (roll >= threshold) return false;
@@ -1655,13 +1884,18 @@ bool Tile_IsTree(int c, int r)
     int treeRoll = EM_TileRand(c, r, 77, 100);
     return (treeRoll < treeChance);  /* decor 30/31/32 */
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     int threshold = inGoblinZone ? 90 : 22 + (edgeDist * 10) / (maxEdge > 0 ? maxEdge : 1);
     if (roll >= threshold) return false;
     /* Cây chỉ tồn tại trong rừng goblin */
     int treeChance = inGoblinZone ? 85 : 0;
     int treeRoll = EM_TileRand(c, r, 77, 100);
     return (treeRoll < treeChance);
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 }
 
 /* Gọi mỗi frame để decay chopTimer */
@@ -1675,12 +1909,17 @@ void Tree_UpdateTimers(float dt)
             if (t->chopTimer <= 0.0f) {
                 t->chopTimer = 0.0f;
 <<<<<<< HEAD
+<<<<<<< HEAD
                 /* Chỉ reset về 0 nếu chưa bị chặt hẳn (99=đã chặt, giữ nguyên) */
                 if (t->chopCount != 99) t->chopCount = 0;
 =======
                 /* Reset chopCount: nếu =1 (lần 1) về 0, nếu =99 (chặt hẳn) → cây mọc lại */
                 t->chopCount = 0;
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+                /* Reset chopCount: nếu =1 (lần 1) về 0, nếu =99 (chặt hẳn) → cây mọc lại */
+                t->chopCount = 0;
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             }
         }
     }
@@ -1697,10 +1936,14 @@ bool Tree_Click(int tileX, int tileY)
         tile->chopCount = 1;
         tile->chopTimer = 10.0f;
 <<<<<<< HEAD
+<<<<<<< HEAD
         strncpy(G.message, "Click them 1 lan nua de chat cay! (-10s)", sizeof(G.message));
 =======
         strncpy(G.message, "Click thêm 1 lần nữa để chặt cây! (-10s)", sizeof(G.message));
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+        strncpy(G.message, "Click thêm 1 lần nữa để chặt cây! (-10s)", sizeof(G.message));
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.msgTimer = 3.0f;
         return true;
     } else {
@@ -1710,11 +1953,14 @@ bool Tree_Click(int tileX, int tileY)
         int wood = 2 + EM_TileRand(tileX, tileY, GetRandomValue(0,99), 3); /* 2-4 gỗ */
         Inv_Add(ITEM_WOOD, wood);
 <<<<<<< HEAD
+<<<<<<< HEAD
         snprintf(G.message, sizeof(G.message), "Chat cay! +%d Go", wood);
         G.msgTimer = 2.5f;
         return true;
     }
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         snprintf(G.message, sizeof(G.message), "Chặt cây! +%d gỗ", wood);
         G.msgTimer = 2.5f;
         return true;
@@ -1727,5 +1973,8 @@ bool Entity_ResetFirstSpawn(void)
     /* Loi dung viec ham nay duoc goi tu ben ngoai de reset static */
     /* Thuc te: dat lai gia tri bang cach spawn truc tiep khi gameTime reset */
     return true;
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 }

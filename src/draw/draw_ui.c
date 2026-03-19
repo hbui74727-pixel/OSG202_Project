@@ -6,13 +6,19 @@
 #include "../account_manager.h"
 #include "../font_manager.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 #include "../game_logic.h"
 #include "../admin_commands.h"
 #include "../audio_manager.h"
 #include "types.h" 
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 #define PBGC (Color){18, 22, 36, 218}
 #define PEDGC (Color){70, 95, 160, 255}
 
@@ -79,20 +85,29 @@ void DrawUI_LoginScreen(void)
     DrawTextCenteredShort("SUNNY WORLD", SCREEN_W / 2 + 3, 103, 64, (Color){180, 130, 0, 255});
     DrawTextCenteredShort("SUNNY WORLD", SCREEN_W / 2, 100, 64, GOLD);
 <<<<<<< HEAD
+<<<<<<< HEAD
     DrawTextCenteredShort("Farm Simulator", SCREEN_W / 2, 170, 28, (Color){220, 200, 120, 200});
 =======
     DrawTextCenteredShort("Cóc Không Biết Code Team", SCREEN_W / 2, 170, 28, (Color){220, 200, 120, 200});
     
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+    DrawTextCenteredShort("Cóc Không Biết Code Team", SCREEN_W / 2, 170, 28, (Color){220, 200, 120, 200});
+    
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* Panel */
     int pw = 380, ph = 320, px = SCREEN_W / 2 - pw / 2, py = SCREEN_H / 2 - ph / 2 + 20;
     DrawRectangle(px, py, pw, ph, PBGC);
     DrawRectangleLines(px, py, pw, ph, PEDGC);
     DrawTextCenteredShort("ĐĂNG NHẬP", px + pw / 2, py + 12, 22, GOLD);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+    
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     int fx = px + 24, fw = pw - 48;
     DrawInputField(fx, py + 52, fw, 36, "Tên đăng nhập:", G.loginUser, G.loginField == 0, false);
     DrawInputField(fx, py + 120, fw, 36, "Mật khẩu:", G.loginPass, G.loginField == 1, true);
@@ -116,12 +131,15 @@ void DrawUI_LoginScreen(void)
             G.screen = SCR_GAME;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (G.loginError[0])
         DrawTextCenteredShort(G.loginError, px + pw / 2, py + 240, 12, RED);
 
     /* Nút chuyển sang đăng ký */
     if (Button(fx, py + 248, fw, 34, "TẠO TÀI KHOẢN MỚI", (Color){30, 50, 100, 255}, (Color){50, 80, 140, 255}))
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     
     /* THÔNG BÁO LỖI - ĐẶT DƯỚI NÚT ĐĂNG NHẬP */
     if (G.loginError[0])
@@ -132,7 +150,10 @@ void DrawUI_LoginScreen(void)
 
     /* Nút chuyển sang đăng ký */
     if (Button(fx, py + 260, fw, 34, "TẠO TÀI KHOẢN MỚI", (Color){30, 50, 100, 255}, (Color){50, 80, 140, 255}))
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.screen = SCR_REGISTER;
 }
 
@@ -151,6 +172,7 @@ void DrawUI_RegisterScreen(void)
 
     DrawRectangleGradientV(0, 0, SCREEN_W, SCREEN_H, (Color){20, 40, 80, 80}, (Color){10, 20, 40, 80});
 <<<<<<< HEAD
+<<<<<<< HEAD
     DrawTextCenteredShort("SUNNY WORLD", SCREEN_W / 2, 60, 40, GOLD);
 
     int pw = 400, ph = 420;
@@ -162,6 +184,8 @@ void DrawUI_RegisterScreen(void)
     int fx = px + 24, fw = pw - 48;
     DrawInputField(fx, py + 46, fw, 34, "Tên đăng nhập (>=3 ký tự):", G.regUser, G.regField == 0, false);
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     DrawTextCenteredShort("SUNNY WORLD", SCREEN_W / 2 + 3, 103, 64, (Color){180, 130, 0, 255});
     DrawTextCenteredShort("SUNNY WORLD", SCREEN_W / 2, 100, 64, GOLD);
 
@@ -175,7 +199,10 @@ void DrawUI_RegisterScreen(void)
     int fx = px + 24, fw = pw - 48;
     py = py  + 10;
     DrawInputField(fx, py + 40, fw, 34, "Tên đăng nhập (>=3 ký tự):", G.regUser, G.regField == 0, false);
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     DrawInputField(fx, py + 104, fw, 34, "Mật khẩu (>=4 ký tự):", G.regPass, G.regField == 1, true);
     DrawInputField(fx, py + 162, fw, 34, "Xác nhận mật khẩu:", G.regPass2, G.regField == 2, true);
 
@@ -206,10 +233,14 @@ void DrawUI_RegisterScreen(void)
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     DrawTextShort("Tab: chuyển ô  |  Enter: tạo tài khoản", fx, py + 268, 14, (Color){130, 130, 130, 200});
 =======
     DrawTextShort("Tab: chuyển ô  |  Enter: tạo tài khoản", fx, py + 265, 14, (Color){130, 130, 130, 200});
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+    DrawTextShort("Tab: chuyển ô  |  Enter: tạo tài khoản", fx, py + 265, 14, (Color){130, 130, 130, 200});
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
     if (Button(fx, py + 280, fw, 40, "TẠO TÀI KHOẢN", (Color){40, 100, 50, 255}, (Color){60, 150, 70, 255}))
     {
@@ -225,9 +256,12 @@ void DrawUI_RegisterScreen(void)
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (G.regError[0])
         DrawTextCenteredShort(G.regError, px + pw / 2, py + 334, 12, RED);
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     
     /* THÔNG BÁO LỖI - ĐẶT GIỮA NÚT TẠO TÀI KHOẢN VÀ NÚT QUAY LẠI */
     if (G.regError[0])
@@ -235,7 +269,10 @@ void DrawUI_RegisterScreen(void)
         int errorY = py + 325;  // Điều chỉnh vị trí
         DrawTextCenteredShort(G.regError, px + pw / 2, errorY, 14, RED);
     }
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
     if (Button(fx, py + 342, fw, 34, "QUAY LẠI ĐĂNG NHẬP", (Color){30, 30, 60, 255}, (Color){50, 50, 100, 255}))
         G.screen = SCR_LOGIN;
@@ -244,6 +281,7 @@ void DrawUI_RegisterScreen(void)
 /* ── SIDE PANEL ── */
 void DrawUI_SidePanel(void)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
     int pw = 160, ph = 390, px = SCREEN_W - pw - 4, py = 58;
     DrawRectangle(px, py, pw, ph, PBGC);
@@ -338,6 +376,8 @@ void DrawUI_QuestPanel(void)
         DrawTextCenteredShort(TextFormat("%d/%d", q->progress, q->target), px + pw - 30, py + 26 + i * 30, 13, YELLOW);
     }
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     static int activeTab   = -1;
     static int subScroll   = 0;   /* scroll offset cho sub-menu */
 
@@ -590,12 +630,16 @@ void DrawUI_QuestPanel(void)
     
     if (closeHover && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         G.showQuest = false;
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 }
 
 /* ── INVENTORY ── */
 void DrawUI_Inventory(void)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
     if (!G.showInventory)
         return;
@@ -619,6 +663,8 @@ void DrawUI_Inventory(void)
         DrawRectangle(x, y, sw, sh, sel ? (Color){70, 60, 20, 230} : (Color){25, 32, 25, 210});
         DrawRectangleLines(x, y, sw, sh, sel ? GOLD : (Color){55, 70, 55, 255});
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     if (!G.showInventory) return;
     
     // Kích thước panel to hơn để chứa chữ lớn và ô to
@@ -663,12 +709,16 @@ void DrawUI_Inventory(void)
                      selected ? (Color){70, 60, 20, 230} : (Color){25, 32, 25, 210});
         DrawRectangleLines(x, y, slotSize, slotSize, 
                           selected ? GOLD : (Color){55, 70, 55, 255});
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
         InvSlot *s = &G.player.inv[i];
         if (s->type == ITEM_NONE || s->quantity == 0)
             continue;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         if (s->type >= ITEM_SEED_CARROT && s->type <= ITEM_SEED_WHEAT)
         {
@@ -727,6 +777,8 @@ void DrawUI_Inventory(void)
         if (CheckCollisionPointRec(GetMousePosition(), sr))
         {
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         // Vẽ icon item
         if (s->type >= ITEM_SEED_CARROT && s->type <= ITEM_SEED_WHEAT) {
             int ct = s->type - ITEM_SEED_CARROT;
@@ -777,7 +829,10 @@ void DrawUI_Inventory(void)
         if (CheckCollisionPointRec(GetMousePosition(), slotRect)) {
             DrawRectangleLinesEx(slotRect, 2, (Color){255, 255, 100, 200});
             
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
                 Economy_SellSlot(i);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
@@ -785,7 +840,10 @@ void DrawUI_Inventory(void)
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     
     // // Hiển thị tổng số slot đã dùng
     // int usedSlots = 0;
@@ -795,7 +853,10 @@ void DrawUI_Inventory(void)
     // }
     // DrawTextShort(TextFormat("Đã dùng: %d/%d ô", usedSlots, INV_SLOTS), 
     //               px + 25, py + ph - 35, 14, (Color){180, 180, 180, 255});
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 }
 
 /* ── STORE ── */
@@ -853,6 +914,7 @@ static int DrawQtySelector(int x, int y, int qty, int maxQty,
                            Color minusBg, Color plusBg, Color presetBg)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     int btnH = 22, numW = 34;
     /* [-] */
     if (Button(x, y, 22, btnH, "-", minusBg, (Color){minusBg.r + 40, minusBg.g + 20, minusBg.b + 10, 255}))
@@ -872,6 +934,8 @@ static int DrawQtySelector(int x, int y, int qty, int maxQty,
     /* [x10] */
     if (Button(x + 120, y, 34, btnH, "x10", presetBg, (Color){presetBg.r + 30, presetBg.g + 20, presetBg.b + 30, 255}))
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* Kích thước lớn hơn để dễ bấm */
     int btnH = 32, numW = 50;
     /* [-] */
@@ -893,11 +957,15 @@ static int DrawQtySelector(int x, int y, int qty, int maxQty,
     /* [x10] */
     if (Button(x + 170, y, 42, btnH, "x10", presetBg,
         (Color){(unsigned char)(presetBg.r+30),(unsigned char)(presetBg.g+20),(unsigned char)(presetBg.b+30),255}))
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         qty = (10 < maxQty) ? 10 : maxQty;
     return qty;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 void DrawUI_Store(void)
 {
@@ -910,6 +978,8 @@ void DrawUI_Store(void)
     static int sellQty[INV_SLOTS];
     static bool sqInit = false;
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 /* ── STORE ── */
 void DrawUI_Store(void)
 {
@@ -927,7 +997,10 @@ void DrawUI_Store(void)
     float savedCamZoom = G.camZoom;
     G.camZoom = 1.0f;  // Tạm thời set zoom = 1 khi mở store
     
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     if (!sqInit)
     {
         for (int i = 0; i < INV_SLOTS; i++)
@@ -935,6 +1008,7 @@ void DrawUI_Store(void)
         sqInit = true;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     /* ── Cửa sổ chính: 760x580 ── */
     int pw = 760, ph = 580, px = SCREEN_W / 2 - pw / 2, py = SCREEN_H / 2 - ph / 2;
@@ -964,6 +1038,8 @@ void DrawUI_Store(void)
        TAB MUA HANG
        Layout: 3 cột, mỗi card 238x108
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* ── Cửa sổ chính ── */
     int pw = 900, ph = 650;  // Tăng kích thước
     int px = SCREEN_W / 2 - pw / 2;
@@ -1018,7 +1094,10 @@ void DrawUI_Store(void)
 
     /* ════════════════════════════════════════════════
        TAB MUA HÀNG
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     ════════════════════════════════════════════════ */
     if (storeTab == 0)
     {
@@ -1028,10 +1107,13 @@ void DrawUI_Store(void)
             ITEM_SEED_POTATO, ITEM_SEED_PUMPKIN, ITEM_SEED_RADISH,
             ITEM_SEED_SUNFLOWER, ITEM_SEED_WHEAT, ITEM_FEED};
 <<<<<<< HEAD
+<<<<<<< HEAD
         int nb = 12, cols = 3;
         int iw = 246, ih = 96, gap = 5;
         int ox = px + 8, oy = contentY + 2;
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             
         int nb = 12, cols = 2;
         int iw = 380, ih = 170;
@@ -1042,27 +1124,37 @@ void DrawUI_Store(void)
         int totalRows = (nb + cols - 1) / cols;
         int totalHeight = totalRows * (ih + gap);
         maxScroll = (totalHeight > contentH) ? totalHeight - contentH + 20 : 0;
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
         for (int i = 0; i < nb; i++)
         {
             int col = i % cols, row = i / cols;
 <<<<<<< HEAD
+<<<<<<< HEAD
             int cx = ox + col * (iw + gap), cy = oy + row * (ih + gap);
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             int cx = contentX + 5 + col * (iw + gap);
             int cy = startY + row * (ih + gap);
 
             // Chỉ vẽ nếu nằm trong vùng nhìn thấy
             if (cy + ih < contentY || cy > contentY + contentH)
                 continue;
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
             ItemType it = buyItems[i];
             int price = GetItemPrice(it);
             int totalCost = price * buyQty[i];
             bool canAfford = (G.player.money >= totalCost);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
             /* ── Nền card ── */
             bool hov = CheckCollisionPointRec(GetMousePosition(),
@@ -1118,6 +1210,8 @@ void DrawUI_Store(void)
         bool anyItem = false;
 
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             /* Nền card */
             bool hov = CheckCollisionPointRec(GetMousePosition(),
                                               (Rectangle){(float)cx, (float)cy, (float)iw, (float)ih});
@@ -1181,12 +1275,16 @@ void DrawUI_Store(void)
         int totalHeight = totalRows * (ih + gap);
         maxScroll = (totalHeight > contentH) ? totalHeight - contentH + 20 : 0;
 
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         for (int i = 0; i < INV_SLOTS; i++)
         {
             InvSlot *s = &G.player.inv[i];
             if (s->type == ITEM_NONE || s->quantity == 0)
                 continue;
+<<<<<<< HEAD
 <<<<<<< HEAD
             /* Bán tất cả item có trong kho (trừ item rỗng và item không có giá) */
             int price = GetItemPrice(s->type);
@@ -1196,6 +1294,8 @@ void DrawUI_Store(void)
 
             /* Clamp sellQty dùng display-index */
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                 
             int price = GetItemPrice(s->type);
             if (price <= 0)
@@ -1203,12 +1303,16 @@ void DrawUI_Store(void)
                 
             anyItem = true;
 
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             if (sellQty[di] < 1)
                 sellQty[di] = 1;
             if (sellQty[di] > s->quantity)
                 sellQty[di] = s->quantity;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
             int cx = ox + col2 * (iw + gap), cy = oy + row2 * (ih + gap);
             if (cy + ih > py + ph - 10)
@@ -1253,6 +1357,8 @@ void DrawUI_Store(void)
             }
             if (Button(cx + 8 + hw, btnY, hw, 22, "BÁN HẾT", (Color){110, 28, 8, 230}, (Color){180, 55, 18, 255}))
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             int col = di % cols, row = di / cols;
             int cx = contentX + 5 + col * (iw + gap);
             int cy = startY + row * (ih + gap);
@@ -1307,7 +1413,10 @@ void DrawUI_Store(void)
             
             if (Button(cx + 125, cy + 175, 100, 30, "BÁN HẾT", 
                        (Color){130, 40, 15, 240}, (Color){200, 65, 22, 255}))
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             {
                 Economy_SellSlot(i);
                 for (int k = 0; k < INV_SLOTS; k++)
@@ -1317,6 +1426,7 @@ void DrawUI_Store(void)
 
             di++;
 <<<<<<< HEAD
+<<<<<<< HEAD
             col2++;
             if (col2 >= cols)
             {
@@ -1325,10 +1435,13 @@ void DrawUI_Store(void)
             }
 =======
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         }
 
         if (!anyItem)
         {
+<<<<<<< HEAD
 <<<<<<< HEAD
             DrawTextCenteredShort("Không có hàng hóa để bán.", px + pw / 2, contentY + 60, 15, GRAY);
             DrawTextCenteredShort("Thu hoạch cây trồng và sản phẩm động vật trước!", px + pw / 2, contentY + 88, 12, DARKGRAY);
@@ -1370,6 +1483,8 @@ void DrawUI_BarnPanel(void)
             continue;
 
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             DrawTextCenteredShort("KHÔNG CÓ HÀNG HÓA ĐỂ BÁN", 
                                  px + pw / 2, contentY + 100, 26, GRAY);
             DrawTextCenteredShort("Thu hoạch cây trồng và sản phẩm động vật trước!", 
@@ -1589,11 +1704,15 @@ void DrawUI_BarnPanel(void)
         }
 
         /* Thống kê động vật */
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         int hungry = 0, hasProduct = 0, total = 0;
         for (int j = 0; j < MAX_ANIMALS; j++)
         {
             Animal *a = &G.animals[j];
+<<<<<<< HEAD
 <<<<<<< HEAD
             if (!a->active || a->barnIdx != i)
                 continue;
@@ -1695,6 +1814,8 @@ void DrawUI_BarnPanel(void)
             break;
     }
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             if (!a->active || a->barnIdx != i) continue;
             total++;
             if (a->hungry) hungry++;
@@ -1964,18 +2085,25 @@ void DrawUI_BarnPanel(void)
     /* Khôi phục camera khi đóng */
     if (!G.showBarnUI)
         G.camZoom = savedCamZoom;
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 }
 
 /* ── HELP ── */
 void DrawUI_Help(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (!G.showHelp)
         return;
 =======
     if (!G.showHelp) return;
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+    if (!G.showHelp) return;
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     int pw = 440, ph = 500;
     int px = SCREEN_W / 2 - pw / 2;
     int py = SCREEN_H / 2 - ph / 2;
@@ -2016,9 +2144,13 @@ void DrawUI_Help(void)
 
 /* ── PAUSE ── */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 void DrawUI_PauseScreen(void)
 {
     DrawRectangle(0, 0, SCREEN_W, SCREEN_H, (Color){0, 0, 0, 140});
@@ -2031,6 +2163,7 @@ void DrawUI_PauseScreen(void)
 void DrawUI_Achievements(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (!G.showAchievements)
         return;
 
@@ -2041,6 +2174,8 @@ void DrawUI_Achievements(void)
 
     /* Đếm đã mở */
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     if (!G.showAchievements) return;
     
     /* State tĩnh cho scroll */
@@ -2072,11 +2207,15 @@ void DrawUI_Achievements(void)
     DrawTextCenteredShort("THÀNH TỰU", px + pw / 2, py + 25, 42, GOLD);
     
     /* Đếm số đã mở khóa */
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     int unlocked = 0;
     for (int i = 0; i < MAX_ACHIEVEMENTS; i++)
         if (achievements[i].unlocked)
             unlocked++;
+<<<<<<< HEAD
 <<<<<<< HEAD
     // DrawTextCenteredShort(TextFormat("%d / %d da mo khoa", unlocked, MAX_ACHIEVEMENTS),
     //                       px + 24, py + 34, 16, (Color){180, 180, 180, 255});
@@ -2154,6 +2293,8 @@ void DrawUI_Achievements(void)
                           16,
                           (Color){180, 180, 180, 255});
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     
     /* Thanh tiến trình tổng - TO */
     int barX = px + 150, barY = py + 80, barW = pw - 300, barH = 25;
@@ -2576,7 +2717,10 @@ void DrawUI_Settings(void)
             DrawTextShort("H=FullHP  T=CayChin  G=ThemHat  D=DaoTatCaDat", cx+8, cy, 14, (Color){220,180,180,255});
         } else {
             DrawTextShort("T=CayChin  H=PhucHoiHP  F6=ThoiTiet",       cx+8, cy, 14, (Color){220,180,180,255});
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         }
     }
 }

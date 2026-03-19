@@ -18,8 +18,13 @@ void DrawHUD_PlacementBar(void);
 void DrawHUD_PlacementGhost(void);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 void DrawHUD_EndGame(void);
 void DrawHUD_NightOverlay(void);
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+void DrawHUD_EndGame(void);
+void DrawHUD_NightOverlay(void);
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 #endif

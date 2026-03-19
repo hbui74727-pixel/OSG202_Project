@@ -14,10 +14,16 @@ void DrawUI_Help(void);
 void DrawUI_PauseScreen(void);
 void DrawUI_Achievements(void);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 void DrawUI_BarnHpBars(void);
 void DrawUI_Settings(void);
 #endif
 
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23

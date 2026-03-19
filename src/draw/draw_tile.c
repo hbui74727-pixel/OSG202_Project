@@ -1,9 +1,13 @@
 #include "draw_tile.h"
 #include "tree_system.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #include "font_manager.h" 
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+#include "font_manager.h" 
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 /* ─────────────────────────────────────────────────────────
    GROUND TILE HELPER
    ground.png: 160x16, 10 tiles 16x16
@@ -138,6 +142,7 @@ static int GetDecorForTile(int r, int c)
     /* edgeDist: 0=rìa, maxEdge=giữa */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     /* Roll cơ bản: giảm từ 40% xuống 22% cho nội thất map */
     int roll = TileRand(c, r, 42, 100);
     /* Càng vào giữa map → ngưỡng xuất hiện càng thấp (thưa hơn) */
@@ -153,6 +158,8 @@ static int GetDecorForTile(int r, int c)
     int treeChance = edgeDist < 4  ? 50 :
                      edgeDist < 8  ? 30 : 15;
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* Khu rung goblin (goc tren trai): mat do cay rat cao */
     bool inGoblinZone = (c >= 2 && c <= 18 && r >= 2 && r <= 18);
     int roll = TileRand(c, r, 42, 100);
@@ -166,7 +173,10 @@ static int GetDecorForTile(int r, int c)
 
     /* Cây chỉ mọc trong rừng goblin (góc trên trái) */
     int treeChance = inGoblinZone ? 85 : 0;
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     int treeRoll = TileRand(c, r, 77, 100);
     if (treeRoll < treeChance) {
         /* Chọn loại cây */
@@ -439,31 +449,44 @@ void DrawTile_Highlight(void)
     const char *info = NULL;
     switch (tile->type) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         case TILE_GRASS:        info="Cỏ xanh - mua đất từ hotbar"; break;
         case TILE_SOIL_BOUGHT:  info="[1]Cuốc để đào"; break;
         case TILE_SOIL_DUG:     info="[2]Tưới nước"; break;
         case TILE_SOIL_WET:     info="[3]Trồng hạt"; break;
         case TILE_SOIL_PLANTED: info="Cho cây chín rồi [4]Thu hoạch"; break;
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         case TILE_GRASS:        info="Cỏ xanh"; break;
         case TILE_SOIL_BOUGHT:  info="[1]Cày để đào"; break;
         case TILE_SOIL_DUG:     info="[2]Tưới nước"; break;
         case TILE_SOIL_WET:     info="[3]Trồng hạt"; break;
         case TILE_SOIL_PLANTED: info="Cho cây chín rồi [4]cắt"; break;
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         default: break;
     }
     if (info) {
         int tw = MeasureText(info, 10);
         DrawRectangle((int)sp.x, (int)(sp.y-16), tw+8, 14, (Color){0,0,0,150});
 <<<<<<< HEAD
+<<<<<<< HEAD
         DrawText(info, (int)sp.x+4, (int)(sp.y-14), 10, WHITE);
     }
 }
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         DrawTextShort(info, (int)sp.x+4, (int)(sp.y-14), 10, WHITE);
     }
 }
 /* Public wrapper: tra ve decor index cua tile (r,c), -1 neu khong co */
+<<<<<<< HEAD
 int GetDecorTypeForTile(int r, int c) { return GetDecorForTile(r, c); }
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+int GetDecorTypeForTile(int r, int c) { return GetDecorForTile(r, c); }
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23

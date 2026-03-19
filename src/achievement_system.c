@@ -6,13 +6,18 @@ int achTotalKills     = 0;
 int achTotalPlanted   = 0;
 int achTotalCollected = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 int achTotalEarned    = 0;  /* BUG FIX #8: Tong tien da kiem (khong giam khi tieu) */
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+int achTotalEarned    = 0;  /* BUG FIX #8: Tong tien da kiem (khong giam khi tieu) */
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
 void Achievement_Init(void)
 {
     /* checkType: 0=harvest 1=money 2=day 3=kill 4=plant 5=level 6=barn 7=collect */
+<<<<<<< HEAD
 <<<<<<< HEAD
     achievements[ 0]=(Achievement){"Nong Dan Moi",    "Thu hoach cay dau tien",        "*",  false,0,1,  0};
     achievements[ 1]=(Achievement){"Nha Nong Gioi",   "Thu hoach 20 cay",              "**", false,0,20, 0};
@@ -31,6 +36,8 @@ void Achievement_Init(void)
     achievements[14]=(Achievement){"Thu Hoach Vien",  "Thu san pham dong vat 10 lan",  "o",  false,7,10, 0};
     achievements[15]=(Achievement){"Huyen Thoai",     "Dat cap 20 va giet 50 quai",    "MAX",false,5,20, 0};
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     achievements[ 0]=(Achievement){"Nông Dân Mới",    "Thu hoạch cây đầu tiên",        "*",  false,0,1,  0};
     achievements[ 1]=(Achievement){"Nhà Nông Giỏi",   "Thu hoạch 20 cây",              "**", false,0,20, 0};
     achievements[ 2]=(Achievement){"Trang Trại Lớn",  "Thu hoạch 100 cây",             "***",false,0,100,0};
@@ -47,7 +54,10 @@ void Achievement_Init(void)
     achievements[13]=(Achievement){"Chủ chuồng",      "Xây được chuồng đầu tiên",      "[_]",false,6,1,  0};
     achievements[14]=(Achievement){"Thu Hoạch Viên",  "Thu sản phẩm động vật 10 lần",  "o",  false,7,10, 0};
     achievements[15]=(Achievement){"Huyền Thoại",     "Đạt cấp độ 20 và giết 50 quái vật",    "MAX",false,5,20, 0};
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 }
 
 static void TryUnlock(int i)
@@ -58,10 +68,14 @@ static void TryUnlock(int i)
     switch (a->checkType) {
         case 0: a->progress=achTotalHarvested; ok=(achTotalHarvested>=a->threshold); break;
 <<<<<<< HEAD
+<<<<<<< HEAD
         case 1: a->progress=G.player.money;    ok=(G.player.money>=a->threshold);    break;
 =======
         case 1: a->progress=achTotalEarned; ok=(achTotalEarned>=a->threshold); break; /* BUG FIX #8 */
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+        case 1: a->progress=achTotalEarned; ok=(achTotalEarned>=a->threshold); break; /* BUG FIX #8 */
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         case 2: a->progress=G.day;             ok=(G.day>=a->threshold);             break;
         case 3: a->progress=achTotalKills;     ok=(achTotalKills>=a->threshold);     break;
         case 4: a->progress=achTotalPlanted;   ok=(achTotalPlanted>=a->threshold);   break;
@@ -72,10 +86,14 @@ static void TryUnlock(int i)
     if (ok) {
         a->unlocked = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
         snprintf(G.message,sizeof(G.message),"[Thanh Tuu] %s!",a->name);
 =======
         snprintf(G.message,sizeof(G.message),"[Thành Tựu] %s!",a->name);
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+        snprintf(G.message,sizeof(G.message),"[Thành Tựu] %s!",a->name);
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.msgTimer = 4.0f;
     }
 }

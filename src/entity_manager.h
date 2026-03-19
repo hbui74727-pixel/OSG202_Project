@@ -33,8 +33,11 @@ bool Tree_Click(int tileX, int tileY);
 void Tree_UpdateTimers(float dt);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 /* Boss */
 void SpawnBoss(void);
 void SpawnSkeleton_Pub(void);
@@ -42,4 +45,7 @@ void SpawnSkeleton_Pub(void);
 bool Entity_ResetFirstSpawn(void); /* BUG FIX #5 */
 void UpdateBarnDmgTimers(float dt);
 #endif
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23

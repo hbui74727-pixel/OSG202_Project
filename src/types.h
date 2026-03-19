@@ -53,16 +53,22 @@
 #define PRODUCE_SECS        70.0f
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define MAX_ENEMIES         20
 #define ENEMY_SPEED         48.0f
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 #define MAX_ENEMIES         55
 #define MAX_GOBLINS         50
 #define GOBLIN_SPEED        32.0f
 #define SKEL_SPEED          28.0f
 #define BOSS_SPEED          22.0f
 #define ENEMY_SPEED         32.0f
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 #define ENEMY_FRAME_W       96
 #define ENEMY_FRAME_H       64
 #define ATTACK_RANGE        54.0f
@@ -73,10 +79,14 @@
 #define INV_SLOTS           32
 #define HOTBAR_SIZE         8
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define STARTING_MONEY      500
 =======
 #define STARTING_MONEY      5000
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+#define STARTING_MONEY      5000
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
 #define MAX_QUESTS          5
 #define ANIM_FPS            10.0f
@@ -84,12 +94,18 @@
 
 #define MAX_ACCOUNTS        20
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 #define BARN_MAX_HP         100     /* HP tối đa của mỗi chuồng */
 #define BARN_GOBLIN_DMG     12      /* damage goblin gây cho chuồng mỗi lần */
 #define NIGHT_START_RATIO   0.65f   /* đêm bắt đầu khi dayTimer > 65% DAY_DURATION */
 #define STORAGE_SLOTS       64      /* số slot kho đồ */
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 #define MAX_NAME_LEN        32
 #define MAX_PASS_LEN        32
 #define ACCOUNTS_FILE       "saves/accounts.dat"
@@ -178,9 +194,13 @@ typedef enum {
     ITEM_WOOD, ITEM_ROCK, ITEM_FISH,
     ITEM_FEED,
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     ITEM_GEM,
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+    ITEM_GEM,
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     ITEM_COUNT,
     ITEM_NONE = -1
 } ItemType;
@@ -193,10 +213,14 @@ typedef enum {
 
 typedef enum { ANIMAL_CHICKEN=0, ANIMAL_PIG, ANIMAL_SHEEP, ANIMAL_COUNT } AnimalType;
 <<<<<<< HEAD
+<<<<<<< HEAD
 typedef enum { ENEMY_GOBLIN=0, ENEMY_SKELETON, ENEMY_COUNT } EnemyType;
 =======
 typedef enum { ENEMY_GOBLIN=0, ENEMY_SKELETON, ENEMY_BOSS, ENEMY_COUNT } EnemyType;
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+typedef enum { ENEMY_GOBLIN=0, ENEMY_SKELETON, ENEMY_BOSS, ENEMY_COUNT } EnemyType;
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 typedef enum { ESTATE_WALK=0, ESTATE_ATTACK, ESTATE_HURT, ESTATE_DEAD } EnemyState;
 typedef enum { ROLE_PLAYER=0, ROLE_TESTER, ROLE_ADMIN } PlayerRole;
 typedef enum { WEATHER_SUNNY=0, WEATHER_CLOUDY, WEATHER_RAINY, WEATHER_COUNT } WeatherType;
@@ -261,11 +285,17 @@ typedef struct {
     float      hurtTimer;
     bool       active;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     Vector2    wanderTarget;
     float      wanderTimer;
     bool       isBoss;
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+    Vector2    wanderTarget;
+    float      wanderTimer;
+    bool       isBoss;
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 } Enemy;
 
 typedef struct {
@@ -307,9 +337,13 @@ typedef struct {
     bool       isRunning;
     float      hurtTimer;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     int        lives;      /* so mang (0-3) */
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+    int        lives;      /* so mang (0-3) */
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     LevelData  lvl;
     /* Di chuyển bằng click chuột */
     bool       hasClickTarget;
@@ -382,14 +416,20 @@ typedef struct {
     int     day;
     float   spawnTimer;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     float   skeletonTimer;   /* dem 5 phut spawn 1 skel */
     int     goblinCount;     /* so goblin hien tai */
     int     gemCount;        /* so ngoc da co */
     bool    bossAlive;       /* boss dang song */
     bool    endGame;         /* game over / win */
     bool    endWin;          /* true=win, false=lose */
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
     Weather weather;
 
@@ -420,7 +460,10 @@ typedef struct {
     bool    levelUpAnim;
     float   levelUpTimer;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
     /* ── Hệ thống ngày/đêm ── */
     bool    isNight;            /* true khi dayTimer > DAY_DURATION*0.65f */
@@ -439,7 +482,10 @@ typedef struct {
     InvSlot storage[64];        /* kho 64 slot riêng biệt */
 
     int movePlotW, movePlotH;  /* kích thước thực của plot đang move */
+<<<<<<< HEAD
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 } GameState;
 
 extern GameState G;

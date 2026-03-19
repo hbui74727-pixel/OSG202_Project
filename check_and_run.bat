@@ -1,4 +1,8 @@
 @echo off
+<<<<<<< HEAD
+=======
+set "RAYLIB_DLL_PATH=%~dp0raylib.dll"
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 chcp 65001 >nul
 title 🌻 SUNNY WORLD - Launcher
 color 0A
@@ -11,7 +15,11 @@ color 0A
 
 set "GAME_EXE=%~dp0sunny_world.exe"
 set "RAYLIB_DLL=%~dp0raylib.dll"
+<<<<<<< HEAD
 set "RAYLIB_DLL_URL=https://github.com/raysan5/raylib/releases/download/5.0/raylib-5.0_win64_mingw-w64.zip"
+=======
+set "RAYLIB_DLL_URL=https://github.com/raysan5/raylib/releases/download/5.0/raylib-5.0_win64_msvc16.zip"
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
 echo.
 echo  ╔══════════════════════════════════════════════════════╗

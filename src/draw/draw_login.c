@@ -99,12 +99,17 @@ void DrawLogin_Render()
     DrawRectangleRec(userBox, typingUser ? SKYBLUE : LIGHTGRAY);
     DrawRectangleLinesEx(userBox,2,WHITE);
 <<<<<<< HEAD
+<<<<<<< HEAD
     DrawText(username, userBox.x+10, userBox.y+10, 20, BLACK);
     DrawText("Username", userBox.x, userBox.y-20, 18, WHITE);
 =======
     DrawTextShort(username, userBox.x+10, userBox.y+10, 20, BLACK);
     DrawTextShort("Username", userBox.x, userBox.y-20, 18, WHITE);
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+    DrawTextShort(username, userBox.x+10, userBox.y+10, 20, BLACK);
+    DrawTextShort("Username", userBox.x, userBox.y-20, 18, WHITE);
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
     DrawRectangleRec(passBox, typingPass ? SKYBLUE : LIGHTGRAY);
     DrawRectangleLinesEx(passBox,2,WHITE);
@@ -114,12 +119,17 @@ void DrawLogin_Render()
     hidden[passwordLen] = '\0';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     DrawText(hidden, passBox.x+10, passBox.y+10, 20, BLACK);
     DrawText("Password", passBox.x, passBox.y-20, 18, WHITE);
 =======
     DrawTextShort(hidden, passBox.x+10, passBox.y+10, 20, BLACK);
     DrawTextShort("Password", passBox.x, passBox.y-20, 18, WHITE);
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+    DrawTextShort(hidden, passBox.x+10, passBox.y+10, 20, BLACK);
+    DrawTextShort("Password", passBox.x, passBox.y-20, 18, WHITE);
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
     Vector2 mouse = GetMousePosition();
     bool hover = CheckCollisionPointRec(mouse, loginBtn);
@@ -128,10 +138,14 @@ void DrawLogin_Render()
     DrawRectangleLinesEx(loginBtn,2,WHITE);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     DrawText("LOGIN",
 =======
     DrawTextShort("LOGIN",
 >>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
+=======
+    DrawTextShort("LOGIN",
+>>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         loginBtn.x + 45,
         loginBtn.y + 12,
         20,
