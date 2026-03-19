@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "MinGW64 (Windows)",
+            "includePath": [
+                "${workspaceFolder}/src",
+                "${workspaceFolder}/src/draw",
+                "C:/raylib/include",
+                "C:/msys64/mingw64/include"
+            ],
+            "defines": ["_WIN32", "PLATFORM_DESKTOP"],
+            "compilerPath": "C:/msys64/mingw64/bin/gcc.exe",
+            "cStandard": "c11",
+            "intelliSenseMode": "windows-gcc-x64"
+        }
+    ],
+    "version": 4
+}

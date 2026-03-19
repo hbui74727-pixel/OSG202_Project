@@ -1,0 +1,54 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Release",
+            "type": "shell",
+            "command": "mingw32-make",
+            "args": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "clear": true
+            },
+            "problemMatcher": {
+                "owner": "gcc",
+                "fileLocation": ["relative", "${workspaceFolder}"],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1, "line": 2, "column": 3,
+                    "severity": 4, "message": 5
+                }
+            }
+        },
+        {
+            "label": "Build Debug",
+            "type": "shell",
+            "command": "mingw32-make",
+            "args": ["debug"],
+            "group": "build",
+            "presentation": { "reveal": "always", "clear": true }
+        },
+        {
+            "label": "Run Game",
+            "type": "shell",
+            "command": "mingw32-make",
+            "args": ["run"],
+            "group": "test",
+            "presentation": { "reveal": "always" }
+        },
+        {
+            "label": "Clean",
+            "type": "shell",
+            "command": "mingw32-make",
+            "args": ["clean"],
+            "group": "build"
+        }
+    ]
+}
