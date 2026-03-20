@@ -7,14 +7,7 @@ TARGET = sunny_world.exe
 
 SRCS = src/main.c \
        src/account_manager.c \
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
        src/audio_manager.c \
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-       src/audio_manager.c \
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
        src/access_control.c \
        src/achievement_system.c \
        src/admin_commands.c \
@@ -25,14 +18,6 @@ SRCS = src/main.c \
        src/quest_system.c \
        src/renderer.c \
        src/textures.c \
-<<<<<<< HEAD
-<<<<<<< HEAD
-       src/draw/draw_admin_panel.c \
-       src/draw/draw_tester_panel.c \
-=======
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
        src/draw/draw_animal.c \
        src/draw/draw_building.c \
        src/draw/draw_crop.c \

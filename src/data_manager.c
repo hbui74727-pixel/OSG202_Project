@@ -1,21 +1,5 @@
 #include "data_manager.h"
 #include "quest_system.h"
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-static const char *ITEM_NAMES[ITEM_COUNT] = {
-    "Hat Ca-rot","Hat Cu-cai","Hat Bap-cai","Hat Sup-lo",
-    "Hat Cai-xoan","Hat Canh-cai","Hat Khoai","Hat Bi-ngo",
-    "Hat Cu-do","H.Huong-duong","Hat Lua-mi",
-    "Ca-rot","Cu-cai","Bap-cai","Sup-lo",
-    "Cai-xoan","Canh-cai","Khoai","Bi-ngo",
-    "Cu-do","Huong-duong","Lua-mi",
-    "Trung","Sua","Len",
-    "Go","Da","Ca",
-    "Thuc-an"
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 #include "achievement_system.h"
 
 #define SAVE_MAGIC   0x53574C44U  /* "SWLD" = SunnyWorld */
@@ -32,10 +16,6 @@ static const char *ITEM_NAMES[ITEM_COUNT] = {
     "Gỗ","Đá","Thức ăn",
     "Thuc-an",
     "Ngọc"
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 };
 
 static const int ITEM_PRICES[ITEM_COUNT] = {
@@ -43,17 +23,8 @@ static const int ITEM_PRICES[ITEM_COUNT] = {
     28,35,25,45, 22,32,35,65, 20,50,18,
     22,45,38,
     15,6,28,   /* Go=15, Da=6, Ca=28 */
-<<<<<<< HEAD
-<<<<<<< HEAD
-    20
-=======
     20,
     500   /* Ngoc: gia tri cao */
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    20,
-    500   /* Ngoc: gia tri cao */
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 };
 
 const char *GetItemName(ItemType item)
@@ -91,15 +62,7 @@ bool Inv_Add(ItemType item, int qty)
         if (G.player.inv[i].type == ITEM_NONE) {
             G.player.inv[i].type = item; G.player.inv[i].quantity = qty; return true;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-    strncpy(G.message, "Tui do day!", sizeof(G.message)); G.msgTimer = 2.0f;
-=======
     strncpy(G.message, "Túi đồ đầy!", sizeof(G.message)); G.msgTimer = 2.0f;
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    strncpy(G.message, "Túi đồ đầy!", sizeof(G.message)); G.msgTimer = 2.0f;
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     return false;
 }
 bool Inv_Remove(ItemType item, int qty)
@@ -134,15 +97,7 @@ bool Economy_BuyItem(ItemType item, int qty)
 {
     int cost = GetItemPrice(item) * qty;
     if (G.player.money < cost) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        strncpy(G.message,"Khong du tien!",sizeof(G.message)); G.msgTimer=2.0f; return false;
-=======
         strncpy(G.message,"Không đủ tiền!",sizeof(G.message)); G.msgTimer=2.0f; return false;
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-        strncpy(G.message,"Không đủ tiền!",sizeof(G.message)); G.msgTimer=2.0f; return false;
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     }
     if (!Inv_Add(item, qty)) return false;
     G.player.money -= cost;
@@ -156,17 +111,8 @@ bool Economy_SellSlot(int slot)
     if (s->type==ITEM_NONE||s->quantity==0) return false;
     int earned = GetItemPrice(s->type)*s->quantity;
     G.player.money += earned;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    snprintf(G.message,sizeof(G.message),"Ban %s x%d (+$%d)",GetItemName(s->type),s->quantity,earned);
-=======
     extern int achTotalEarned; achTotalEarned += earned; /* BUG FIX #8 */
     snprintf(G.message,sizeof(G.message),"Bán %s x%d (+$%d)",GetItemName(s->type),s->quantity,earned);
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    extern int achTotalEarned; achTotalEarned += earned; /* BUG FIX #8 */
-    snprintf(G.message,sizeof(G.message),"Bán %s x%d (+$%d)",GetItemName(s->type),s->quantity,earned);
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     G.msgTimer=2.0f;
     Quest_Progress(2, earned);
     s->type=ITEM_NONE; s->quantity=0;
@@ -182,15 +128,7 @@ bool Economy_SellPartial(int slot, int qty)
     if (qty > s->quantity) qty = s->quantity;
     int earned = GetItemPrice(s->type)*qty;
     G.player.money += earned;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    snprintf(G.message,sizeof(G.message),"Ban %s x%d (+$%d)",GetItemName(s->type),qty,earned);
-=======
     snprintf(G.message,sizeof(G.message),"Bán %s x%d (+$%d)",GetItemName(s->type),qty,earned);
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    snprintf(G.message,sizeof(G.message),"Bán %s x%d (+$%d)",GetItemName(s->type),qty,earned);
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     G.msgTimer=2.0f;
     Quest_Progress(2, earned);
     s->quantity -= qty;
@@ -218,23 +156,10 @@ int Economy_SellAll(void)
     if (totalEarned > 0) {
         G.player.money += totalEarned;
         snprintf(G.message, sizeof(G.message),
-<<<<<<< HEAD
-<<<<<<< HEAD
-                 "Ban tat ca: %d vat (+$%d)!", totalQty, totalEarned);
-        G.msgTimer = 2.5f;
-    } else {
-        strncpy(G.message, "Khong co hang hoa de ban!", sizeof(G.message));
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                  "Bán tất cả: %d vật (+$%d)!", totalQty, totalEarned);
         G.msgTimer = 2.5f;
     } else {
         strncpy(G.message, "Không có hàng hóa để bán!", sizeof(G.message));
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.msgTimer = 1.5f;
     }
     Inv_Compact();
@@ -256,15 +181,7 @@ void Level_AddExp(int amount)
         lv->expToNext = Level_ExpNeeded(lv->level);
         G.levelUpAnim  = true;
         G.levelUpTimer = 3.0f;
-<<<<<<< HEAD
-<<<<<<< HEAD
-        snprintf(G.message, sizeof(G.message), "LEVEL UP! Ban dat cap %d!", lv->level);
-=======
         snprintf(G.message, sizeof(G.message), "LEVEL UP! Bạn đạt cấp %d!", lv->level);
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-        snprintf(G.message, sizeof(G.message), "LEVEL UP! Bạn đạt cấp %d!", lv->level);
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.msgTimer = 3.5f;
         /* Phần thưởng lên cấp */
         G.player.money += lv->level * 50;
@@ -279,11 +196,6 @@ void Game_SavePlayer(const char *path)
     MakeDirectory("saves");
     FILE *f = fopen(path,"wb");
     if (!f) return;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* ENHANCEMENT #4: Magic number + version de detect save file cu */
     unsigned int magic = SAVE_MAGIC;
     int version = SAVE_VERSION;
@@ -292,10 +204,6 @@ void Game_SavePlayer(const char *path)
     /* v5: lưu Unix timestamp để tính offline time khi load */
     time_t saveTime = time(NULL);
     fwrite(&saveTime, sizeof(time_t), 1, f);
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     fwrite(&G.player,     sizeof(Player), 1, f);
     fwrite(&G.day,        sizeof(int),    1, f);
     fwrite(G.quests,      sizeof(Quest),  MAX_QUESTS, f);
@@ -307,14 +215,6 @@ void Game_SavePlayer(const char *path)
     fwrite(G.animals,     sizeof(Animal), MAX_ANIMALS, f);
     for (int r=0;r<MAP_ROWS;r++)
     for (int c=0;c<MAP_COLS;c++) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        fwrite(&G.map[r][c].type,   sizeof(TileType),1,f);
-        fwrite(&G.map[r][c].owned,  sizeof(bool),    1,f);
-    }
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         fwrite(&G.map[r][c].type,      sizeof(TileType),1,f);
         fwrite(&G.map[r][c].owned,     sizeof(bool),    1,f);
         fwrite(&G.map[r][c].chopCount, sizeof(int),     1,f); /* ENHANCEMENT #2: luu trang thai cay */
@@ -337,10 +237,6 @@ void Game_SavePlayer(const char *path)
     /* Luu barn HP */
     fwrite(G.barnHp, sizeof(int), MAX_BARNS, f);
     
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     fclose(f);
     Game_Log(TextFormat("Saved: %s", path));
 }
@@ -360,12 +256,6 @@ void Game_LoadPlayer(const char *path)
         Inv_Add(ITEM_FEED,10);
         return;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-    /* giữ username và role đã login */
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* Kiem tra magic + version */
     unsigned int magic_r = 0; int version_r = 0;
     fread(&magic_r,   sizeof(unsigned int),1,f);
@@ -394,10 +284,6 @@ void Game_LoadPlayer(const char *path)
     if (offlineSecs < 0.0f)     offlineSecs = 0.0f;
 
     /* giu username va role da login */
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     char savedUser[MAX_NAME_LEN]; PlayerRole savedRole;
     strncpy(savedUser, G.player.username, MAX_NAME_LEN-1);
     savedRole = G.player.role;
@@ -413,20 +299,6 @@ void Game_LoadPlayer(const char *path)
     fread(G.animals,      sizeof(Animal), MAX_ANIMALS, f);
     for (int r=0;r<MAP_ROWS;r++)
     for (int c=0;c<MAP_COLS;c++) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        G.map[r][c].cropIdx = -1;
-        G.map[r][c].barnIdx = -1;
-        fread(&G.map[r][c].type,  sizeof(TileType),1,f);
-        fread(&G.map[r][c].owned, sizeof(bool),    1,f);
-    }
-    fclose(f);
-
-    strncpy(G.player.username, savedUser, MAX_NAME_LEN-1);
-    G.player.role = savedRole;
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.map[r][c].cropIdx   = -1;
         G.map[r][c].barnIdx   = -1;
         G.map[r][c].chopCount = 0;   /* rừng mọc lại đầy mỗi lần đăng nhập */
@@ -457,24 +329,11 @@ void Game_LoadPlayer(const char *path)
     fread(G.barnHp, sizeof(int), MAX_BARNS, f);
   
     fclose(f);  /* Đóng file — mọi fread đã xong */
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
     /* Re-link crops */
     for (int i=0;i<MAX_CROPS;i++)
         if (G.crops[i].active)
             G.map[G.crops[i].tileY][G.crops[i].tileX].cropIdx = i;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    /* Re-link barns */
-    for (int i=0;i<MAX_BARNS;i++)
-        if (G.barns[i].active)
-            G.map[G.barns[i].tileY][G.barns[i].tileX].barnIdx = i;
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* Re-link barns – phải đánh dấu toàn bộ vùng 5x5, không chỉ ô góc */
     for (int i=0;i<MAX_BARNS;i++)
         if (G.barns[i].active)
@@ -559,10 +418,6 @@ void Game_LoadPlayer(const char *path)
                      (int)offlineSecs, readyCrops, readyAnimals);
         G.msgTimer = 6.0f;
     }
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 }
 void Game_Log(const char *event)
 {

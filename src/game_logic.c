@@ -1,55 +1,17 @@
 #include "game_logic.h"
 #include "entity_manager.h"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 #include "draw/draw_tile.h"
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-#include "draw/draw_tile.h"
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 #include "data_manager.h"
 #include "quest_system.h"
 #include "account_manager.h"
 #include "achievement_system.h"
 #include "draw/draw_hud.h"
 #include "draw/draw_building.h"
-<<<<<<< HEAD
-<<<<<<< HEAD
-#include <math.h> 
-#include <stdbool.h> 
-
-
-// Định nghĩa các hằng số thời tiết nếu chưa có
-#ifndef WEATHER_SUNNY
-#define WEATHER_SUNNY 0
-#endif
-#ifndef WEATHER_CLOUDY
-#define WEATHER_CLOUDY 1
-#endif
-#ifndef WEATHER_RAIN
-#define WEATHER_RAIN 2
-#endif
-#ifndef WEATHER_COUNT
-#define WEATHER_COUNT 3
-#endif
-
-// Khai báo hàm
-void GameLogic_DrawWeatherEffects(void);
-void GameLogic_UpdateRain(float dt);
-
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 #include <math.h>
 #include <stdbool.h>
 
 /* Forward declaration — định nghĩa ở phía dưới */
 static bool MouseOverUI(void);
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 /* ── Init ── */
 void GameLogic_Init(void)
 {
@@ -68,12 +30,6 @@ void GameLogic_Init(void)
     p->dir=DIR_DOWN; p->tool=TOOL_HOE;
     HotbarPlacement_Init();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    G.camZoom=1.0f; G.spawnTimer=SPAWN_INTERVAL;
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     G.player.lives = 3;
     G.goblinCount = 0;
     G.gemCount = 0;
@@ -98,10 +54,6 @@ void GameLogic_Init(void)
     }
     G.camZoom=1.0f; G.spawnTimer=30.0f;
     G.skeletonTimer=300.0f;
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     if (G.day==0) G.day=1;
 
     /* Init weather */
@@ -118,113 +70,6 @@ void GameLogic_Init(void)
     }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-/* ================= TREE SYSTEM ================= */
-
-// #define MAX_TREES 128
-
-// typedef struct {
-//     int tx, ty;
-//     int hp;
-//     float regenTimer;
-//     bool active;
-// } Tree;
-
-// static Tree trees[MAX_TREES];
-
-// /* kiểm tra tile có phải cây decor 30/31/32 */
-// bool Tile_IsTree(int tx,int ty)
-// {
-//     if(tx<0 || ty<0 || tx>=MAP_COLS || ty>=MAP_ROWS)
-//         return false;
-
-//     int id = G.map[ty][tx].decor;
-//     return (id==30 || id==31 || id==32);
-// }
-
-// /* tìm tree trong mảng */
-// static Tree* FindTree(int tx,int ty)
-// {
-//     for(int i=0;i<MAX_TREES;i++)
-//         if(trees[i].active && trees[i].tx==tx && trees[i].ty==ty)
-//             return &trees[i];
-//     return NULL;
-// }
-
-// /* tạo tree entry nếu chưa có */
-// static Tree* GetOrCreateTree(int tx,int ty)
-// {
-//     Tree* t=FindTree(tx,ty);
-//     if(t) return t;
-
-//     for(int i=0;i<MAX_TREES;i++){
-//         if(!trees[i].active){
-//             trees[i].active=true;
-//             trees[i].tx=tx;
-//             trees[i].ty=ty;
-//             trees[i].hp=2;            // cần 2 lần chặt
-//             trees[i].regenTimer=0;
-//             return &trees[i];
-//         }
-//     }
-//     return NULL;
-// }
-//click chặt c
-// bool Tree_Click(int tx,int ty)
-// {
-//     Tree *t = GetOrCreateTree(tx,ty);
-//     if(!t) return false;
-
-//     t->hp--;
-
-//     G.player.animState = ANIM_DIG;
-//     G.player.isActing = true;
-//     G.player.actTimer = 0.35f;
-
-//     if(t->hp <= 0)
-//     {
-//         G.map[ty][tx].decor = 0;
-//         t->regenTimer = 120.0f;
-
-//         Inv_Add(ITEM_WOOD,1);
-
-//         strncpy(G.message,"Da chat cay +1 go",sizeof(G.message));
-//         G.msgTimer = 1.5f;
-//     }
-//     else
-//     {
-//         strncpy(G.message,"Dang chat cay...",sizeof(G.message));
-//         G.msgTimer = 0.8f;
-//     }
-
-//     return true;
-// }
-
-// /* update mọc lại */
-// void Tree_UpdateTimers(float dt)
-// {
-//     for(int i=0;i<MAX_TREES;i++)
-//     {
-//         Tree *t=&trees[i];
-//         if(!t->active) continue;
-
-//         if(t->regenTimer>0)
-//         {
-//             t->regenTimer-=dt;
-//             if(t->regenTimer<=0)
-//             {
-//                 G.map[t->ty][t->tx].decor=30;  // mọc lại
-//                 t->hp=2;
-//             }
-//         }
-//     }
-// }
-
-=======
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 /* ── Camera ── */
 void GameLogic_UpdateCamera(void)
 {
@@ -241,21 +86,9 @@ void GameLogic_UpdateCamera(void)
     if (maxX>0&&G.camX>maxX)G.camX=maxX;
     if (maxY>0&&G.camY>maxY)G.camY=maxY;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    /* Scroll chuột để zoom */
-    float wheel=GetMouseWheelMove();
-    if (wheel!=0) {
-=======
     /* Scroll chuột để zoom — chỉ khi không có UI panel đang mở */
     float wheel=GetMouseWheelMove();
     if (wheel!=0 && !MouseOverUI()) {
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    /* Scroll chuột để zoom — chỉ khi không có UI panel đang mở */
-    float wheel=GetMouseWheelMove();
-    if (wheel!=0 && !MouseOverUI()) {
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.camZoom+=wheel*0.12f;
         if (G.camZoom<0.35f)G.camZoom=0.35f;
         if (G.camZoom>3.0f)G.camZoom=3.0f;
@@ -272,15 +105,7 @@ static bool MouseOverUI(void)
     Vector2 m = GetMousePosition();
 
     /* TopBar */
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if (m.y < 54) return true;
-=======
     if (m.y < 66) return true;
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    if (m.y < 66) return true;
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
     /* Side panel (minimap, buttons) */
     if (m.x > SCREEN_W - 252) return true;
@@ -316,29 +141,13 @@ void GameLogic_HandleTileClick(Vector2 wPos)
         Barn *cb = &G.barns[tile->barnIdx];
         Vector2 barnCenter = {(cb->tileX + 2.5f)*TILE_SIZE, (cb->tileY + 2.5f)*TILE_SIZE};
         if (Dist(p->pos, barnCenter) > PLAYER_REACH * 3.0f) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            strncpy(G.message, "Qua xa! Lai gan chuong hon.", sizeof(G.message));
-=======
             strncpy(G.message, "Quá xa! Lại gần chuồng hơn.", sizeof(G.message));
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-            strncpy(G.message, "Quá xa! Lại gần chuồng hơn.", sizeof(G.message));
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             G.msgTimer = 1.2f; return;
         }
         if (p->tool != TOOL_FEED) {
             G.showBarnUI = !G.showBarnUI;
             G.showInventory = false; G.showStore = false;
-<<<<<<< HEAD
-<<<<<<< HEAD
-            strncpy(G.message, "QUAN LY CHUONG - [N] de mo/dong", sizeof(G.message));
-=======
             strncpy(G.message, "QUẢN LÝ CHUỒNG - [N] để mở/đóng", sizeof(G.message));
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-            strncpy(G.message, "QUẢN LÝ CHUỒNG - [N] để mở/đóng", sizeof(G.message));
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             G.msgTimer = 1.5f; return;
         }
     }
@@ -350,18 +159,6 @@ void GameLogic_HandleTileClick(Vector2 wPos)
         if (tile->type==TILE_SOIL_BOUGHT && tile->cropIdx<0) {
             tile->type=TILE_SOIL_DUG;
             p->animState=ANIM_DIG; p->isActing=true; p->actTimer=0.6f;
-<<<<<<< HEAD
-<<<<<<< HEAD
-            strncpy(G.message,"Da dao dat! Hay tuoi nuoc.",sizeof(G.message));
-            G.msgTimer=1.5f;
-        } else if (tile->type==TILE_GRASS) {
-            strncpy(G.message,"Hay mua dat truoc! (click [Mua Dat])",sizeof(G.message));
-            G.msgTimer=2.0f;
-        } else {
-            strncpy(G.message,"Khong the dao o nay.",sizeof(G.message));
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             strncpy(G.message,"Đã đào đất! Hay tưới nước.",sizeof(G.message));
             G.msgTimer=1.5f;
         } else if (tile->type==TILE_GRASS) {
@@ -369,10 +166,6 @@ void GameLogic_HandleTileClick(Vector2 wPos)
             G.msgTimer=2.0f;
         } else {
             strncpy(G.message,"Không thể đào ở đây.",sizeof(G.message));
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             G.msgTimer=1.5f;
         }
         break;
@@ -382,23 +175,10 @@ void GameLogic_HandleTileClick(Vector2 wPos)
         if (tile->type==TILE_SOIL_DUG && tile->cropIdx<0) {
             tile->type=TILE_SOIL_WET;
             p->animState=ANIM_WATER; p->isActing=true; p->actTimer=0.8f;
-<<<<<<< HEAD
-<<<<<<< HEAD
-            strncpy(G.message,"Da tuoi nuoc! Hay trong cay.",sizeof(G.message));
-            G.msgTimer=1.5f;
-        } else {
-            strncpy(G.message,"Phai dao dat truoc roi moi tuoi!",sizeof(G.message));
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             strncpy(G.message,"Đã tưới nước! Hay trồng cây.",sizeof(G.message));
             G.msgTimer=1.5f;
         } else {
             strncpy(G.message,"Phải đào đất trước rồi mới tưới!",sizeof(G.message));
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             G.msgTimer=1.5f;
         }
         break;
@@ -406,38 +186,16 @@ void GameLogic_HandleTileClick(Vector2 wPos)
     /* ── 3: SEED – trồng cây vào đất đã tưới ── */
     case TOOL_SEED: {
         if (tile->type!=TILE_SOIL_WET||tile->cropIdx>=0) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            strncpy(G.message,"Phai tuoi dat truoc roi moi trong!",sizeof(G.message));
-=======
             strncpy(G.message,"Phải tưới đất trước rồi mới trồng!",sizeof(G.message));
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-            strncpy(G.message,"Phải tưới đất trước rồi mới trồng!",sizeof(G.message));
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             G.msgTimer=1.5f; break;
         }
         InvSlot *sel=&p->inv[p->hotbarIdx];
         if (sel->type<ITEM_SEED_CARROT||sel->type>ITEM_SEED_WHEAT) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            strncpy(G.message,"Chon hat giong trong hotbar!",sizeof(G.message));
-            G.msgTimer=1.5f; break;
-        }
-        if (!Inv_Remove(sel->type,1)) {
-            strncpy(G.message,"Het hat giong!",sizeof(G.message));
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             strncpy(G.message,"Chọn hạt giống trong hotbar!",sizeof(G.message));
             G.msgTimer=1.5f; break;
         }
         if (!Inv_Remove(sel->type,1)) {
             strncpy(G.message,"Hết hạt giống!",sizeof(G.message));
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             G.msgTimer=1.5f; break;
         }
         int idx=-1;
@@ -450,15 +208,7 @@ void GameLogic_HandleTileClick(Vector2 wPos)
         p->animState=ANIM_DIG; p->isActing=true; p->actTimer=0.5f;
         Quest_Progress(1,1);
         Level_AddExp(EXP_PER_PLANT); Achievement_AddPlant(1);
-<<<<<<< HEAD
-<<<<<<< HEAD
-        strncpy(G.message,"Da trong cay! Cho cay lon.",sizeof(G.message));
-=======
         strncpy(G.message,"Đã trồng cây! Chờ cây lớn.",sizeof(G.message));
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-        strncpy(G.message,"Đã trồng cây! Chờ cây lớn.",sizeof(G.message));
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.msgTimer=1.5f;
         break;
     }
@@ -466,28 +216,12 @@ void GameLogic_HandleTileClick(Vector2 wPos)
     /* ── 4: SCYTHE – thu hoạch cây chín ── */
     case TOOL_SCYTHE: {
         if (tile->cropIdx<0) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            strncpy(G.message,"Khong co cay de thu hoach.",sizeof(G.message));
-=======
             strncpy(G.message,"Không có cây để thu hoạch.",sizeof(G.message));
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-            strncpy(G.message,"Không có cây để thu hoạch.",sizeof(G.message));
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             G.msgTimer=1.5f; break;
         }
         Crop *c=&G.crops[tile->cropIdx];
         if (c->stage!=CSTAGE_READY) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            strncpy(G.message,"Cay chua chin! Cho them.",sizeof(G.message));
-=======
             strncpy(G.message,"Cây chưa chín! Cho thêm thời gian.",sizeof(G.message));
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-            strncpy(G.message,"Cây chưa chín! Cho thêm thời gian.",sizeof(G.message));
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             G.msgTimer=1.5f; break;
         }
         ItemType harvest=(ItemType)(ITEM_CARROT+c->type);
@@ -498,15 +232,7 @@ void GameLogic_HandleTileClick(Vector2 wPos)
         G.cropCount--;
         p->animState=ANIM_DIG; p->isActing=true; p->actTimer=0.4f;
         Quest_Progress(0,1); Level_AddExp(EXP_PER_HARVEST); Achievement_AddHarvest(1);
-<<<<<<< HEAD
-<<<<<<< HEAD
-        snprintf(G.message,sizeof(G.message),"Thu hoach %s x%d!",GetItemName(harvest),qty);
-=======
         snprintf(G.message,sizeof(G.message),"Thu hoạch %s x%d!",GetItemName(harvest),qty);
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-        snprintf(G.message,sizeof(G.message),"Thu hoạch %s x%d!",GetItemName(harvest),qty);
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.msgTimer=2.0f;
         break;
     }
@@ -523,22 +249,6 @@ void GameLogic_HandleTileClick(Vector2 wPos)
                 e->hp-=dmg; e->state=ESTATE_HURT; e->hurtTimer=0.3f; hit=true;
                 if (e->hp<=0){
                     e->hp=0; e->state=ESTATE_DEAD; e->animFrame=0; G.enemyCount--;
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    int coins=10+GetRandomValue(0,25)+(G.day*2);
-                    p->money+=coins;
-                    Quest_Progress(3,1); Level_AddExp(EXP_PER_KILL); Achievement_AddKill(1);
-                    snprintf(G.message,sizeof(G.message),"Ha guc quai! +$%d",coins);
-                } else {
-                    snprintf(G.message,sizeof(G.message),"Tan cong -%d HP",dmg);
-                }
-                G.msgTimer=1.0f;
-            }
-        }
-        if (!hit){strncpy(G.message,"Khong co quai trong tam!",sizeof(G.message));G.msgTimer=1.2f;}
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                     Quest_Progress(3,1); Level_AddExp(EXP_PER_KILL); Achievement_AddKill(1);
                     char dropMsg[128]="";
                     int coins=0;
@@ -575,10 +285,6 @@ void GameLogic_HandleTileClick(Vector2 wPos)
             }
         }
         if (!hit){strncpy(G.message,"Không có quái trong tầm!",sizeof(G.message));G.msgTimer=1.2f;}
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         p->animState=ANIM_DIG; p->isActing=true; p->actTimer=0.3f;
         break;
     }
@@ -586,28 +292,12 @@ void GameLogic_HandleTileClick(Vector2 wPos)
     /* ── 6: FEED – cho động vật ăn (click vào chuồng) ── */
     case TOOL_FEED: {
         if (tile->barnIdx<0) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            strncpy(G.message,"Click vao chuong de cho an!",sizeof(G.message));
-=======
             strncpy(G.message,"Click vào chuồng để cho ăn!",sizeof(G.message));
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-            strncpy(G.message,"Click vào chuồng để cho ăn!",sizeof(G.message));
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             G.msgTimer=1.5f; break;
         }
         int bi=tile->barnIdx;
         if (Inv_Count(ITEM_FEED)==0) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            strncpy(G.message,"Khong co thuc an! Mua tai cua hang.",sizeof(G.message));
-=======
             strncpy(G.message,"Không có thức ăn! Mua tại cửa hàng.",sizeof(G.message));
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-            strncpy(G.message,"Không có thức ăn! Mua tại cửa hàng.",sizeof(G.message));
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             G.msgTimer=2.0f; break;
         }
         int fed=0;
@@ -618,21 +308,9 @@ void GameLogic_HandleTileClick(Vector2 wPos)
             a->hungry=false; a->feedTimer=FEED_SECS; fed++;
         }
         if (fed>0) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            snprintf(G.message,sizeof(G.message),"Cho %d con an!",fed);
-        } else {
-            strncpy(G.message,"Dong vat chua doi.",sizeof(G.message));
-=======
             snprintf(G.message,sizeof(G.message),"Cho %d con ăn!",fed);
         } else {
             strncpy(G.message,"Động vật chưa đói.",sizeof(G.message));
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-            snprintf(G.message,sizeof(G.message),"Cho %d con ăn!",fed);
-        } else {
-            strncpy(G.message,"Động vật chưa đói.",sizeof(G.message));
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         }
         G.msgTimer=1.5f;
         break;
@@ -655,36 +333,17 @@ static void HandleRightClick(void)
     for (int i=0;i<MAX_ANIMALS;i++) {
         Animal *a=&G.animals[i];
         if (!a->active||a->barnIdx!=bi||!a->hasProduct) continue;
-<<<<<<< HEAD
-<<<<<<< HEAD
-        ItemType prod=(a->type==ANIMAL_CHICKEN)?ITEM_EGG:
-                      (a->type==ANIMAL_PIG)?ITEM_MILK:ITEM_WOOL;
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         /* BUG FIX #9: Lon (Pig) san xuat Len (WOOL), Cuu (Sheep) san xuat Sua (MILK)
            Ga (Chicken) → Trung (EGG), Lon (Pig) → Len/Tho (WOOL), Cuu (Sheep) → Sua (MILK) */
         ItemType prod=(a->type==ANIMAL_CHICKEN)?ITEM_EGG:
                       (a->type==ANIMAL_PIG)?ITEM_WOOL:ITEM_MILK;
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         Inv_Add(prod,1);
         a->hasProduct=false;
         Quest_Progress(4,1); Level_AddExp(EXP_PER_COLLECT); Achievement_AddCollect(1);
         collected++;
     }
     if (collected>0) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        snprintf(G.message,sizeof(G.message),"Thu %d san pham!",collected);
-=======
         snprintf(G.message,sizeof(G.message),"Thu %d sản phẩm!",collected);
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-        snprintf(G.message,sizeof(G.message),"Thu %d sản phẩm!",collected);
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.msgTimer=1.5f;
     }
 }
@@ -694,11 +353,6 @@ void GameLogic_HandleInput(void)
 {
     Player *p=&G.player;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* ── Phím UI: luôn hoạt động dù panel nào đang mở ── */
     if (IsKeyPressed(KEY_I)){G.showInventory=!G.showInventory;G.showStore=false;G.showBarnUI=false;}
     if (IsKeyPressed(KEY_B)){G.showStore=!G.showStore;G.showInventory=false;G.showBarnUI=false;}
@@ -767,10 +421,6 @@ void GameLogic_HandleInput(void)
 
     /* ── Game keys: chỉ hoạt động khi không có panel ── */
 
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* Tool keys */
     if (IsKeyPressed(KEY_ONE))   p->tool=TOOL_HOE;
     if (IsKeyPressed(KEY_TWO))   p->tool=TOOL_WATERING_CAN;
@@ -780,151 +430,6 @@ void GameLogic_HandleInput(void)
     if (IsKeyPressed(KEY_SIX))   p->tool=TOOL_FEED;
 
     /* Hotbar scroll */
-<<<<<<< HEAD
-<<<<<<< HEAD
-    /* (scroll zoom đã ở camera, chuyển bằng Q/E) */
-    if (IsKeyPressed(KEY_LEFT_BRACKET))  p->hotbarIdx=(p->hotbarIdx-1+HOTBAR_SIZE)%HOTBAR_SIZE;
-    if (IsKeyPressed(KEY_RIGHT_BRACKET)) p->hotbarIdx=(p->hotbarIdx+1)%HOTBAR_SIZE;
-
-    /* UI */
-    if (IsKeyPressed(KEY_I)){G.showInventory=!G.showInventory;G.showStore=false;G.showBarnUI=false;}
-    if (IsKeyPressed(KEY_B)){G.showStore=!G.showStore;G.showInventory=false;G.showBarnUI=false;}
-    if (IsKeyPressed(KEY_N)){G.showBarnUI=!G.showBarnUI;G.showInventory=false;G.showStore=false;}
-    if (IsKeyPressed(KEY_Q)) G.showQuest=!G.showQuest;
-    if (IsKeyPressed(KEY_C)) G.showHelp=!G.showHelp;
-    if (IsKeyPressed(KEY_F2)) G.showAchievements=!G.showAchievements;
-    if (IsKeyPressed(KEY_F5)){
-        char sp[128]; snprintf(sp,sizeof(sp),"saves/%s.dat",p->username);
-        Game_SavePlayer(sp);
-        strncpy(G.message,"Da luu game!",sizeof(G.message)); G.msgTimer=2.0f;
-    }
-    if (IsKeyPressed(KEY_F3)){ extern bool debugMode; debugMode=!debugMode; }
-    
-   /* --- [BAT DAU PHAN THEM: THONG BAO F11] --- */
-   if (IsKeyPressed(KEY_F11)) {
-       if (!IsWindowFullscreen()) strncpy(G.message, "Che do Toan man hinh", sizeof(G.message));
-       else strncpy(G.message, "Che do Cua so", sizeof(G.message));
-       G.msgTimer = 2.0f;
-   }
-   /* --- [KET THUC PHAN THEM: THONG BAO F11] --- */
-
-
-
-
-    /* --- CHUYỂN ĐỔI ROLE (SHIFT + ENTER) --- */
-if (IsKeyDown(KEY_LEFT_SHIFT) && IsKeyPressed(KEY_ENTER)) {
-    // Khởi tạo role nếu đang là PLAYER
-    if (p->role != ROLE_ADMIN && p->role != ROLE_TESTER) {
-        p->role = ROLE_TESTER; // Mặc định vào TESTER
-    } else {
-        // Chuyển qua lại giữa ADMIN và TESTER
-        p->role = (p->role == ROLE_ADMIN) ? ROLE_TESTER : ROLE_ADMIN;
-    }
-    
-    const char* roleName = (p->role == ROLE_ADMIN) ? "ADMIN" : "TESTER";
-    snprintf(G.message, sizeof(G.message), "Role: %s", roleName);
-    G.msgTimer = 2.0f;
-}
-
-    /* --- LOGIC RIÊNG CHO ADMIN --- */
-    if (p->role == ROLE_ADMIN) {
-        // M: Tiền +$5000 (Admin nhận nhiều hơn)
-        if (IsKeyPressed(KEY_M)) {
-            p->money += 5000;
-            strncpy(G.message, "Admin: +$5000", sizeof(G.message));
-            G.msgTimer = 1.5f;
-        }
-        // K: Diệt sạch kẻ địch
-        if (IsKeyPressed(KEY_K)) {
-            for (int i = 0; i < MAX_ENEMIES; i++) {
-                if (G.enemies[i].active) {
-                    G.enemies[i].state = ESTATE_DEAD;
-                    G.enemies[i].hp = 0;
-                    G.enemyCount--;
-                }
-            }
-            strncpy(G.message, "Admin: Kill all enemies!", sizeof(G.message));
-            G.msgTimer = 1.5f;
-        }
-        // F6: Đổi thời tiết
-        if (IsKeyPressed(KEY_F6)) {
-            G.weather.current = (G.weather.current + 1) % WEATHER_COUNT;
-            G.weather.timer = 300.0f;
-            const char *weatherNames[] = {"NANG", "NHIEU MAY", "MUA"};
-            snprintf(G.message, sizeof(G.message), "Admin: Weather -> %s", weatherNames[G.weather.current]);
-            G.msgTimer = 2.0f;
-        }
-        // F8: God Mode
-        if (IsKeyPressed(KEY_F8)) {
-            p->maxHp = 99999; p->hp = 99999;
-            strncpy(G.message, "Admin: God Mode ON", sizeof(G.message));
-            G.msgTimer = 2.0f;
-        }
-        // P: Teleport trung tâm
-        if (IsKeyPressed(KEY_P)) {
-            p->pos = (Vector2){MAP_PX_W * 0.5f, MAP_PX_H * 0.5f};
-            p->hasClickTarget = false;
-            strncpy(G.message, "Admin: Teleported to Center", sizeof(G.message));
-            G.msgTimer = 1.5f;
-        }
-    }
-
-    /* --- LOGIC RIÊNG CHO TESTER --- */
-    if (p->role == ROLE_TESTER) {
-        // M: Tiền +$500
-        if (IsKeyPressed(KEY_M)) {
-            p->money += 500;
-            strncpy(G.message, "Tester: +$500", sizeof(G.message));
-            G.msgTimer = 1.5f;
-        }
-        // T: Chín cây ngay
-        if (IsKeyPressed(KEY_T)) {
-            for (int i = 0; i < MAX_CROPS; i++) {
-                if (G.crops[i].active) G.crops[i].stage = CSTAGE_READY;
-            }
-            strncpy(G.message, "Tester: Crops Ready!", sizeof(G.message));
-            G.msgTimer = 1.5f;
-        }
-        // L: Tăng cấp (+500 EXP)
-        if (IsKeyPressed(KEY_L)) {
-            Level_AddExp(500);
-            strncpy(G.message, "Tester: +500 EXP", sizeof(G.message));
-            G.msgTimer = 1.5f;
-        }
-        // I: Nhận vật phẩm test
-        if (IsKeyPressed(KEY_I)) {
-            Inv_Add(ITEM_SEED_CARROT, 20); Inv_Add(ITEM_SEED_WHEAT, 20);
-            Inv_Add(ITEM_WOOD, 100); Inv_Add(ITEM_FEED, 20);
-            strncpy(G.message, "Tester: Received Test Items", sizeof(G.message));
-            G.msgTimer = 1.5f;
-        }
-        // F7: Sang ngày mới
-        if (IsKeyPressed(KEY_F7)) {
-            G.dayTimer = DAY_DURATION;
-            strncpy(G.message, "Tester: Fast Forward Day", sizeof(G.message));
-            G.msgTimer = 1.5f;
-        }
-        // F9: Debug Mode
-        if (IsKeyPressed(KEY_F9)) {
-            extern bool debugMode; debugMode = !debugMode;
-            snprintf(G.message, sizeof(G.message), "Tester: Debug %s", debugMode ? "ON" : "OFF");
-            G.msgTimer = 1.5f;
-        }
-    }
-
-    /* --- CHUNG CHO ADMIN & TESTER --- */
-    if (p->role == ROLE_ADMIN || p->role == ROLE_TESTER) {
-        // H: Full HP
-        if (IsKeyPressed(KEY_H)) {
-            p->hp = p->maxHp;
-            strncpy(G.message, "Refilled HP", sizeof(G.message));
-            G.msgTimer = 1.5f;
-        }
-    }
-
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     if (IsKeyPressed(KEY_LEFT_BRACKET))  p->hotbarIdx=(p->hotbarIdx-1+HOTBAR_SIZE)%HOTBAR_SIZE;
     if (IsKeyPressed(KEY_RIGHT_BRACKET)) p->hotbarIdx=(p->hotbarIdx+1)%HOTBAR_SIZE;
 
@@ -972,25 +477,11 @@ if (IsKeyDown(KEY_LEFT_SHIFT) && IsKeyPressed(KEY_ENTER)) {
         G.msgTimer=2.5f;
         if (G.gemCount>=3&&!G.bossAlive){extern void SpawnBoss(void);SpawnBoss();}
     }
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* Phím E: bật/tắt edit mode */
     if (IsKeyPressed(KEY_E) && !G.showInventory && !G.showStore && !G.showBarnUI) {
         G.editMode = !G.editMode;
         if (G.editMode) { G.hbarSel=-1; G.hbarPlacing=false; G.editSubMode=0; }
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-    /* ESC thoát edit mode */
-    if (IsKeyPressed(KEY_ESCAPE)) {
-        if (G.editMode) { G.editMode=false; }
-    }
-=======
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
     /* ── Hotbar placement system ── */
     HotbarPlacement_HandleInput();
@@ -1009,28 +500,12 @@ if (IsKeyDown(KEY_LEFT_SHIFT) && IsKeyPressed(KEY_ENTER)) {
                     Barn_StartMove(tx2, ty2);
                 else if (G.map[ty2][tx2].owned)
                     Plot_StartMove(tx2, ty2);
-<<<<<<< HEAD
-<<<<<<< HEAD
-                else { strncpy(G.message,"Khong co gi de di chuyen.",sizeof(G.message)); G.msgTimer=1.5f; }
-=======
                 else { strncpy(G.message,"Không có gì để di chuyển.",sizeof(G.message)); G.msgTimer=1.5f; }
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-                else { strncpy(G.message,"Không có gì để di chuyển.",sizeof(G.message)); G.msgTimer=1.5f; }
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             } else {
                 /* Sub-mode DELETE (0) */
                 if (G.map[ty2][tx2].barnIdx>=0)  Barn_Delete(tx2,ty2);
                 else if (G.map[ty2][tx2].owned)   Plot_Delete(tx2,ty2);
-<<<<<<< HEAD
-<<<<<<< HEAD
-                else { strncpy(G.message,"Khong co gi de xoa.",sizeof(G.message)); G.msgTimer=1.5f; }
-=======
                 else { strncpy(G.message,"Không có gì để xóa.",sizeof(G.message)); G.msgTimer=1.5f; }
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-                else { strncpy(G.message,"Không có gì để xóa.",sizeof(G.message)); G.msgTimer=1.5f; }
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             }
         }
         return;
@@ -1060,25 +535,6 @@ if (IsKeyDown(KEY_LEFT_SHIFT) && IsKeyPressed(KEY_ENTER)) {
             Vector2 tc = {(tx2+0.5f)*TILE_SIZE, (ty2+0.5f)*TILE_SIZE};
             float dist = Dist(p->pos, tc);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-            /* Nhận diện cây (decor 30/31/32): click 2 lần với Cuốc → chặt */
-            if (Tile_IsTree(tx2, ty2)) {
-                if (dist <= PLAYER_REACH * 1.5f) {
-                    if (p->tool == TOOL_HOE) {
-                        Tree_Click(tx2, ty2);
-                    } else {
-                        strncpy(G.message, "Dung Cuoc [1] de chat cay!", sizeof(G.message));
-                        G.msgTimer = 1.5f;
-                    }
-                } else {
-                    p->hasClickTarget = true;
-                    p->clickTarget    = tc;
-                }
-                return;
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             /* Dao da: HOE tren tile co decor da (15-18) */
             {
                 int di = GetDecorTypeForTile(ty2, tx2);
@@ -1179,10 +635,6 @@ if (IsKeyDown(KEY_LEFT_SHIFT) && IsKeyPressed(KEY_ENTER)) {
                     }
                     return;
                 }
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             }
 
             if (dist <= PLAYER_REACH) {
@@ -1295,16 +747,6 @@ void GameLogic_Update(float dt)
 {
     G.gameTime+=dt;
     G.dayTimer+=dt;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if (G.dayTimer>=DAY_DURATION){
-        G.dayTimer=0; G.day++;
-        snprintf(G.message,sizeof(G.message),"Ngay moi! Ngay %d bat dau.",G.day);
-        G.msgTimer=3.0f;
-        Game_Log(TextFormat("New day %d",G.day));
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     if (G.dayTimer >= DAY_DURATION) {
         G.dayTimer = 0; G.day++;
         snprintf(G.message, sizeof(G.message), "Ngày mới! Ngày %d bắt đầu.", G.day);
@@ -1345,10 +787,6 @@ void GameLogic_Update(float dt)
         SpawnBoss();
         snprintf(G.message, sizeof(G.message), "NGÀY %d: BOSS XUẤT HIỆN! Hãy chuẩn bị chiến đấu!", G.day);
         G.msgTimer = 6.0f;
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     }
     if (G.msgTimer>0) G.msgTimer-=dt;
     if (G.levelUpTimer>0){G.levelUpTimer-=dt;if(G.levelUpTimer<=0)G.levelUpAnim=false;}
@@ -1360,116 +798,11 @@ void GameLogic_Update(float dt)
     EntityManager_UpdateEnemies(dt);
     EntityManager_UpdateWeather(dt);
     Tree_UpdateTimers(dt);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     UpdateBarnDmgTimers(dt);
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    UpdateBarnDmgTimers(dt);
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     GameLogic_UpdateCamera();
 
     G.spawnTimer-=dt;
     if (G.spawnTimer<=0){
-<<<<<<< HEAD
-<<<<<<< HEAD
-        /* Tang cham: giam 0.5s moi ngay, toi thieu 30s */
-        G.spawnTimer=SPAWN_INTERVAL-(float)G.day*0.5f;
-        if(G.spawnTimer<30.0f)G.spawnTimer=30.0f;
-        EntityManager_SpawnEnemy();
-    }
-}
-
-/* --- [BAT DAU PHAN THEM: HIEU UNG THOI TIET] --- */
-
-/* Vẽ hiệu ứng thời tiết lên màn hình */
-void GameLogic_DrawWeatherEffects(void)
-{
-    // 1. Nắng
-    if (G.weather.current == WEATHER_SUNNY) {
-        DrawRectangle(0, 0, SCREEN_W, SCREEN_H, (Color){ 255, 255, 200, 20 });
-    }
-    
-    // 2. Mây - XÁM ĐẬM
-    else if (G.weather.current == WEATHER_CLOUDY) {
-        DrawRectangle(0, 0, SCREEN_W, SCREEN_H, (Color){ 40, 40, 60, 150 });
-    }
-    
-    // 3. Mưa - ZÍC ZẮC
-    else if (G.weather.current == WEATHER_RAIN) {
-        // Lớp phủ tối
-        DrawRectangle(0, 0, SCREEN_W, SCREEN_H, (Color){ 10, 10, 25, 90 });
-        
-        for (int i = 0; i < 40; i++) {
-            // Mỗi giọt mưa là 3 đoạn thẳng tạo đường zíc zắc
-            float x = G.weather.rainDropX[i];
-            float y = G.weather.rainDropY[i];
-            
-            // Đoạn 1: xuống phải
-            DrawLineEx(
-                (Vector2){ x, y },
-                (Vector2){ x + 6, y + 10 },
-                2.5f,
-                (Color){ 210, 235, 255, 200 }
-            );
-            
-            // Đoạn 2: xuống trái
-            DrawLineEx(
-                (Vector2){ x + 6, y + 10 },
-                (Vector2){ x - 4, y + 22 },
-                2.5f,
-                (Color){ 210, 235, 255, 200 }
-            );
-            
-            // Đoạn 3: xuống phải
-            DrawLineEx(
-                (Vector2){ x - 4, y + 22 },
-                (Vector2){ x + 8, y + 35 },
-                2.5f,
-                (Color){ 210, 235, 255, 180 }
-            );
-            
-            // Thêm giọt phụ lệch vị trí
-            if (i % 3 == 0) {
-                float x2 = x + 30;
-                float y2 = y - 10;
-                DrawLineEx(
-                    (Vector2){ x2, y2 },
-                    (Vector2){ x2 - 8, y2 + 18 },
-                    2.0f,
-                    (Color){ 170, 200, 230, 150 }
-                );
-            }
-        }
-    }
-}
-
-//hàm update vị trí giọt mưa, gọi trong GameLogic_Update
-void GameLogic_UpdateRain(float dt)
-{
-    if (G.weather.current != WEATHER_RAIN) return;
-    
-    for (int i = 0; i < 40; i++) {
-        // Mỗi giọt có hướng rơi khác nhau - tạo zíc zắc tự nhiên
-        float speed = 800.0f + (i * 10); // Tốc độ khác nhau
-        float wind = 300.0f + sinf(G.gameTime + i) * 150; // Gió thay đổi
-        
-        G.weather.rainDropY[i] += speed * dt;
-        G.weather.rainDropX[i] -= wind * dt;
-        
-        // Reset với vị trí ngẫu nhiên
-        if (G.weather.rainDropY[i] > SCREEN_H + 100) {
-            G.weather.rainDropY[i] = (float)GetRandomValue(-300, -50);
-            G.weather.rainDropX[i] = (float)GetRandomValue(-100, SCREEN_W + 200);
-        }
-    }
-}
-
-/* --- [KET THUC PHAN THEM: HIEU UNG THOI TIET] --- */
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.spawnTimer=30.0f;
         EntityManager_SpawnEnemy();
     }
@@ -1479,9 +812,4 @@ void GameLogic_UpdateRain(float dt)
         G.skeletonTimer=300.0f;
         SpawnSkeleton_Pub();
     }
-<<<<<<< HEAD
 }
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-}
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23

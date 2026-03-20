@@ -17,62 +17,15 @@
 #include "draw/draw_hud.h"
 #include "draw/draw_building.h"
 #include "draw/draw_debug.h"
-<<<<<<< HEAD
-<<<<<<< HEAD
-#include "draw/draw_admin_panel.h"
-#include "draw/draw_ui.h"
-#include "draw/draw_tester_panel.h"
-#include "font_manager.h"
-=======
 #include "draw/draw_ui.h"
 #include "font_manager.h"
 #include "audio_manager.h"
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-#include "draw/draw_ui.h"
-#include "font_manager.h"
-#include "audio_manager.h"
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
 GameState G;
 Textures T;
 
 static void DrawGame(void)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // LAYER 1: NỀN (dưới cùng)
-    DrawTile_All();
-    DrawTile_Highlight();
-    
-    // LAYER 2: CÔNG TRÌNH
-    DrawBuilding_All();
-    DrawBuilding_HomeAll();
-    DrawAnimal_Barns(); /* nền chuồng */
-    
-    // LAYER 3: CÂY TRỒNG
-    DrawCrop_All();
-    
-    // LAYER 4: ĐỘNG VẬT + QUÁI
-    DrawAnimal_All();
-    EntityManager_DrawEnemies();
-    
-    // LAYER 5: NGƯỜI CHƠI
-    DrawPlayer_Character();
-    
-    // LAYER 6: HIỆU ỨNG THỜI TIẾT (ĐẨY LÊN ĐÂY)
-    DrawHUD_Weather();  // <--- MƯA, MÂY, NẮNG VẼ Ở ĐÂY
-    
-    // LAYER 7: DEBUG
-    DrawDebug_All();
-    
-    // LAYER 8: UI (trên cùng)
-    DrawHUD_TopBar();
-    DrawHUD_PlacementGhost();
-    DrawHUD_PlacementBar();
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* ── Vẽ world trước ── */
     DrawTile_All();
     DrawTile_Highlight();
@@ -94,53 +47,23 @@ static void DrawGame(void)
     DrawHUD_TopBar();
     DrawHUD_PlacementGhost();    /* ghost preview trước UI */
     DrawHUD_PlacementBar();      /* hotbar mới */
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     DrawUI_SidePanel();
     DrawUI_QuestPanel();
     DrawHUD_Minimap();
     DrawHUD_Message();
     DrawHUD_LevelUp();
-<<<<<<< HEAD
-<<<<<<< HEAD
-    
-    DrawAdminPanel_Badge();
-    DrawAdminPanel_All();
-    DrawTesterPanel_Badge();
-    DrawTesterPanel_All();
-    
-=======
 
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     DrawUI_Inventory();
     DrawUI_Store();
     DrawUI_BarnPanel();
     DrawUI_Help();
     DrawUI_Achievements();
-<<<<<<< HEAD
-<<<<<<< HEAD
-    
-    if (G.paused)
-        DrawUI_PauseScreen();
-    
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     DrawUI_Settings();
     DrawUI_BarnHpBars();     /* HP bar chuồng trên map */
 
     if (G.paused)
         DrawUI_PauseScreen();
 
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     DrawTextCenteredShort(TextFormat("FPS:%d", GetFPS()), 20, SCREEN_H - 26, 10, (Color){90, 90, 90, 180});
 }
 
@@ -151,14 +74,7 @@ int main(void)
     SetTargetFPS(TARGET_FPS);
 
     SetExitKey(KEY_NULL);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     Audio_Init();
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    Audio_Init();
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     Font_Load();
     RenderTexture2D target = LoadRenderTexture(SCREEN_W, SCREEN_H);
 
@@ -189,14 +105,7 @@ int main(void)
             ToggleFullscreen();
 
         float dt = GetFrameTime();
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
         Audio_Update();
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-        Audio_Update();
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         if (dt > 0.1f)
             dt = 0.1f;
 
@@ -221,21 +130,10 @@ int main(void)
                 Event_FlushAll();
                 Achievement_Check();
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
-            if (IsKeyPressed(KEY_ESCAPE))
-                G.paused = !G.paused;
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             if (IsKeyPressed(KEY_ESCAPE)) {
                 G.paused = !G.paused;
                 if (G.paused) Audio_Pause(); else Audio_Resume();
             }
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             break;
 
         case SCR_PAUSE:
@@ -269,18 +167,9 @@ int main(void)
         default:
             break;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
         /* End game overlay — chỉ vẽ khi đang trong game */
         if (G.screen == SCR_GAME || G.screen == SCR_PAUSE)
             DrawHUD_EndGame();
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-        /* End game overlay — chỉ vẽ khi đang trong game */
-        if (G.screen == SCR_GAME || G.screen == SCR_PAUSE)
-            DrawHUD_EndGame();
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         EndTextureMode();
         BeginDrawing();
         ClearBackground(BLACK);
@@ -330,20 +219,7 @@ int main(void)
     Game_Log("=== SUNNY WORLD closed ===");
     Textures_Unload();
     Font_Unload();
-<<<<<<< HEAD
-<<<<<<< HEAD
-    CloseWindow();
-    return 0;
-}
-=======
     Audio_Unload();
     CloseWindow();
     return 0;
 }
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    Audio_Unload();
-    CloseWindow();
-    return 0;
-}
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23

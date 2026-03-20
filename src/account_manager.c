@@ -43,40 +43,17 @@ void Account_SaveAll(void)
 bool Account_Register(const char *user, const char *pass, PlayerRole role, char *errOut)
 {
     if (strcmp(user, "ADMIN") == 0) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    strcpy(errOut, "Ten nay bi khoa!");
-    return false;
-}
-    if (strlen(user) < 3) { strcpy(errOut, "Ten dang nhap >= 3 ky tu!"); return false; }
-    if (strlen(pass) < 4) { strcpy(errOut, "Mat khau >= 4 ky tu!");      return false; }
-    if (G.accountCount >= MAX_ACCOUNTS) { strcpy(errOut, "Server day!"); return false; }
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     strcpy(errOut, "Tên này bị khóa!");
     return false;
 }
     if (strlen(user) < 3) { strcpy(errOut, "Tên đăng nhập >= 3 ký tự!"); return false; }
     if (strlen(pass) < 4) { strcpy(errOut, "Mật khẩu >= 4 ký tự!");      return false; }
     if (G.accountCount >= MAX_ACCOUNTS) { strcpy(errOut, "Server đầy!"); return false; }
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
     for (int i = 0; i < G.accountCount; i++) {
         if (G.accounts[i].active &&
             strcmp(G.accounts[i].username, user) == 0) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            strcpy(errOut, "Ten tai khoan da ton tai!");
-=======
             strcpy(errOut, "Tên tài khoản đã tồn tại!");
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-            strcpy(errOut, "Tên tài khoản đã tồn tại!");
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             return false;
         }
     }
@@ -109,32 +86,12 @@ bool Account_Login(const char *user, const char *pass, char *errOut)
             return true;
         }
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-    strcpy(errOut, "Sai ten dang nhap hoac mat khau!");
-=======
     strcpy(errOut, "Sai tên đăng nhập hoặc mật khẩu!");
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    strcpy(errOut, "Sai tên đăng nhập hoặc mật khẩu!");
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     return false;
 }
 
 void Account_Logout(void)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    char savePath[128];
-    snprintf(savePath, sizeof(savePath), "saves/%s.dat", G.player.username);
-    Game_SavePlayer(savePath);
-    G.screen = SCR_LOGIN;
-    memset(G.loginUser, 0, sizeof(G.loginUser));
-    memset(G.loginPass, 0, sizeof(G.loginPass));
-    G.loginField = 0;
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* Lưu save tài khoản hiện tại trước khi thoát */
     char savePath[128];
     snprintf(savePath, sizeof(savePath), "saves/%s.dat", G.player.username);
@@ -216,10 +173,6 @@ void Account_Logout(void)
     memset(G.loginUser, 0, sizeof(G.loginUser));
     memset(G.loginPass, 0, sizeof(G.loginPass));
     G.loginField  = 0;
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     G.loginError[0] = '\0';
 }
 
@@ -227,36 +180,10 @@ void Account_ToggleAdmin(void)
 {
     if (G.player.role == ROLE_ADMIN) {
         G.player.role = ROLE_PLAYER;
-<<<<<<< HEAD
-<<<<<<< HEAD
-        strncpy(G.message, "Da thoat Admin mode", sizeof(G.message));
-    } else {
-        G.player.role = ROLE_ADMIN;
-        strncpy(G.message, "Admin: M=+$500 | H=Full HP | T=Cay chin | K=Kill all | F6=Thoi tiet", sizeof(G.message));
-    }
-    G.msgTimer = 4.0f;
-}
-
-/* Hàm mới: Chuyển đổi giữa PLAYER và TESTER */
-void Account_ToggleTester(void)
-{
-    if (G.player.role == ROLE_TESTER) {
-        G.player.role = ROLE_PLAYER;
-        strncpy(G.message, "Da thoat Tester mode", sizeof(G.message));
-    } else {
-        G.player.role = ROLE_TESTER;
-        strncpy(G.message, "TESTER: T=Cay chin | K=Kill all | F6=Thoi tiet | F7=Them vat pham | F8=Set Level | F9=Spawn enemy | F10=Animals ready", sizeof(G.message));
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         strncpy(G.message, "Đã thoát chế độ Admin", sizeof(G.message));
     } else {
         G.player.role = ROLE_ADMIN;
         strncpy(G.message, "Admin: M=+$5000 | H=Full HP | T=Cây chín | K=Kill all", sizeof(G.message));
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     }
     G.msgTimer = 4.0f;
 }
@@ -350,15 +277,7 @@ void Account_HandleRegisterInput(void)
 
     if (IsKeyPressed(KEY_ENTER)) {
         if (strcmp(G.regPass, G.regPass2) != 0) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            strcpy(G.regError, "Mat khau xac nhan khong khop!");
-=======
             strcpy(G.regError, "Mật khẩu xác nhận không khớp!");
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-            strcpy(G.regError, "Mật khẩu xác nhận không khớp!");
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             return;
         }
         if (Account_Register(G.regUser, G.regPass, G.regRole, G.regError)) {
@@ -366,15 +285,7 @@ void Account_HandleRegisterInput(void)
             G.screen = SCR_LOGIN;
             strncpy(G.loginUser, G.regUser, MAX_NAME_LEN - 1);
             memset(G.loginPass, 0, sizeof(G.loginPass));
-<<<<<<< HEAD
-<<<<<<< HEAD
-            strncpy(G.loginError, "Dang ky thanh cong! Hay dang nhap.", sizeof(G.loginError));
-=======
             strncpy(G.loginError, "Đăng ký thành công! Hãy đăng nhập.", sizeof(G.loginError));
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-            strncpy(G.loginError, "Đăng ký thành công! Hãy đăng nhập.", sizeof(G.loginError));
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         }
     }
 }

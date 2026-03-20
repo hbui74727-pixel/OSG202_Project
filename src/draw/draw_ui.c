@@ -5,20 +5,10 @@
 #include "../achievement_system.h"
 #include "../account_manager.h"
 #include "../font_manager.h"
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 #include "../game_logic.h"
 #include "../admin_commands.h"
 #include "../audio_manager.h"
 #include "types.h" 
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 #define PBGC (Color){18, 22, 36, 218}
 #define PEDGC (Color){70, 95, 160, 255}
 
@@ -84,30 +74,14 @@ void DrawUI_LoginScreen(void)
     /* Logo */
     DrawTextCenteredShort("SUNNY WORLD", SCREEN_W / 2 + 3, 103, 64, (Color){180, 130, 0, 255});
     DrawTextCenteredShort("SUNNY WORLD", SCREEN_W / 2, 100, 64, GOLD);
-<<<<<<< HEAD
-<<<<<<< HEAD
-    DrawTextCenteredShort("Farm Simulator", SCREEN_W / 2, 170, 28, (Color){220, 200, 120, 200});
-=======
     DrawTextCenteredShort("Cóc Không Biết Code Team", SCREEN_W / 2, 170, 28, (Color){220, 200, 120, 200});
     
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    DrawTextCenteredShort("Cóc Không Biết Code Team", SCREEN_W / 2, 170, 28, (Color){220, 200, 120, 200});
-    
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* Panel */
     int pw = 380, ph = 320, px = SCREEN_W / 2 - pw / 2, py = SCREEN_H / 2 - ph / 2 + 20;
     DrawRectangle(px, py, pw, ph, PBGC);
     DrawRectangleLines(px, py, pw, ph, PEDGC);
     DrawTextCenteredShort("ĐĂNG NHẬP", px + pw / 2, py + 12, 22, GOLD);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     int fx = px + 24, fw = pw - 48;
     DrawInputField(fx, py + 52, fw, 36, "Tên đăng nhập:", G.loginUser, G.loginField == 0, false);
     DrawInputField(fx, py + 120, fw, 36, "Mật khẩu:", G.loginPass, G.loginField == 1, true);
@@ -130,16 +104,6 @@ void DrawUI_LoginScreen(void)
         if (G.loginError[0] == '\0')
             G.screen = SCR_GAME;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if (G.loginError[0])
-        DrawTextCenteredShort(G.loginError, px + pw / 2, py + 240, 12, RED);
-
-    /* Nút chuyển sang đăng ký */
-    if (Button(fx, py + 248, fw, 34, "TẠO TÀI KHOẢN MỚI", (Color){30, 50, 100, 255}, (Color){50, 80, 140, 255}))
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     
     /* THÔNG BÁO LỖI - ĐẶT DƯỚI NÚT ĐĂNG NHẬP */
     if (G.loginError[0])
@@ -150,10 +114,6 @@ void DrawUI_LoginScreen(void)
 
     /* Nút chuyển sang đăng ký */
     if (Button(fx, py + 260, fw, 34, "TẠO TÀI KHOẢN MỚI", (Color){30, 50, 100, 255}, (Color){50, 80, 140, 255}))
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         G.screen = SCR_REGISTER;
 }
 
@@ -171,21 +131,6 @@ void DrawUI_RegisterScreen(void)
     DrawRectangle(0, 0, sw, sh, (Color){0, 0, 0, 120});
 
     DrawRectangleGradientV(0, 0, SCREEN_W, SCREEN_H, (Color){20, 40, 80, 80}, (Color){10, 20, 40, 80});
-<<<<<<< HEAD
-<<<<<<< HEAD
-    DrawTextCenteredShort("SUNNY WORLD", SCREEN_W / 2, 60, 40, GOLD);
-
-    int pw = 400, ph = 420;
-    int px = SCREEN_W / 2 - pw / 2;
-    int py = SCREEN_H / 2 - ph / 2 + 20;
-    DrawRectangle(px, py, pw, ph, PBGC);
-    DrawRectangleLines(px, py, pw, ph, PEDGC);
-    DrawTextCenteredShort("TẠO TÀI KHOẢN", px + pw / 2, py + 12, 22, GOLD);
-    int fx = px + 24, fw = pw - 48;
-    DrawInputField(fx, py + 46, fw, 34, "Tên đăng nhập (>=3 ký tự):", G.regUser, G.regField == 0, false);
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     DrawTextCenteredShort("SUNNY WORLD", SCREEN_W / 2 + 3, 103, 64, (Color){180, 130, 0, 255});
     DrawTextCenteredShort("SUNNY WORLD", SCREEN_W / 2, 100, 64, GOLD);
 
@@ -199,10 +144,6 @@ void DrawUI_RegisterScreen(void)
     int fx = px + 24, fw = pw - 48;
     py = py  + 10;
     DrawInputField(fx, py + 40, fw, 34, "Tên đăng nhập (>=3 ký tự):", G.regUser, G.regField == 0, false);
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     DrawInputField(fx, py + 104, fw, 34, "Mật khẩu (>=4 ký tự):", G.regPass, G.regField == 1, true);
     DrawInputField(fx, py + 162, fw, 34, "Xác nhận mật khẩu:", G.regPass2, G.regField == 2, true);
 
@@ -232,15 +173,7 @@ void DrawUI_RegisterScreen(void)
             G.regRole = (PlayerRole)i;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    DrawTextShort("Tab: chuyển ô  |  Enter: tạo tài khoản", fx, py + 268, 14, (Color){130, 130, 130, 200});
-=======
     DrawTextShort("Tab: chuyển ô  |  Enter: tạo tài khoản", fx, py + 265, 14, (Color){130, 130, 130, 200});
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    DrawTextShort("Tab: chuyển ô  |  Enter: tạo tài khoản", fx, py + 265, 14, (Color){130, 130, 130, 200});
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
     if (Button(fx, py + 280, fw, 40, "TẠO TÀI KHOẢN", (Color){40, 100, 50, 255}, (Color){60, 150, 70, 255}))
     {
@@ -255,13 +188,6 @@ void DrawUI_RegisterScreen(void)
             strncpy(G.loginError, "Đăng ký thành công! Hãy đăng nhập.", sizeof(G.loginError) - 1);
         }
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if (G.regError[0])
-        DrawTextCenteredShort(G.regError, px + pw / 2, py + 334, 12, RED);
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     
     /* THÔNG BÁO LỖI - ĐẶT GIỮA NÚT TẠO TÀI KHOẢN VÀ NÚT QUAY LẠI */
     if (G.regError[0])
@@ -269,10 +195,6 @@ void DrawUI_RegisterScreen(void)
         int errorY = py + 325;  // Điều chỉnh vị trí
         DrawTextCenteredShort(G.regError, px + pw / 2, errorY, 14, RED);
     }
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
     if (Button(fx, py + 342, fw, 34, "QUAY LẠI ĐĂNG NHẬP", (Color){30, 30, 60, 255}, (Color){50, 50, 100, 255}))
         G.screen = SCR_LOGIN;
@@ -281,103 +203,6 @@ void DrawUI_RegisterScreen(void)
 /* ── SIDE PANEL ── */
 void DrawUI_SidePanel(void)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    int pw = 160, ph = 390, px = SCREEN_W - pw - 4, py = 58;
-    DrawRectangle(px, py, pw, ph, PBGC);
-    DrawRectangleLines(px, py, pw, ph, PEDGC);
-    /* Tiêu đề căn giữa */
-    DrawTextCenteredShort("MENU", px + pw / 2, py + 8, 20, GOLD);
-    DrawRectangle(px + 6, py + 28, pw - 12, 1, PEDGC);
-
-    struct
-    {
-        const char *lbl;
-    } btns[] = {
-        {"[I] Túi đồ"}, {"[B] Cửa hàng"}, {"[N] Chuồng"}, {"[Q] Nhiệm vụ"}, {"[F2] Thàn Tựu"}, {"[C] Trợ giúp"}, {"[F5] Lưu"}, {"Đăng xuất"}};
-    int nb = 8;
-    for (int i = 0; i < nb; i++)
-    {
-        int bx = px + 6, by = py + 34 + i * 42, bw = pw - 12, bh = 36;
-        if (by + bh > py + ph - 24)
-            break;
-        if (Button(bx, by, bw, bh, btns[i].lbl, (Color){28, 40, 28, 210}, (Color){50, 90, 50, 230}))
-        {
-            switch (i)
-            {
-            case 0:
-                G.showInventory = !G.showInventory;
-                G.showStore = false;
-                G.showBarnUI = false;
-                G.showAchievements = false;
-                break;
-            case 1:
-                G.showStore = !G.showStore;
-                G.showInventory = false;
-                G.showBarnUI = false;
-                G.showAchievements = false;
-                break;
-            case 2:
-                G.showBarnUI = !G.showBarnUI;
-                G.showInventory = false;
-                G.showStore = false;
-                G.showAchievements = false;
-                break;
-            case 3:
-                G.showQuest = !G.showQuest;
-                break;
-            case 4:
-                G.showAchievements = !G.showAchievements;
-                G.showInventory = false;
-                G.showStore = false;
-                break;
-            case 5:
-                G.showHelp = !G.showHelp;
-                break;
-            case 6:
-            {
-                char sp[128];
-                snprintf(sp, sizeof(sp), "saves/%s.dat", G.player.username);
-                Game_SavePlayer(sp);
-                strncpy(G.message, "Đã lưu!", sizeof(G.message));
-                G.msgTimer = 2.0f;
-                break;
-            }
-            case 7:
-                Account_Logout();
-                break;
-            }
-        }
-    }
-    /* Role badge */
-    const char *rs = (G.player.role == ROLE_ADMIN) ? "ADMIN" : (G.player.role == ROLE_TESTER) ? "TESTER"
-                                                                                              : "PLAYER";
-    Color rc = (G.player.role == ROLE_ADMIN) ? RED : (G.player.role == ROLE_TESTER) ? ORANGE
-                                                                                    : SKYBLUE;
-    DrawTextCenteredShort(rs, px + pw / 2, py + ph - 18, 16, rc);
-}
-
-/* ── QUEST PANEL ── */
-void DrawUI_QuestPanel(void)
-{
-    if (!G.showQuest)
-        return;
-    int pw = 250, ph = 190;
-    int px = SCREEN_W / 2 - pw / 2;
-    int py = SCREEN_H / 2 - ph / 2;
-    DrawRectangle(px, py, pw, ph, PBGC);
-    DrawRectangleLines(px, py, pw, ph, PEDGC);
-    DrawTextCenteredShort("NHIỆM VỤ", px + pw / 2, py + 6, 20, GOLD);
-    for (int i = 0; i < MAX_QUESTS; i++)
-    {
-        Quest *q = &G.quests[i];
-        Color col = q->done ? GREEN : WHITE;
-        DrawTextShort(TextFormat("%s %s", q->done ? "[v]" : "[ ]", q->desc), px + 8, py + 26 + i * 30, 13, col);
-        DrawTextCenteredShort(TextFormat("%d/%d", q->progress, q->target), px + pw - 30, py + 26 + i * 30, 13, YELLOW);
-    }
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     static int activeTab   = -1;
     static int subScroll   = 0;   /* scroll offset cho sub-menu */
 
@@ -630,41 +455,11 @@ void DrawUI_QuestPanel(void)
     
     if (closeHover && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         G.showQuest = false;
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 }
 
 /* ── INVENTORY ── */
 void DrawUI_Inventory(void)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if (!G.showInventory)
-        return;
-    int pw = 560, ph = 400, px = SCREEN_W / 2 - pw / 2, py = SCREEN_H / 2 - ph / 2;
-    DrawRectangle(px, py, pw, ph, PBGC);
-    DrawRectangleLines(px, py, pw, ph, PEDGC);
-    DrawTextCenteredShort("TÚI ĐỒ", px + pw / 2, py + 8, 22, GOLD);
-    DrawTextCenteredShort("RClick=Bán | LClick=Chọn hotbar", px + pw / 2, py + 32, 13, (Color){150, 150, 150, 255});
-    if (Button(px + pw - 70, py + 6, 62, 22, "Đóng", (Color){80, 30, 30, 220}, (Color){150, 50, 50, 255}))
-        G.showInventory = false;
-
-    int cols = 8, sw = 60, sh = 60, oy = py + 56;
-    int gridW = cols * sw + (cols - 1) * 4;
-    int ox = px + (pw - gridW) / 2;
-
-    for (int i = 0; i < INV_SLOTS; i++)
-    {
-        int col = i % cols, row = i / cols;
-        int x = ox + col * (sw + 4), y = oy + row * (sh + 22);
-        bool sel = (i == G.player.hotbarIdx);
-        DrawRectangle(x, y, sw, sh, sel ? (Color){70, 60, 20, 230} : (Color){25, 32, 25, 210});
-        DrawRectangleLines(x, y, sw, sh, sel ? GOLD : (Color){55, 70, 55, 255});
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     if (!G.showInventory) return;
     
     // Kích thước panel to hơn để chứa chữ lớn và ô to
@@ -709,76 +504,11 @@ void DrawUI_Inventory(void)
                      selected ? (Color){70, 60, 20, 230} : (Color){25, 32, 25, 210});
         DrawRectangleLines(x, y, slotSize, slotSize, 
                           selected ? GOLD : (Color){55, 70, 55, 255});
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
         InvSlot *s = &G.player.inv[i];
         if (s->type == ITEM_NONE || s->quantity == 0)
             continue;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        if (s->type >= ITEM_SEED_CARROT && s->type <= ITEM_SEED_WHEAT)
-        {
-            int ct = s->type - ITEM_SEED_CARROT;
-            if (T.crop[ct].width > 0)
-            {
-                int fw = T.crop[ct].width / 6;
-                Rectangle src = {(float)(5 * fw), 0, (float)fw, (float)T.crop[ct].height};
-                DrawTexturePro(T.crop[ct], src, (Rectangle){(float)(x + 4), (float)(y + 4), (float)(sw - 8), (float)(sh - 8)}, (Vector2){0, 0}, 0, WHITE);
-            }
-        }
-        else if (s->type >= ITEM_CARROT && s->type <= ITEM_WHEAT)
-        {
-            int ct = s->type - ITEM_CARROT;
-            if (T.crop[ct].width > 0)
-            {
-                int fw = T.crop[ct].width / 6;
-                Rectangle src = {(float)(5 * fw), 0, (float)fw, (float)T.crop[ct].height};
-                Rectangle dst = {
-                    x + sw / 2,
-                    y + sh / 2,
-                    sw - 8,
-                    sh - 8};
-
-                Vector2 origin = {(sw - 8) / 2.0f, (sh - 8) / 2.0f};
-
-                DrawTexturePro(T.crop[ct], src, dst, origin, 0, WHITE);
-            }
-        }
-        else
-        {
-            const char *t = TextFormat("%c", GetItemName(s->type)[0]);
-            int tw = MeasureText(t, 20);
-
-            DrawTextShort(
-                t,
-                x + sw / 2 - tw / 2,
-                y + sh / 2 - 10,
-                20,
-                WHITE);
-        }
-        const char *name = GetItemName(s->type);
-        int tw = MeasureText(name, 11);
-
-        DrawTextShort(
-            name,
-            x + sw / 2 - tw / 2,
-            y + sh + 2,
-            11,
-            LIGHTGRAY);
-
-        if (s->quantity > 1)
-            DrawTextCenteredShort(TextFormat("x%d", s->quantity), x + sw - 18, y + sh - 13, 15, YELLOW);
-
-        Rectangle sr = {(float)x, (float)y, (float)sw, (float)sh};
-        if (CheckCollisionPointRec(GetMousePosition(), sr))
-        {
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         // Vẽ icon item
         if (s->type >= ITEM_SEED_CARROT && s->type <= ITEM_SEED_WHEAT) {
             int ct = s->type - ITEM_SEED_CARROT;
@@ -829,21 +559,12 @@ void DrawUI_Inventory(void)
         if (CheckCollisionPointRec(GetMousePosition(), slotRect)) {
             DrawRectangleLinesEx(slotRect, 2, (Color){255, 255, 100, 200});
             
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
                 Economy_SellSlot(i);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
                 G.player.hotbarIdx = i;
         }
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     
     // // Hiển thị tổng số slot đã dùng
     // int usedSlots = 0;
@@ -853,10 +574,6 @@ void DrawUI_Inventory(void)
     // }
     // DrawTextShort(TextFormat("Đã dùng: %d/%d ô", usedSlots, INV_SLOTS), 
     //               px + 25, py + ph - 35, 14, (Color){180, 180, 180, 255});
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 }
 
 /* ── STORE ── */
@@ -913,29 +630,6 @@ static void DrawItemIcon(ItemType type, int x, int y, int sz)
 static int DrawQtySelector(int x, int y, int qty, int maxQty,
                            Color minusBg, Color plusBg, Color presetBg)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    int btnH = 22, numW = 34;
-    /* [-] */
-    if (Button(x, y, 22, btnH, "-", minusBg, (Color){minusBg.r + 40, minusBg.g + 20, minusBg.b + 10, 255}))
-        if (qty > 1)
-            qty--;
-    /* [num] */
-    DrawRectangle(x + 24, y, numW, btnH, (Color){10, 12, 22, 230});
-    DrawRectangleLines(x + 24, y, numW, btnH, (Color){70, 90, 130, 200});
-    DrawTextCenteredShort(TextFormat("%d", qty), x + 24 + numW / 2, y + 4, 12, WHITE);
-    /* [+] */
-    if (Button(x + 60, y, 22, btnH, "+", plusBg, (Color){plusBg.r + 40, plusBg.g + 20, plusBg.b + 10, 255}))
-        if (qty < maxQty)
-            qty++;
-    /* [x5] */
-    if (Button(x + 86, y, 30, btnH, "x5", presetBg, (Color){presetBg.r + 30, presetBg.g + 20, presetBg.b + 30, 255}))
-        qty = (5 < maxQty) ? 5 : maxQty;
-    /* [x10] */
-    if (Button(x + 120, y, 34, btnH, "x10", presetBg, (Color){presetBg.r + 30, presetBg.g + 20, presetBg.b + 30, 255}))
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* Kích thước lớn hơn để dễ bấm */
     int btnH = 32, numW = 50;
     /* [-] */
@@ -957,29 +651,10 @@ static int DrawQtySelector(int x, int y, int qty, int maxQty,
     /* [x10] */
     if (Button(x + 170, y, 42, btnH, "x10", presetBg,
         (Color){(unsigned char)(presetBg.r+30),(unsigned char)(presetBg.g+20),(unsigned char)(presetBg.b+30),255}))
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         qty = (10 < maxQty) ? 10 : maxQty;
     return qty;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-void DrawUI_Store(void)
-{
-    if (!G.showStore)
-        return;
-
-    /* ── State tĩnh cho quantity ── */
-    static int storeTab = 0;
-    static int buyQty[12] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-    static int sellQty[INV_SLOTS];
-    static bool sqInit = false;
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 /* ── STORE ── */
 void DrawUI_Store(void)
 {
@@ -997,10 +672,6 @@ void DrawUI_Store(void)
     float savedCamZoom = G.camZoom;
     G.camZoom = 1.0f;  // Tạm thời set zoom = 1 khi mở store
     
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     if (!sqInit)
     {
         for (int i = 0; i < INV_SLOTS; i++)
@@ -1008,38 +679,6 @@ void DrawUI_Store(void)
         sqInit = true;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    /* ── Cửa sổ chính: 760x580 ── */
-    int pw = 760, ph = 580, px = SCREEN_W / 2 - pw / 2, py = SCREEN_H / 2 - ph / 2;
-    DrawRectangle(px, py, pw, ph, PBGC);
-    DrawRectangleLines(px, py, pw, ph, (Color){100, 150, 220, 255});
-
-    /* Header */
-    DrawTextCenteredShort("CỬA HÀNG", px + pw / 2, py + 8, 24, GOLD);
-    DrawTextCenteredShort(TextFormat("Tiền: $%d", G.player.money), px + 36, py + 10, 18, YELLOW);
-    if (Button(px + pw - 76, py + 6, 68, 26, "[X] Đóng", (Color){80, 30, 30, 220}, (Color){150, 50, 50, 255}))
-        G.showStore = false;
-
-    /* ── Tabs ── */
-    int tabY = py + 40, tabH = 28;
-    Color tBuyN = (Color){28, 45, 80, 210}, tBuyA = (Color){55, 100, 185, 245};
-    Color tSellN = (Color){50, 28, 12, 210}, tSellA = (Color){130, 65, 18, 245};
-    if (Button(px + 10, tabY, 150, tabH, "  MUA HÀNG", storeTab == 0 ? tBuyA : tBuyN, tBuyA))
-        storeTab = 0;
-    if (Button(px + 168, tabY, 150, tabH, "  BÁN HÀNG", storeTab == 1 ? tSellA : tSellN, tSellA))
-        storeTab = 1;
-    DrawLine(px, tabY + tabH, px + pw, tabY + tabH, (Color){70, 95, 160, 200});
-
-    int contentY = tabY + tabH + 6; /* Y bắt đầu nội dung */
-    int contentH = py + ph - contentY - 6;
-
-    /* ════════════════════════════════════════════════
-       TAB MUA HANG
-       Layout: 3 cột, mỗi card 238x108
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* ── Cửa sổ chính ── */
     int pw = 900, ph = 650;  // Tăng kích thước
     int px = SCREEN_W / 2 - pw / 2;
@@ -1094,10 +733,6 @@ void DrawUI_Store(void)
 
     /* ════════════════════════════════════════════════
        TAB MUA HÀNG
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     ════════════════════════════════════════════════ */
     if (storeTab == 0)
     {
@@ -1106,14 +741,6 @@ void DrawUI_Store(void)
             ITEM_SEED_CAULIFLOWER, ITEM_SEED_KALE, ITEM_SEED_PARSNIP,
             ITEM_SEED_POTATO, ITEM_SEED_PUMPKIN, ITEM_SEED_RADISH,
             ITEM_SEED_SUNFLOWER, ITEM_SEED_WHEAT, ITEM_FEED};
-<<<<<<< HEAD
-<<<<<<< HEAD
-        int nb = 12, cols = 3;
-        int iw = 246, ih = 96, gap = 5;
-        int ox = px + 8, oy = contentY + 2;
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             
         int nb = 12, cols = 2;
         int iw = 380, ih = 170;
@@ -1124,94 +751,22 @@ void DrawUI_Store(void)
         int totalRows = (nb + cols - 1) / cols;
         int totalHeight = totalRows * (ih + gap);
         maxScroll = (totalHeight > contentH) ? totalHeight - contentH + 20 : 0;
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
         for (int i = 0; i < nb; i++)
         {
             int col = i % cols, row = i / cols;
-<<<<<<< HEAD
-<<<<<<< HEAD
-            int cx = ox + col * (iw + gap), cy = oy + row * (ih + gap);
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             int cx = contentX + 5 + col * (iw + gap);
             int cy = startY + row * (ih + gap);
 
             // Chỉ vẽ nếu nằm trong vùng nhìn thấy
             if (cy + ih < contentY || cy > contentY + contentH)
                 continue;
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
             ItemType it = buyItems[i];
             int price = GetItemPrice(it);
             int totalCost = price * buyQty[i];
             bool canAfford = (G.player.money >= totalCost);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-            /* ── Nền card ── */
-            bool hov = CheckCollisionPointRec(GetMousePosition(),
-                                              (Rectangle){(float)cx, (float)cy, (float)iw, (float)ih});
-            DrawRectangle(cx, cy, iw, ih, hov ? (Color){26, 50, 88, 245} : (Color){16, 28, 50, 225});
-            DrawRectangleLinesEx((Rectangle){(float)cx, (float)cy, (float)iw, (float)ih},
-                                 1.5f, hov ? GOLD : (Color){50, 80, 125, 210});
-
-            /* ── Icon 40x40 ── */
-            DrawItemIcon(it, cx + 4, cy + 4, 40);
-
-            /* ── Tên item + giá ── */
-            DrawTextCenteredShort(GetItemName(it), cx + 50 + (iw - 50) / 2, cy + 4, 12, WHITE);
-            DrawTextCenteredShort(TextFormat("$%d/cái", price), cx + 50 + (iw - 50) / 2, cy + 20, 11, YELLOW);
-
-            /* ── Separator ── */
-            DrawLine(cx + 4, cy + 38, cx + iw - 4, cy + 38, (Color){50, 70, 110, 160});
-
-            /* ── Qty selector tại y=cy+43 ── */
-            DrawTextShort("SL:", cx + 4, cy + 46, 10, (Color){150, 150, 150, 255});
-            buyQty[i] = DrawQtySelector(
-                cx + 26, cy + 43, buyQty[i], 99,
-                (Color){50, 30, 20, 220}, (Color){30, 60, 20, 220}, (Color){25, 45, 80, 220});
-
-            /* ── Tổng tiền + nút MUA ── */
-            Color cstCol = canAfford ? LIME : RED;
-            DrawTextShort(TextFormat("= $%d", totalCost), cx + 4, cy + 72, 11, cstCol);
-
-            Color buyBg = canAfford ? (Color){25, 75, 130, 230} : (Color){38, 38, 38, 180};
-            Color buyHov = canAfford ? (Color){45, 125, 200, 255} : (Color){48, 48, 48, 200};
-            if (Button(cx + iw - 62, cy + 66, 56, 24, "MUA", buyBg, buyHov))
-                if (canAfford)
-                    Economy_BuyItem(it, buyQty[i]);
-        }
-
-        /* Hint hotbar ở dưới cùng */
-        int hy = py + ph - 36;
-        DrawRectangle(px + 6, hy, pw - 12, 30, (Color){10, 20, 10, 200});
-        DrawRectangleLines(px + 6, hy, pw - 12, 30, (Color){60, 100, 50, 180});
-
-        /* ════════════════════════════════════════════════
-           TAB BAN HANG
-           Layout: 3 cột, mỗi card 246x130
-        ════════════════════════════════════════════════ */
-    }
-    else
-    {
-        int cols = 3;
-        int iw = 246, ih = 130, gap = 5;
-        int ox = px + 8, oy = contentY + 2;
-        int row2 = 0, col2 = 0;
-        int di = 0; /* display index – dùng làm key cho sellQty */
-        bool anyItem = false;
-
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             /* Nền card */
             bool hov = CheckCollisionPointRec(GetMousePosition(),
                                               (Rectangle){(float)cx, (float)cy, (float)iw, (float)ih});
@@ -1275,27 +830,11 @@ void DrawUI_Store(void)
         int totalHeight = totalRows * (ih + gap);
         maxScroll = (totalHeight > contentH) ? totalHeight - contentH + 20 : 0;
 
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         for (int i = 0; i < INV_SLOTS; i++)
         {
             InvSlot *s = &G.player.inv[i];
             if (s->type == ITEM_NONE || s->quantity == 0)
                 continue;
-<<<<<<< HEAD
-<<<<<<< HEAD
-            /* Bán tất cả item có trong kho (trừ item rỗng và item không có giá) */
-            int price = GetItemPrice(s->type);
-            if (price <= 0)
-                continue;
-            anyItem = true;
-
-            /* Clamp sellQty dùng display-index */
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                 
             int price = GetItemPrice(s->type);
             if (price <= 0)
@@ -1303,62 +842,11 @@ void DrawUI_Store(void)
                 
             anyItem = true;
 
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             if (sellQty[di] < 1)
                 sellQty[di] = 1;
             if (sellQty[di] > s->quantity)
                 sellQty[di] = s->quantity;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-            int cx = ox + col2 * (iw + gap), cy = oy + row2 * (ih + gap);
-            if (cy + ih > py + ph - 10)
-                break;
-
-            /* ── Nền card ── */
-            bool hov = CheckCollisionPointRec(GetMousePosition(),
-                                              (Rectangle){(float)cx, (float)cy, (float)iw, (float)ih});
-            DrawRectangle(cx, cy, iw, ih, hov ? (Color){65, 42, 12, 245} : (Color){36, 22, 8, 225});
-            DrawRectangleLinesEx((Rectangle){(float)cx, (float)cy, (float)iw, (float)ih},
-                                 1.5f, hov ? GOLD : (Color){115, 85, 35, 210});
-
-            /* ── Dòng 1: Icon 40x40 + Tên + Kho + Giá ── */
-            DrawItemIcon(s->type, cx + 4, cy + 4, 40);
-            DrawTextCenteredShort(GetItemName(s->type), cx + 50 + (iw - 50) / 2, cy + 4, 13, WHITE);
-            DrawTextCenteredShort(TextFormat("Kho: x%d", s->quantity), cx + 50 + (iw - 50) / 2, cy + 22, 11, (Color){180, 180, 180, 255});
-            DrawTextCenteredShort(TextFormat("Giá: $%d/cái", price), cx + 50 + (iw - 50) / 2, cy + 38, 11, YELLOW);
-
-            /* ── Separator ── */
-            DrawLine(cx + 4, cy + 52, cx + iw - 4, cy + 52, (Color){90, 65, 20, 160});
-
-            /* ── Dòng 2: Qty selector ── */
-            DrawTextShort("Bán:", cx + 4, cy + 59, 10, (Color){150, 150, 150, 255});
-            sellQty[di] = DrawQtySelector(
-                cx + 32, cy + 56, sellQty[di], s->quantity,
-                (Color){65, 30, 10, 220}, (Color){50, 70, 15, 220}, (Color){60, 40, 10, 220});
-
-            /* ── Dòng 3: Thu nhập ── */
-            int earned = price * sellQty[di];
-            DrawTextShort(TextFormat("Thu được: +$%d", earned), cx + 4, cy + 83, 11, LIME);
-
-            /* ── Dòng 4: Nút BAN / BAN HET ── */
-            int btnY = cy + ih - 26;
-            int hw = (iw - 14) / 2;
-            if (Button(cx + 4, btnY, hw, 22, "BÁN", (Color){75, 38, 8, 230}, (Color){140, 75, 18, 255}))
-            {
-                Economy_SellPartial(i, sellQty[di]);
-                /* Sau compact, reset toàn bộ sellQty về 1 */
-                for (int k = 0; k < INV_SLOTS; k++)
-                    sellQty[k] = 1;
-                break; /* thoát loop, frame sau vẽ lại */
-            }
-            if (Button(cx + 8 + hw, btnY, hw, 22, "BÁN HẾT", (Color){110, 28, 8, 230}, (Color){180, 55, 18, 255}))
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             int col = di % cols, row = di / cols;
             int cx = contentX + 5 + col * (iw + gap);
             int cy = startY + row * (ih + gap);
@@ -1413,10 +901,6 @@ void DrawUI_Store(void)
             
             if (Button(cx + 125, cy + 175, 100, 30, "BÁN HẾT", 
                        (Color){130, 40, 15, 240}, (Color){200, 65, 22, 255}))
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             {
                 Economy_SellSlot(i);
                 for (int k = 0; k < INV_SLOTS; k++)
@@ -1425,66 +909,10 @@ void DrawUI_Store(void)
             }
 
             di++;
-<<<<<<< HEAD
-<<<<<<< HEAD
-            col2++;
-            if (col2 >= cols)
-            {
-                col2 = 0;
-                row2++;
-            }
-=======
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         }
 
         if (!anyItem)
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            DrawTextCenteredShort("Không có hàng hóa để bán.", px + pw / 2, contentY + 60, 15, GRAY);
-            DrawTextCenteredShort("Thu hoạch cây trồng và sản phẩm động vật trước!", px + pw / 2, contentY + 88, 12, DARKGRAY);
-        }
-    }
-}
-
-/* ── BARN UI ── */
-void DrawUI_BarnPanel(void)
-{
-    if (!G.showBarnUI)
-        return;
-    int pw = 480, ph = 440, px = SCREEN_W / 2 - pw / 2, py = SCREEN_H / 2 - ph / 2;
-    DrawRectangle(px, py, pw, ph, PBGC);
-    DrawRectangleLines(px, py, pw, ph, (Color){180, 140, 60, 255});
-    DrawTextCenteredShort("QUẢN LÝ CHUỒNG", px + pw / 2, py + 8, 16, GOLD);
-    if (Button(px + pw - 72, py + 6, 64, 22, "[X] Đóng", (Color){80, 30, 30, 220}, (Color){150, 50, 50, 255}))
-        G.showBarnUI = false;
-
-    int feedInv = Inv_Count(ITEM_FEED);
-    DrawTextCenteredShort(TextFormat("Thức ăn trong túi: x%d", feedInv), px + 60, py + 14, 11,
-                          feedInv > 0 ? YELLOW : (Color){200, 80, 80, 255});
-
-    if (G.barnCount == 0)
-    {
-        DrawTextCenteredShort("Chưa có chuồng nào.", px + pw / 2, py + ph / 2, 14, LIGHTGRAY);
-        DrawTextCenteredShort("Mua chuồng tại Cửa Hàng.", px + pw / 2, py + ph / 2 + 24, 12, GRAY);
-        return;
-    }
-
-    static const char *aname[] = {"Gà (Trứng)", "Lợn (Sữa)", "Cừu (Len)"};
-    static const Color acolor[] = {{255, 240, 160, 255}, {255, 200, 140, 255}, {220, 230, 210, 255}};
-    int oy = py + 38;
-
-    for (int i = 0; i < G.barnCount; i++)
-    {
-        Barn *b = &G.barns[i];
-        if (!b->active)
-            continue;
-
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             DrawTextCenteredShort("KHÔNG CÓ HÀNG HÓA ĐỂ BÁN", 
                                  px + pw / 2, contentY + 100, 26, GRAY);
             DrawTextCenteredShort("Thu hoạch cây trồng và sản phẩm động vật trước!", 
@@ -1704,118 +1132,10 @@ void DrawUI_BarnPanel(void)
         }
 
         /* Thống kê động vật */
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         int hungry = 0, hasProduct = 0, total = 0;
         for (int j = 0; j < MAX_ANIMALS; j++)
         {
             Animal *a = &G.animals[j];
-<<<<<<< HEAD
-<<<<<<< HEAD
-            if (!a->active || a->barnIdx != i)
-                continue;
-            total++;
-            if (a->hungry)
-                hungry++;
-            if (a->hasProduct)
-                hasProduct++;
-        }
-
-        int bh = 84;
-        DrawRectangle(px + 6, oy, pw - 12, bh, (Color){22, 35, 15, 225});
-        DrawRectangleLinesEx((Rectangle){(float)(px + 6), (float)oy, (float)(pw - 12), (float)bh},
-                             1.5f, (Color){100, 130, 60, 200});
-
-        DrawTextShort(TextFormat("Chuồng %d — %s", i + 1, aname[b->type]), px + 14, oy + 5, 13, acolor[b->type]);
-        DrawTextShort(TextFormat("%d/%d con", total, MAX_ANIMALS_PER_BARN), px + 14, oy + 22, 11,
-                      total >= MAX_ANIMALS_PER_BARN ? RED : LIGHTGRAY);
-        if (hungry > 0)
-            DrawText(TextFormat("| Đói: %d", hungry), px + 70, oy + 22, 11, RED);
-        if (hasProduct > 0)
-            DrawText(TextFormat("| Sản phẩm: %d", hasProduct), px + 130, oy + 22, 11, LIME);
-
-        int btnX = px + pw - 130, btnW = 118, btnH = 20;
-
-        /* Mua */
-        bool canBuy = (total < MAX_ANIMALS_PER_BARN && G.player.money >= ANIMAL_PRICE);
-        if (Button(btnX, oy + 4, btnW, btnH, TextFormat("MUA ($%d)", ANIMAL_PRICE),
-                   canBuy ? (Color){30, 70, 130, 230} : (Color){30, 30, 30, 180},
-                   canBuy ? (Color){50, 110, 200, 255} : (Color){40, 40, 40, 200}))
-            if (canBuy)
-                Barn_BuyAnimal(i);
-
-        /* Cho ăn */
-        bool canFeed = (hungry > 0 && feedInv > 0);
-        if (Button(btnX, oy + 28, btnW, btnH, TextFormat("CHO ĂN (%d đói)", hungry),
-                   hungry > 0 ? (Color){120, 70, 10, 230} : (Color){30, 30, 30, 180},
-                   canFeed ? (Color){190, 110, 20, 255} : (Color){40, 40, 40, 200}))
-        {
-            if (canFeed)
-            {
-                int fed = 0;
-                for (int j = 0; j < MAX_ANIMALS; j++)
-                {
-                    Animal *a = &G.animals[j];
-                    if (!a->active || a->barnIdx != i || !a->hungry)
-                        continue;
-                    if (!Inv_Remove(ITEM_FEED, 1))
-                        break;
-                    a->hungry = false;
-                    a->feedTimer = FEED_SECS;
-                    fed++;
-                }
-                feedInv = Inv_Count(ITEM_FEED);
-                snprintf(G.message, sizeof(G.message), "Cho %d con ăn!", fed);
-                G.msgTimer = 1.5f;
-            }
-            else if (!hungry)
-            {
-                strncpy(G.message, "Không con nào đang đói.", sizeof(G.message));
-                G.msgTimer = 1.5f;
-            }
-            else
-            {
-                strncpy(G.message, "Hết thức ăn!", sizeof(G.message));
-                G.msgTimer = 1.5f;
-            }
-        }
-
-        /* Thu hoạch */
-        bool canHarv = (hasProduct > 0);
-        if (Button(btnX, oy + 52, btnW, btnH, TextFormat("THU HOẠCH (%d)", hasProduct),
-                   canHarv ? (Color){20, 90, 30, 230} : (Color){30, 30, 30, 180},
-                   canHarv ? (Color){35, 150, 50, 255} : (Color){40, 40, 40, 200}))
-        {
-            if (canHarv)
-            {
-                int got = 0;
-                for (int j = 0; j < MAX_ANIMALS; j++)
-                {
-                    Animal *a = &G.animals[j];
-                    if (!a->active || a->barnIdx != i || !a->hasProduct)
-                        continue;
-                    ItemType prod = (a->type == ANIMAL_CHICKEN) ? ITEM_EGG : (a->type == ANIMAL_PIG) ? ITEM_MILK
-                                                                                                     : ITEM_WOOL;
-                    if (Inv_Add(prod, 1))
-                    {
-                        a->hasProduct = false;
-                        got++;
-                    }
-                }
-                snprintf(G.message, sizeof(G.message), "Thu %d sản phẩm!", got);
-                G.msgTimer = 2.0f;
-            }
-        }
-
-        oy += bh + 5;
-        if (oy > py + ph - 10)
-            break;
-    }
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             if (!a->active || a->barnIdx != i) continue;
             total++;
             if (a->hungry) hungry++;
@@ -2085,25 +1405,12 @@ void DrawUI_BarnPanel(void)
     /* Khôi phục camera khi đóng */
     if (!G.showBarnUI)
         G.camZoom = savedCamZoom;
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 }
 
 /* ── HELP ── */
 void DrawUI_Help(void)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if (!G.showHelp)
-        return;
-=======
     if (!G.showHelp) return;
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    if (!G.showHelp) return;
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     int pw = 440, ph = 500;
     int px = SCREEN_W / 2 - pw / 2;
     int py = SCREEN_H / 2 - ph / 2;
@@ -2143,14 +1450,7 @@ void DrawUI_Help(void)
 }
 
 /* ── PAUSE ── */
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 void DrawUI_PauseScreen(void)
 {
     DrawRectangle(0, 0, SCREEN_W, SCREEN_H, (Color){0, 0, 0, 140});
@@ -2162,20 +1462,6 @@ void DrawUI_PauseScreen(void)
 /* ── ACHIEVEMENTS PANEL ── */
 void DrawUI_Achievements(void)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if (!G.showAchievements)
-        return;
-
-    int pw = 600, ph = 500, px = SCREEN_W / 2 - pw / 2, py = SCREEN_H / 2 - ph / 2;
-    DrawRectangle(px, py, pw, ph, (Color){12, 14, 28, 248});
-    DrawRectangleLines(px, py, pw, ph, (Color){200, 160, 50, 255});
-    DrawTextCenteredShort("THÀNH TỰU", px + pw / 2, py + 8, 24, GOLD);
-
-    /* Đếm đã mở */
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     if (!G.showAchievements) return;
     
     /* State tĩnh cho scroll */
@@ -2207,94 +1493,10 @@ void DrawUI_Achievements(void)
     DrawTextCenteredShort("THÀNH TỰU", px + pw / 2, py + 25, 42, GOLD);
     
     /* Đếm số đã mở khóa */
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     int unlocked = 0;
     for (int i = 0; i < MAX_ACHIEVEMENTS; i++)
         if (achievements[i].unlocked)
             unlocked++;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // DrawTextCenteredShort(TextFormat("%d / %d da mo khoa", unlocked, MAX_ACHIEVEMENTS),
-    //                       px + 24, py + 34, 16, (Color){180, 180, 180, 255});
-
-    if (Button(px + pw - 70, py + 6, 62, 22, "Đóng", (Color){80, 30, 30, 220}, (Color){150, 50, 50, 255}))
-        G.showAchievements = false;
-
-    /* Thanh tiến trình tổng */
-    int bw = pw - 100, bx2 = px + 50, by2 = py + 52;
-    DrawRectangle(bx2, by2, bw, 10, (Color){30, 30, 30, 200});
-    DrawRectangle(bx2, by2, (int)(bw * (float)unlocked / MAX_ACHIEVEMENTS), 10, GOLD);
-    DrawRectangleLines(bx2, by2, bw, 10, DARKGRAY);
-
-    /* Grid thành tựu: 2 cột */
-    int cols = 2;
-    int padding = 12;
-    int iw = (pw - padding * 2) / cols;
-    int ih = 54;
-    int ox = px + 8, oy = py + 72;
-    for (int i = 0; i < MAX_ACHIEVEMENTS; i++)
-    {
-        Achievement *a = &achievements[i];
-        int col = i % cols, row = i / cols;
-        int x = ox + col * iw, y = oy + row * (ih + 4);
-        if (y + ih > py + ph - 10)
-            break;
-
-        Color bg = a->unlocked ? (Color){40, 70, 30, 230} : (Color){22, 28, 22, 210};
-        Color edge = a->unlocked ? (Color){120, 200, 60, 255} : (Color){50, 60, 50, 200};
-        DrawRectangle(x, y, iw - 4, ih, bg);
-        DrawRectangleLines(x, y, iw - 4, ih, edge);
-
-        /* Icon */
-        Color iconCol = a->unlocked ? GOLD : (Color){80, 80, 80, 200};
-        DrawRectangle(x + 4, y + 4, 34, ih - 8, a->unlocked ? (Color){60, 50, 10, 200} : (Color){30, 30, 30, 200});
-        DrawTextCenteredShort(a->icon, x + 21, y + (ih - 12) / 2, 11, iconCol);
-
-        /* Tên + mô tả */
-        Color nameCol = a->unlocked ? WHITE : (Color){100, 100, 100, 255};
-        DrawTextShort(a->name,
-                      x + 42,
-                      y + 6,
-                      13,
-                      nameCol);
-
-        DrawTextShort(a->desc,
-                      x + 42,
-                      y + 22,
-                      10,
-                      a->unlocked ? (Color){180, 220, 150, 255} : (Color){80, 90, 80, 255});
-        /* Progress bar */
-        if (!a->unlocked)
-        {
-            int pbx = x + 44;
-            int pby = y + 36;
-            int pbw = iw - 110;
-            int cur = a->progress, tgt = a->threshold;
-            float ratio = (tgt > 0) ? (float)cur / tgt : 0;
-            if (ratio > 1)
-                ratio = 1;
-            DrawRectangle(pbx - 2, pby, pbw, 6, (Color){25, 25, 25, 200});
-            DrawRectangle(pbx, pby, (int)(pbw * ratio), 6, (Color){80, 150, 80, 255});
-            DrawRectangleLines(pbx - 4, pby - 1, pbw, 6, WHITE);
-            DrawTextShort(TextFormat("%d/%d", cur, tgt),
-                          pbx + pbw + 6,
-                          pby - 2,
-                          9,
-                          (Color){140, 140, 140, 255});
-        }
-        else
-        {
-            DrawTextShort(TextFormat("%d / %d đã mở khóa", unlocked, MAX_ACHIEVEMENTS),
-                          px + 20,
-                          py + 34,
-                          16,
-                          (Color){180, 180, 180, 255});
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     
     /* Thanh tiến trình tổng - TO */
     int barX = px + 150, barY = py + 80, barW = pw - 300, barH = 25;
@@ -2717,10 +1919,6 @@ void DrawUI_Settings(void)
             DrawTextShort("H=FullHP  T=CayChin  G=ThemHat  D=DaoTatCaDat", cx+8, cy, 14, (Color){220,180,180,255});
         } else {
             DrawTextShort("T=CayChin  H=PhucHoiHP  F6=ThoiTiet",       cx+8, cy, 14, (Color){220,180,180,255});
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         }
     }
 }

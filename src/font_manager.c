@@ -57,19 +57,6 @@ void Font_Load(void)
         0x1EE8, 0x1EE9, 0x1EEA, 0x1EEB, 0x1EEC, 0x1EED, 0x1EEE, 0x1EEF,
         0x1EF0, 0x1EF1, 0x1EF2, 0x1EF3, 0x1EF4, 0x1EF5, 0x1EF6, 0x1EF7,
         0x1EF8, 0x1EF9, // Vietnamese base letters
-<<<<<<< HEAD
-<<<<<<< HEAD
-0x0102, // Ă
-0x0103, // ă
-0x0110, // Đ
-0x0111, // đ
-0x01A0, // Ơ
-0x01A1, // ơ
-0x01AF, // Ư
-0x01B0, // ư
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         0x0102, // Ă
         0x0103, // ă
         0x0110, // Đ
@@ -78,10 +65,6 @@ void Font_Load(void)
         0x01A1, // ơ
         0x01AF, // Ư
         0x01B0, // ư
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         
         // Ký tự đặc biệt
         0x20AC, // €
@@ -94,20 +77,10 @@ void Font_Load(void)
         0x2190, // ←
         0x2191, // ↑
         0x2192, // →
-<<<<<<< HEAD
-<<<<<<< HEAD
-        0x2193  // ↓
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         0x2193,  // ↓
 
         0x0169, // ũ - chữ u ngã (Latin small letter u with tilde)
         0x0168 // Ũ - chữ U ngã (Latin capital letter U with tilde)
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     };
     
     int codepointCount = sizeof(codepoints) / sizeof(codepoints[0]);
@@ -144,15 +117,7 @@ void DrawTextShort(const char *text, int posX, int posY, int fontSize, Color col
     if (!text || text[0] == '\0') return;
     
     if (gameFont.texture.id == 0) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        DrawText(text, posX, posY, fontSize, color);
-=======
         DrawTextShort(text, posX, posY, fontSize, color);
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-        DrawTextShort(text, posX, posY, fontSize, color);
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         return;
     }
     
@@ -170,15 +135,7 @@ void DrawTextCenteredShort(const char *text, int centerX, int y, int fontSize, C
     
     if (gameFont.texture.id == 0) {
         int textWidth = MeasureText(text, fontSize);
-<<<<<<< HEAD
-<<<<<<< HEAD
-        DrawText(text, centerX - textWidth / 2, y, fontSize, color);
-=======
         DrawTextShort(text, centerX - textWidth / 2, y, fontSize, color);
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-        DrawTextShort(text, centerX - textWidth / 2, y, fontSize, color);
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         return;
     }
     

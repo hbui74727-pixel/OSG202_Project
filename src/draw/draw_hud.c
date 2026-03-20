@@ -1,29 +1,12 @@
 #include "draw_hud.h"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 #include "types.h"  
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-#include "types.h"  
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 #include "../data_manager.h"
 #include "../entity_manager.h"
 #include "../quest_system.h"
 #include "../achievement_system.h"
-<<<<<<< HEAD
-<<<<<<< HEAD
-#include "../font_manager.h" 
-=======
 #include "../font_manager.h"
 #include "../game_logic.h"
 #include "../account_manager.h"
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-#include "../font_manager.h"
-#include "../game_logic.h"
-#include "../account_manager.h"
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
 static const char *toolLabel[TOOL_COUNT]={
     "[1]Cuốc","[2]Tưới","[3]Trồng","[4]Liềm","[5]Kiếm","[6]Cho Ăn"
@@ -82,15 +65,7 @@ static int FindBarnForAnimal(AnimalType at)
 ───────────────────────────────────────────────────────── */
 static const char *SlotLabel(HotbarItemKind kind)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if (kind==HBAR_SOIL)  return "Đất 3x3";
-=======
     if (kind==HBAR_SOIL)  return "Đất 5X5";
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    if (kind==HBAR_SOIL)  return "Đất 5X5";
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     if (kind==HBAR_WATER) return "Tưới";
     if (kind==HBAR_BARN)  return "Chuồng";
     if (kind>=HBAR_SEED_0&&kind<=HBAR_SEED_LAST)
@@ -120,15 +95,7 @@ static void DrawSlotIcon(HotbarItemKind kind, int x, int y, int sz)
     int p=5, isz=sz-p*2;
     Rectangle dst={(float)(x+p),(float)(y+p),(float)isz,(float)isz};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    /* ── Đất 3x3 ── */
-=======
     /* ── Đất 5X5 ── */
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    /* ── Đất 5X5 ── */
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     if (kind==HBAR_SOIL) {
         if (T.ground.width>=160) {
             int half=isz/2;
@@ -144,15 +111,7 @@ static void DrawSlotIcon(HotbarItemKind kind, int x, int y, int sz)
             DrawRectangleRec(dst,(Color){150,100,50,200});
         }
         DrawRectangleLines(x+p,y+p,isz,isz,(Color){200,160,80,200});
-<<<<<<< HEAD
-<<<<<<< HEAD
-        DrawTextCenteredShort("3x3",x+sz/2-10,y+sz-15,9,(Color){255,230,100,230});
-=======
         DrawTextCenteredShort("5X5",x+sz/2-10,y+sz-15,9,(Color){255,230,100,230});
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-        DrawTextCenteredShort("5X5",x+sz/2-10,y+sz-15,9,(Color){255,230,100,230});
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         return;
     }
 
@@ -253,20 +212,6 @@ void HotbarPlacement_HandleInput(void)
 
         HotbarItemKind kind = G.hbar[G.hbarSel].kind;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        /* ── Đặt đất 3x3 ── */
-        if (kind==HBAR_SOIL) {
-            bool ok=true;
-            for(int dr=0;dr<3&&ok;dr++)
-            for(int dc=0;dc<3&&ok;dc++){
-                int r=ty+dr,c=tx+dc;
-                if(r<1||r>=MAP_ROWS-1||c<1||c>=MAP_COLS-1){ok=false;break;}
-                TileType tt=G.map[r][c].type;
-                if(tt==TILE_WATER_TILE||tt==TILE_STONE){ok=false;break;}
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         /* ── Đặt đất 5x5 [BUG FIX #7: 3x3→5x5, trừ tiền] ── */
         if (kind==HBAR_SOIL) {
             /* Tính giá theo số ô đất đã mua */
@@ -286,36 +231,12 @@ void HotbarPlacement_HandleInput(void)
                 if(r<1||r>=MAP_ROWS-1||c<2||c>=MAP_COLS-1){ok=false;break;}
                 TileType tt=G.map[r][c].type;
                 if(tt==TILE_WATER_TILE||tt==TILE_STONE||G.map[r][c].owned){ok=false;break;}
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                 if(Tile_IsTree(c,r)){
                     strncpy(G.message,"Phải dọn cây trước khi đặt đất!",sizeof(G.message));
                     G.msgTimer=2.5f; return;
                 }
             }
             if (!ok){
-<<<<<<< HEAD
-<<<<<<< HEAD
-                strncpy(G.message,"Vị trí không hợp lệ!",sizeof(G.message));
-                G.msgTimer=1.5f; return;
-            }
-            for(int dr=0;dr<3;dr++)
-            for(int dc=0;dc<3;dc++){
-                int r=ty+dr,c=tx+dc;
-                if(G.map[r][c].type==TILE_GRASS){
-                    G.map[r][c].type=TILE_SOIL_BOUGHT;
-                    G.map[r][c].owned=true;
-                    G.map[r][c].cropIdx=-1;
-                    G.map[r][c].barnIdx=-1;
-                }
-            }
-            strncpy(G.message,"Đã đặt đất 3x3!",sizeof(G.message));
-            G.msgTimer=1.2f;
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                 strncpy(G.message,"Vị trí không hợp lệ hoặc đã được sử dụng!",sizeof(G.message));
                 G.msgTimer=1.5f; return;
             }
@@ -330,10 +251,6 @@ void HotbarPlacement_HandleInput(void)
             }
             snprintf(G.message,sizeof(G.message),"Đã mua đất 5x5! (-$%d)",plotPrice);
             G.msgTimer=1.5f;
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         }
         /* ── Tưới nước ── */
         else if (kind==HBAR_WATER) {
@@ -347,19 +264,8 @@ void HotbarPlacement_HandleInput(void)
                 G.msgTimer=1.2f;
             }
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-        /* ── Đặt chuồng mới (mọi loại dùng chung slot này) ── */
-        else if (kind==HBAR_BARN) {
-            /* Chuồng cần chọn loại → mở popup nhỏ? Tạm thời: thông báo chọn loại thú trước */
-=======
         /* ── Đặt chuồng: nhắc chọn loại thú (3 ô cuối hotbar) ── */
         else if (kind==HBAR_BARN) {
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-        /* ── Đặt chuồng: nhắc chọn loại thú (3 ô cuối hotbar) ── */
-        else if (kind==HBAR_BARN) {
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             strncpy(G.message,"Chọn loại thú (3 ô cuối hotbar) rồi đặt chuồng!",sizeof(G.message));
             G.msgTimer=2.5f;
             G.hbarSel=-1; G.hbarPlacing=false;
@@ -390,44 +296,6 @@ void HotbarPlacement_HandleInput(void)
             strncpy(G.message,"Đã trồng cây!",sizeof(G.message));
             G.msgTimer=1.0f;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-        /* ── Đặt con vật vào chuồng ── */
-        else if (kind>=HBAR_ANIMAL_0&&kind<=HBAR_ANIMAL_LAST) {
-            int at=kind-HBAR_ANIMAL_0;
-            /* Tìm chuồng đúng loại còn trống */
-            int barnIdx=FindBarnForAnimal((AnimalType)at);
-            if (barnIdx<0) {
-                /* Không có chuồng phù hợp → đặt chuồng mới tại vị trí click */
-                bool canPlace=true;
-                for(int dr=0;dr<BARN_H&&canPlace;dr++)
-                for(int dc=0;dc<BARN_W&&canPlace;dc++){
-                    int r=ty+dr,c=tx+dc;
-                    if(r<1||r>=MAP_ROWS-1||c<1||c>=MAP_COLS-1){canPlace=false;break;}
-                    TileType tt=G.map[r][c].type;
-                    if(tt==TILE_STONE||tt==TILE_WATER_TILE){canPlace=false;break;}
-                }
-                if (!canPlace){
-                    strncpy(G.message,"Vị trí không hợp lệ để đặt chuồng!",sizeof(G.message));
-                    G.msgTimer=1.5f; return;
-                }
-                /* Mark owned */
-                for(int dr=0;dr<BARN_H;dr++)
-                for(int dc=0;dc<BARN_W;dc++){
-                    int r=ty+dr,c=tx+dc;
-                    if(r>=0&&r<MAP_ROWS&&c>=0&&c<MAP_COLS)
-                        G.map[r][c].owned=true;
-                }
-                if (!Barn_Build((AnimalType)at,tx,ty)) {
-                    strncpy(G.message,"Không thể xây chuồng!",sizeof(G.message));
-                    G.msgTimer=1.5f; return;
-                }
-                barnIdx=G.barnCount-1;
-            }
-            /* Mua & thêm con vật vào chuồng */
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         /* ── Đặt con vật / xây chuồng ── */
         else if (kind>=HBAR_ANIMAL_0&&kind<=HBAR_ANIMAL_LAST) {
             int at=kind-HBAR_ANIMAL_0;
@@ -437,10 +305,6 @@ void HotbarPlacement_HandleInput(void)
                 if (!Barn_Build((AnimalType)at, tx, ty)) return;
                 barnIdx = G.barnCount - 1;
             }
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             Barn_BuyAnimal(barnIdx);
         }
     }
@@ -455,11 +319,6 @@ void HotbarPlacement_HandleInput(void)
 /* ─────────────────────────────────────────────────────────
    DrawHUD_PlacementBar
 ───────────────────────────────────────────────────────── */
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 /* ── End game / win overlay ── */
 void DrawHUD_EndGame(void)
 {
@@ -523,10 +382,6 @@ void DrawHUD_EndGame(void)
     }
 }
 
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 void DrawHUD_PlacementBar(void)
 {
     /* Khong ve hotbar khi mo cac panel UI lon */
@@ -546,40 +401,6 @@ void DrawHUD_PlacementBar(void)
     
     DrawRectangle(ebx, eby, ebw, ebh, editBg);
     DrawRectangleLines(ebx, eby, ebw, ebh, editBdr);
-<<<<<<< HEAD
-<<<<<<< HEAD
-    
-    // Text chính - căn giữa theo chiều dọc
-    DrawTextCenteredShort("CHỈNH SỬA", ebx + ebw/2, eby + 8, 11, G.editMode?WHITE:(Color){180,180,180,200});
-    DrawTextCenteredShort("NÔNG TRẠI", ebx + ebw/2, eby + 22, 11, G.editMode?WHITE:(Color){180,180,180,200});
-    
-    /* Sub-mode icons - ĐIỀU CHỈNH LẠI VỊ TRÍ */
-    if (G.editMode) {
-        Color xoaBg  = (G.editSubMode==0) ? (Color){200,50,50,240} : (Color){80,20,20,200};
-        Color moveBg = (G.editSubMode==1) ? (Color){50,120,200,240} : (Color){20,40,80,200};
-        
-        // Nút XÓA
-        DrawRectangle(ebx+10, eby+36, 45, 18, xoaBg);
-        DrawRectangleLines(ebx+10, eby+36, 45, 18, (Color){255,100,100,200});
-        DrawTextCenteredShort("XÓA", ebx+10+22, eby+40, 10, WHITE);
-        
-        // Nút MOVE
-        DrawRectangle(ebx+65, eby+36, 45, 18, moveBg);
-        DrawRectangleLines(ebx+65, eby+36, 45, 18, (Color){100,180,255,200});
-        DrawTextCenteredShort("MOVE", ebx+65+22, eby+40, 10, WHITE);
-        
-        // Xử lý click
-        if (CheckCollisionPointRec(GetMousePosition(), (Rectangle){(float)(ebx+10), (float)(eby+36), 45, 18}))
-            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) G.editSubMode=0;
-        if (CheckCollisionPointRec(GetMousePosition(), (Rectangle){(float)(ebx+65), (float)(eby+36), 45, 18}))
-            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) G.editSubMode=1;
-    }
-    
-    /* Click nút chính */
-    if (CheckCollisionPointRec(GetMousePosition(), (Rectangle){(float)ebx, (float)eby, (float)ebw, (float)ebh})
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     DrawTextCenteredShort("CHỈNH SỬA", ebx + ebw/2, eby + 8,  11, G.editMode?WHITE:(Color){180,180,180,200});
     DrawTextCenteredShort("NÔNG TRẠI", ebx + ebw/2, eby + 22, 11, G.editMode?WHITE:(Color){180,180,180,200});
 
@@ -616,10 +437,6 @@ void DrawHUD_PlacementBar(void)
     /* Click nút chính — chỉ toggle nếu KHÔNG click vào nút con */
     if (!clickedSubBtn &&
         CheckCollisionPointRec(GetMousePosition(), (Rectangle){(float)ebx,(float)eby,(float)ebw,(float)ebh})
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
         G.editMode = !G.editMode;
         if (G.editMode) {
@@ -788,19 +605,6 @@ void DrawHUD_PlacementGhost(void)
                     DrawTextCenteredShort(G.editSubMode==0?"Click: XÓA CHUỒNG (hoàn 50%)":"Click: DI CHUYỂN CHUỒNG",
                              (int)(mp.x+12),(int)(mp.y-20),10,G.editSubMode==0?RED:SKYBLUE);
                 } else if (owned) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    /* Highlight ô đất — snap 5x5 */
-                    int ox=(tx/LAND_PLOT_W)*LAND_PLOT_W, oy=(ty/LAND_PLOT_H)*LAND_PLOT_H;
-                    Color col = G.editSubMode==0 ? (Color){255,80,50,80} : (Color){80,200,255,80};
-                    Color bdr = G.editSubMode==0 ? (Color){255,100,60,200} : (Color){100,220,255,200};
-                    for(int dr=0;dr<LAND_PLOT_H;dr++) for(int dc=0;dc<LAND_PLOT_W;dc++) {
-                        int tr=oy+dr, tc=ox+dc;
-                        if(tr<0||tr>=MAP_ROWS||tc<0||tc>=MAP_COLS) continue;
-                        if(!G.map[tr][tc].owned) continue;
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                     /* Highlight ô đất — tìm corner trái-trên của plot chứa tile này */
                     int ox = tx, oy = ty;
                     /* Quét ngược để tìm điểm đầu của vùng owned 5x5 liên tục */
@@ -814,23 +618,11 @@ void DrawHUD_PlacementGhost(void)
                         int tr=oy+dr, tc=ox+dc;
                         if(tr<0||tr>=MAP_ROWS||tc<0||tc>=MAP_COLS) continue;
                         if(!G.map[tr][tc].owned || G.map[tr][tc].barnIdx>=0) continue;
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                         Vector2 sp=WorldToScreen((Vector2){(float)(tc*TILE_SIZE),(float)(tr*TILE_SIZE)});
                         DrawRectangle((int)sp.x,(int)sp.y,(int)(TILE_SIZE*z),(int)(TILE_SIZE*z),col);
                         DrawRectangleLines((int)sp.x,(int)sp.y,(int)(TILE_SIZE*z),(int)(TILE_SIZE*z),bdr);
                     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    DrawTextCenteredShort(G.editSubMode==0?"Click: XÓA Ô ĐẤT (hoàn 30%)":"Click: DI CHUYỂN Ô ĐẤT",
-=======
                     DrawTextCenteredShort(G.editSubMode==0?"Click: XOA O DAT (hoan 30%)":"Click: DI CHUYEN O DAT",
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-                    DrawTextCenteredShort(G.editSubMode==0?"Click: XOA O DAT (hoan 30%)":"Click: DI CHUYEN O DAT",
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                              (int)(mp.x+12),(int)(mp.y-20),10,G.editSubMode==0?RED:SKYBLUE);
                 }
             }
@@ -845,39 +637,17 @@ void DrawHUD_PlacementGhost(void)
         Vector2 mw=ScreenToWorld(mp);
         int tx=WorldToTileX(mw.x), ty=WorldToTileY(mw.y);
         float z=G.camZoom;
-<<<<<<< HEAD
-<<<<<<< HEAD
-        int gW = G.movePlot ? LAND_PLOT_W : BARN_W;
-        int gH = G.movePlot ? LAND_PLOT_H : BARN_H;
-=======
         /* Dùng kích thước thực của plot/barn đang move */
         int gW = G.movePlot ? (G.movePlotW > 0 ? G.movePlotW : LAND_PLOT_W) : BARN_W;
         int gH = G.movePlot ? (G.movePlotH > 0 ? G.movePlotH : LAND_PLOT_H) : BARN_H;
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-        /* Dùng kích thước thực của plot/barn đang move */
-        int gW = G.movePlot ? (G.movePlotW > 0 ? G.movePlotW : LAND_PLOT_W) : BARN_W;
-        int gH = G.movePlot ? (G.movePlotH > 0 ? G.movePlotH : LAND_PLOT_H) : BARN_H;
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         bool allValid=true;
         for(int dr=0;dr<gH&&allValid;dr++) for(int dc=0;dc<gW&&allValid;dc++) {
             int r=ty+dr,c=tx+dc;
             if(r<1||r>=MAP_ROWS-1||c<2||c>=MAP_COLS-1) { allValid=false; break; }
-<<<<<<< HEAD
-<<<<<<< HEAD
-            if(G.movePlot && (G.map[r][c].type!=TILE_GRASS||G.map[r][c].owned)) allValid=false;
-            if(!G.movePlot && (!G.map[r][c].owned||G.map[r][c].barnIdx>=0)) allValid=false;
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             if(G.movePlot && G.map[r][c].owned) allValid=false;
             if(!G.movePlot && (G.map[r][c].barnIdx>=0
                                ||G.map[r][c].type==TILE_STONE
                                ||G.map[r][c].type==TILE_WATER_TILE)) allValid=false;
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         }
         Color col = allValid ? (G.movePlot?(Color){80,200,80,90}:(Color){180,140,60,90}) : (Color){255,50,50,80};
         Color bdr = allValid ? (G.movePlot?(Color){100,240,100,200}:(Color){220,180,80,200}) : (Color){255,80,80,200};
@@ -902,18 +672,6 @@ void DrawHUD_PlacementGhost(void)
     float z=G.camZoom;
     HotbarItemKind kind=G.hbar[G.hbarSel].kind;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    /* Ghost: đất 3x3, chuồng/vật 5x5 */
-    bool isBarnKind=(kind==HBAR_BARN||(kind>=HBAR_ANIMAL_0&&kind<=HBAR_ANIMAL_LAST));
-    bool is3x3 = (kind==HBAR_SOIL||isBarnKind);
-    if (is3x3) {
-        bool isBarn = isBarnKind;
-        int gW = isBarn ? BARN_W : 3;
-        int gH = isBarn ? BARN_H : 3;
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     /* Ghost: đất 5x5, chuồng 5x5 */
     bool isBarnKind=(kind==HBAR_BARN||(kind>=HBAR_ANIMAL_0&&kind<=HBAR_ANIMAL_LAST));
     bool isSoilKind=(kind==HBAR_SOIL);
@@ -921,23 +679,11 @@ void DrawHUD_PlacementGhost(void)
     if (is5x5) {
         int gW = LAND_PLOT_W;  /* 5 */
         int gH = LAND_PLOT_H;  /* 5 */
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         for(int dr=0;dr<gH;dr++)
         for(int dc=0;dc<gW;dc++){
             int r=ty+dr,c=tx+dc;
             if(r<0||r>=MAP_ROWS||c<0||c>=MAP_COLS) continue;
             Vector2 sp=WorldToScreen((Vector2){(float)(c*TILE_SIZE),(float)(r*TILE_SIZE)});
-<<<<<<< HEAD
-<<<<<<< HEAD
-            bool valid = (G.map[r][c].type!=TILE_STONE&&G.map[r][c].type!=TILE_WATER_TILE)&&G.map[r][c].owned;
-            Color col  = valid?(isBarn?(Color){220,170,60,255}:(Color){160,110,50,200}):(Color){255,50,50,150};
-            Color edge = valid?(isBarn?(Color){255,210,80,255}:(Color){220,160,80,255}):(Color){255,80,80,255};
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
             bool valid;
             bool onHome2 = (c>=29&&c<=33 && r>=9 &&r<=12);
@@ -965,10 +711,6 @@ void DrawHUD_PlacementGhost(void)
                                : (Color){255,50,50,120};
             Color edge = valid ? (isBarnKind?(Color){255,210,80,255}:(Color){100,240,100,220})
                                : (Color){255,80,80,220};
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             DrawRectangle((int)sp.x,(int)sp.y,(int)(TILE_SIZE*z),(int)(TILE_SIZE*z),col);
             DrawRectangleLines((int)sp.x,(int)sp.y,(int)(TILE_SIZE*z),(int)(TILE_SIZE*z),edge);
         }
@@ -1002,15 +744,7 @@ void DrawHUD_PlacementGhost(void)
 void DrawHUD_DayProgress(void)
 {
     float t=G.dayTimer/DAY_DURATION;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    int bx=SCREEN_W/2+44,bw=120,by=14,bh=14;
-=======
     int bx=SCREEN_W/2+54,bw=150,by=22,bh=14;
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    int bx=SCREEN_W/2+54,bw=150,by=22,bh=14;
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     DrawRectangle(bx,by,bw,bh,(Color){30,30,50,200});
     Color fill=(t<0.5f)?(Color){255,210,50,255}:(Color){255,100,30,255};
     DrawRectangle(bx,by,(int)(bw*t),bh,fill);
@@ -1020,15 +754,7 @@ void DrawHUD_DayProgress(void)
 
 void DrawHUD_WeatherIcon(void)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    int wx=SCREEN_W/2+170,wy=6;
-=======
     int wx=SCREEN_W/2+215,wy=14;
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    int wx=SCREEN_W/2+215,wy=14;
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     switch(G.weather.current){
         case WEATHER_SUNNY:
             /* Vẽ mặt trời với tia nắng */
@@ -1039,86 +765,23 @@ void DrawHUD_WeatherIcon(void)
                          wx+12+(int)(17*cosf(angle)),wy+12+(int)(17*sinf(angle)),
                          (Color){255,200,30,200});
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
-            DrawTextCenteredShort("Nang",(int)(wx+46),wy+6,12,YELLOW); break;
-        case WEATHER_CLOUDY:
-            DrawEllipse(wx+14,wy+11,18,8,(Color){180,180,190,230});
-            DrawEllipse(wx+22,wy+8,12,7,(Color){200,200,210,230});
-            DrawTextCenteredShort("Day",(int)(wx+46),wy+6,12,LIGHTGRAY); break;
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
             DrawTextCenteredShort("Nắng",(int)(wx+46),wy+6,12,YELLOW); break;
         case WEATHER_CLOUDY:
             DrawEllipse(wx+14,wy+11,18,8,(Color){180,180,190,230});
             DrawEllipse(wx+22,wy+8,12,7,(Color){200,200,210,230});
             DrawTextCenteredShort("Mây",(int)(wx+46),wy+6,12,LIGHTGRAY); break;
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         case WEATHER_RAINY:
             DrawEllipse(wx+14,wy+9,18,7,(Color){120,130,160,230});
             DrawEllipse(wx+22,wy+7,12,6,(Color){130,140,170,230});
             for(int i=0;i<5;i++)
                 DrawLine(wx+i*6+4,wy+18,wx+i*6+1,wy+28,(Color){100,170,255,220});
-<<<<<<< HEAD
-<<<<<<< HEAD
-            DrawTextCenteredShort("Mua",(int)(wx+46),wy+6,12,SKYBLUE); break;
-=======
             DrawTextCenteredShort("Mưa",(int)(wx+46),wy+6,12,SKYBLUE); break;
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-            DrawTextCenteredShort("Mưa",(int)(wx+46),wy+6,12,SKYBLUE); break;
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
         default: break;
     }
 }
 
 void DrawHUD_TopBar(void)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    Player *p=&G.player;
-    DrawRectangle(0,0,SCREEN_W,52,(Color){12,14,28,215});
-    DrawRectangle(0,51,SCREEN_W,2,(Color){60,80,150,255});
-
-    /* Tiền + username - căn trái */
-    DrawTextCenteredShort(TextFormat("$%d",p->money), 60, 8, 20, GOLD);
-    DrawTextCenteredShort(TextFormat("[%s]",p->username), 60, 32, 11,
-             p->role==ROLE_ADMIN?RED:p->role==ROLE_TESTER?ORANGE:LIGHTGRAY);
-
-    /* Ngày - căn giữa */
-    DrawTextCenteredShort(TextFormat("Ngày %d",G.day), SCREEN_W/2, 8, 18, WHITE);
-    DrawHUD_DayProgress(); DrawHUD_WeatherIcon();
-
-    /* Tool - bên trái giữa */
-    DrawTextCenteredShort(toolLabel[p->tool], SCREEN_W/2-220, 16, 14, toolColor[p->tool]);
-
-    /* HP / Level / EXP - căn phải */
-    int hbx=SCREEN_W-230, hby=4;
-    DrawTextCenteredShort(TextFormat("HP %d/%d",p->hp,p->maxHp), hbx+70, hby, 13, WHITE);
-    DrawRectangle(hbx,hby+18,150,10,(Color){40,40,40,210});
-    float hr=(float)p->hp/p->maxHp;
-    DrawRectangle(hbx,hby+18,(int)(150*hr),10,hr>0.5f?GREEN:hr>0.25f?YELLOW:RED);
-    DrawRectangleLines(hbx,hby+18,150,10,DARKGRAY);
-    LevelData *lv=&p->lvl;
-    DrawTextCenteredShort(TextFormat("Lv.%d",lv->level), hbx+163, hby, 13, GOLD);
-    DrawRectangle(hbx,hby+30,150,7,(Color){30,30,30,200});
-    float er=(float)lv->exp/lv->expToNext;
-    DrawRectangle(hbx,hby+30,(int)(150*er),7,(Color){80,160,255,255});
-    DrawRectangleLines(hbx,hby+30,150,7,DARKGRAY);
-    DrawTextCenteredShort(TextFormat("%d/%d EXP",lv->exp,lv->expToNext), hbx+180, hby+28, 9, LIGHTGRAY);
-
-    /* Hướng dẫn phím - căn giữa đáy màn hình */
-    DrawTextCenteredShort("WASD:Di chuyển | 1-6:Tool | LClick:dùng | I:túi | B:Shop | N:Chuồng | Q:Quest | F5:lưu",
-             SCREEN_W/2, SCREEN_H-13, 9, (Color){160,160,160,160});
-}
-
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     Player *p = &G.player;
 
     /* Topbar 64px — 1 dòng chính + 1 dòng phụ */
@@ -1238,25 +901,13 @@ void DrawHUD_TopBar(void)
 
     
 }
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 void DrawHUD_LevelUp(void)
 {
     if(!G.levelUpAnim) return;
     float a=G.levelUpTimer>1.0f?1.0f:G.levelUpTimer;
     unsigned char alpha=(unsigned char)(a*255);
     float y=SCREEN_H*0.35f-sinf(G.levelUpTimer*2.0f)*30.0f;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    DrawTextCenteredShort(TextFormat("LEVEL UP!  Cap %d",G.player.lvl.level),
-=======
     DrawTextCenteredShort(TextFormat("LEVEL UP!  Cấp %d",G.player.lvl.level),
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    DrawTextCenteredShort(TextFormat("LEVEL UP!  Cấp %d",G.player.lvl.level),
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
                      SCREEN_W/2,(int)y,40,(Color){255,220,0,alpha});
     DrawTextCenteredShort(TextFormat("+ $%d  + HP Max",G.player.lvl.level*50),
                      SCREEN_W/2,(int)(y+46),20,(Color){255,255,200,alpha});
@@ -1276,32 +927,6 @@ void DrawHUD_Message(void)
 
 void DrawHUD_Minimap(void)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    int mmX=SCREEN_W-152,mmY=SCREEN_H-170;
-    int mmW=144,mmH=98;
-    DrawRectangle(mmX,mmY,mmW,mmH,(Color){8,18,8,210});
-    DrawRectangleLines(mmX,mmY,mmW,mmH,(Color){70,90,70,255});
-    float sx=(float)mmW/MAP_COLS,sy=(float)mmH/MAP_ROWS;
-    for(int r=0;r<MAP_ROWS;r++) for(int c=0;c<MAP_COLS;c++)
-        if(G.map[r][c].owned)
-            DrawRectangle(mmX+(int)(c*sx),mmY+(int)(r*sy),(int)sx+1,(int)sy+1,(Color){140,100,40,160});
-    DrawRectangle(mmX,mmY,(int)(2*sx),mmH,(Color){40,80,200,120});
-    for(int i=0;i<MAX_ENEMIES;i++){
-        if(!G.enemies[i].active) continue;
-        DrawRectangle(mmX+(int)(G.enemies[i].pos.x/TILE_SIZE*sx)-2,
-                      mmY+(int)(G.enemies[i].pos.y/TILE_SIZE*sy)-2,5,5,RED);
-    }
-    for(int i=0;i<MAX_ANIMALS;i++){
-        if(!G.animals[i].active) continue;
-        DrawRectangle(mmX+(int)(G.animals[i].pos.x/TILE_SIZE*sx)-1,
-                      mmY+(int)(G.animals[i].pos.y/TILE_SIZE*sy)-1,4,4,YELLOW);
-    }
-    DrawCircle(mmX+(int)(G.player.pos.x/TILE_SIZE*sx),
-               mmY+(int)(G.player.pos.y/TILE_SIZE*sy),4,BLUE);
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     int mmX=4,mmY=66;
     int mmW=144,mmH=98;
     DrawRectangle(mmX,mmY,mmW,mmH,(Color){8,18,8,210});
@@ -1345,57 +970,11 @@ void DrawHUD_Minimap(void)
     /* Player — xanh lam */
     DrawCircle(mmX+(int)(G.player.pos.x/TILE_SIZE*sx),
                mmY+(int)(G.player.pos.y/TILE_SIZE*sy),3,BLUE);
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     DrawTextCenteredShort("MAP",mmX+4,mmY+2,9,(Color){150,150,150,180});
 }
 
 void DrawHUD_Weather(void)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    Weather *w=&G.weather;
-    /* Mây: hiện thị mọi thời tiết */
-    for(int i=0;i<8;i++){
-        float a=(w->current==WEATHER_SUNNY)?60:
-                (w->current==WEATHER_CLOUDY)?160:120;
-        /* Đám mây có bóng */
-        DrawEllipse((int)w->cloudX[i]+2,(int)w->cloudY[i]+2,72,24,(Color){0,0,0,(unsigned char)(a*0.3f)});
-        DrawEllipse((int)w->cloudX[i],(int)w->cloudY[i],70,22,(Color){255,255,255,(unsigned char)a});
-        /* Đám mây thứ 2 nhỏ hơn */
-        DrawEllipse((int)w->cloudX[i]+24,(int)w->cloudY[i]-10,42,18,(Color){245,245,255,(unsigned char)(a*0.8f)});
-    }
-
-    if(w->current==WEATHER_CLOUDY){
-        /* Phủ màn mờ nhạt */
-        DrawRectangle(0,0,SCREEN_W,SCREEN_H,(Color){200,210,220,18});
-    }
-
-    if(w->current==WEATHER_RAINY){
-        /* Phủ màn xanh mưa */
-        DrawRectangle(0,0,SCREEN_W,SCREEN_H,(Color){40,60,120,35});
-        /* Vẽ hạt mưa lớn hơn, rõ hơn */
-        for(int i=0;i<40;i++){
-            int rx=(int)w->rainDropX[i];
-            int ry=(int)w->rainDropY[i];
-            /* Đuôi mưa dài */
-            DrawLine(rx,ry, rx-3,ry+18,(Color){160,200,255,200});
-            DrawLine(rx,ry, rx-2,ry+12,(Color){200,230,255,140});
-        }
-        /* Bụi mưa ở mặt đất */
-        for(int i=0;i<20;i++){
-            int sx=((int)w->rainDropX[i*2%40])%SCREEN_W;
-            DrawEllipse(sx,SCREEN_H-2,GetRandomValue(1,4),1,(Color){180,220,255,80});
-        }
-        /* Hiệu ứng sấm chớp ngẫu nhiên */
-        if(GetRandomValue(0,600)==0){
-            DrawRectangle(0,0,SCREEN_W,SCREEN_H,(Color){255,255,255,60});
-        }
-=======
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     Weather *w = &G.weather;
 
     /* ══════════════════════════════════════════════════
@@ -1616,9 +1195,5 @@ void DrawHUD_NightOverlay(void)
             (Color){0, 0, 20, (unsigned char)(va * 60)}, (Color){0,0,0,0});
         DrawRectangleGradientV(0, SCREEN_H-120, SCREEN_W, 120,
             (Color){0,0,0,0}, (Color){0, 0, 20, (unsigned char)(va * 60)});
-<<<<<<< HEAD
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
     }
 }

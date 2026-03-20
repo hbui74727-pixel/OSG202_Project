@@ -19,14 +19,7 @@ extern int achTotalHarvested;
 extern int achTotalKills;
 extern int achTotalPlanted;
 extern int achTotalCollected;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 extern int achTotalEarned; /* BUG FIX #8 */
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-extern int achTotalEarned; /* BUG FIX #8 */
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 
 void Achievement_Init(void);
 void Achievement_Check(void);

@@ -5,15 +5,7 @@ void DrawCrop_ReadyBadge(float sx, float sy, float z)
     float a=0.65f+sinf(G.gameTime*4.0f)*0.35f;
     float bounce=sinf(G.gameTime*3.0f)*4.0f;
     Color c={(unsigned char)255,(unsigned char)220,(unsigned char)0,(unsigned char)(a*255)};
-<<<<<<< HEAD
-<<<<<<< HEAD
-    DrawTextCentered("READY",(int)sx,(int)(sy+bounce),(int)(9.0f*z),c);
-=======
     DrawTextCentered("CHÍN",(int)sx,(int)(sy+bounce),(int)(9.0f*z),c);
->>>>>>> aec174b3ec2a899fec493f59b3c163f8d1262acc
-=======
-    DrawTextCentered("CHÍN",(int)sx,(int)(sy+bounce),(int)(9.0f*z),c);
->>>>>>> 1084983ade6e0fbfb7534b983c027e2cc01c0e23
 }
 
 void DrawCrop_WateredDot(float sx, float sy, float z)
